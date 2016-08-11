@@ -1,0 +1,56 @@
+1. a. Download https://getcomposer.org/Composer-Setup.exe composer and install. 
+   b. Point your php.exe in Composer Installation. Check screenshot 1 
+   c. Skip proxy setting
+   d. Verify Composer installtion. Check screenshot 2
+
+2. Create a demo project inside htdocs or where your server is set up. Check screenshot 3
+   Command : composer create-project --prefer-dist laravel/laravel demo
+
+3. Test the newly created project. Check screenshot 4
+   URL : http://localhost/demo/public
+
+4. Create a database "demo" in MySQL. Goto config/database.php and setup your local MySQL DB.
+
+	Example
+	
+	    'default' => env('DB_CONNECTION', 'mysql'),
+		
+		'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'demo'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+	
+5. Verify you have PHP command in your OS Path. (Check this if you are not sure http://stackoverflow.com/questions/2736528/how-to-set-the-env-variable-for-php)
+   Check screenshot 5
+
+6. Go to your projet folder and test "php artisan list" command. Check screenshot 6
+   Command: php artisan list
+
+7. Change you .env file in the project root folder. Check screenshot 7
+	
+8. Let's run existing Migrations i.e creating / modifying Tables in Laravel. ( https://laravel.com/docs/5.1/migrations)
+	1. Go to your demo/database/migrations folder.
+	2. You will already see two migrations ready to run. (NOTE: Change $table->increments('id'); to $table->increments('user_id'); in *_create_users_table.php)
+	3. goto your projet folder root to run this php artisan command "php artisan migrate". Check screenshot 7 & 8
+
+9. Let's create our own migrations for user_details table.
+	1. Go to your project root folder and run command "php artisan make:migration create_user_details_table" . Check screenshot 9
+	2. Edit the migration *_create_user_details_table.php . Check screeshot 10
+	3. Run this migration i.e execute this command in project root "php artisan migrate"
+	4. You should see user_details table created in db.
+
+10. Similarly Create other migrations with proper foreign constraints. (ROLE,CLASS,etc)
+
+	Important Links :
+	https://laravel.com/docs/5.2
+	https://getcomposer.org/doc/00-intro.md
+	https://www.youtube.com/user/laracasts
