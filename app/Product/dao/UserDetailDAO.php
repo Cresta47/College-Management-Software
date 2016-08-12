@@ -1,17 +1,17 @@
 <?php
 namespace App\Product\DAO;
 
-use App\UserDetail;
+use App\UserDetailModel;
 
-Class UserDetailDAO extends UserDetail{
+Class UserDetailModelDAO extends UserDetailModel{
 
     public function index(){
-        $userDetails = UserDetail::all();
+        $userDetails = UserDetailModel::all();
         return $userDetails;
     }
 
     public function findById($id){
-        $userDetail = UserDetail::findOrFail($id);
+        $userDetail = UserDetailModel::findOrFail($id);
         return $userDetail;
     }
 

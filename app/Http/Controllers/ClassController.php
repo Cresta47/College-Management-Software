@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product\service\UserService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UserController extends Controller
+class ClassController extends Controller
 {
-    private $userService;
-
-    public function __construct(){
-        $this->userService = new UserService();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return $this->userService->findAll();
+        //
     }
 
     /**
@@ -43,11 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-         * NOTE : save(user) request from UserService.js is captured here
-         */
-        $user = $request->all();
-        $this->userService->create($user);
+        //
     }
 
     /**
@@ -58,7 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return $this->userService->findById($id);
+        //
     }
 
     /**

@@ -8,18 +8,18 @@
 
 namespace App\Product\service;
 
-use App\Product\dao\UserDetailDAO;
+use App\Product\dao\UserDetailModelDAO;
 
 Class UserDetailService {
 
     public function findAll(){
-        $userDetailDAO = new UserDetailDAO();
+        $userDetailDAO = new UserDetailModelDAO();
         $userDetails = $userDetailDAO->index();
         return $userDetails;
     }
 
     public function findById($userDetailId){
-        $userDetailService = new UserDetailDAO();
+        $userDetailService = new UserDetailModelDAO();
         return $userDetailService->findById($userDetailId);
     }
 

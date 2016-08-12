@@ -12,7 +12,7 @@ Class UserDAO extends UserModel{
 
     public function __construct(){
         $this->userDTOTransformer = new UserDTOTransformer();
-        $this->userDetailDAO = new UserDetailDAO();
+        $this->userDetailDAO = new UserDetailModelDAO();
     }
 
     public function index(){
@@ -35,12 +35,11 @@ Class UserDAO extends UserModel{
 
     public function _create($user){
         $userMarshalled = $this->userDTOTransformer->marshall($user);
-        $this->create($userMarshalled);
+        UserModel::create($userMarshalled);
     }
 
     public function _update($user){
-        $userMarshalled = $this->userDTOTransformer->marshall($user);
-        $this->update($userMarshalled);
+
     }
 
     public function _delete($id){

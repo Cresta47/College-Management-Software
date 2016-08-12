@@ -6,6 +6,7 @@ app.controller('UserController', function ($scope, UserService) {
 });
 
 app.controller('SignupController', function ($scope, UserService) {
+
     $scope.email
     $scope.password;
     $scope.confirm;
@@ -13,7 +14,14 @@ app.controller('SignupController', function ($scope, UserService) {
     $scope.lastName;
 
     $scope.signup = function () {
-        alert($scope.firstName);
+        user = {email:$scope.email,
+                password:$scope.password,
+                confirm:$scope.confirm,
+                firstName:$scope.firstName,
+                lastName:$scope.lastName
+                }
+        console.log(user);
+        UserService.post(user);
     }
 });
 

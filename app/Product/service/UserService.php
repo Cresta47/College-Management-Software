@@ -14,28 +14,28 @@ use App\Product\response\ResponseGeneratorImpl;
 Class UserService {
 
     private $responseGenerator;
+    private $userDAO;
 
     public function __construct(){
         $this->responseGenerator = new ResponseGeneratorImpl();
+        $this->userDAO = new UserDAO();
     }
 
     public function findAll(){
-        $userDAO = new UserDAO();
-        $users = $userDAO->index();
+        $users = $this->userDAO->index();
         return $users;
     }
 
     public function findById($Id){
-        $userDAO = new UserDAO();
-        $user = $userDAO->findById($Id);
+        $user = $this->userDAO->findById($Id);
         $this->responseGenerator->setData($user);
         $this->responseGenerator->setHttpStatus(200);
         $this->responseGenerator->setBusinessStatus("RES-User-1");
         return $this->responseGenerator->getResponse();
     }
 
-    public function save(){
-
+    public function create($user){
+        $this->userDAO->_create($user);
     }
 
     public function update(){

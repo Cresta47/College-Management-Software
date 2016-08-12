@@ -17,8 +17,9 @@ class UserDTOTransformer implements IDTOTransformer{
      * Transforming data coming from the front end and Service to savable object
      */
     public function marshall($dto){
-        $user['name'] = $dto['name'];
-        $user['email'] = $dto['email'];
+        $user['email'] = $dto['email']; // Making each email request unique // We will remove this later
+        $user['password'] = bcrypt($dto['password']);
+        $user['name'] = 'a';
         return $user;
     }
 
