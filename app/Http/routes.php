@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::resource('api/user', 'UserController');
 
 Route::resource('api/userdetail','UserDetailController');
+
+Route::resource('api/grade','GradeController');
+
+Route::resource('api/class','ClassController');
+
+Route::resource('api/course','CourseController');

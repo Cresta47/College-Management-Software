@@ -167,10 +167,22 @@
     <script src="vendor/angular/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular/angular-route/angular-route.js"></script>
     <script src="resources/js/app.js"></script>
+
     <script src="resources/js/user-userdetail/UserService.js"></script>
     <script src="resources/js/user-userdetail/UserFactory.js"></script>
     <script src="resources/js/user-userdetail/UserController.js"></script>
 
+    <script src="resources/js/grade/GradeService.js"></script>
+    <script src="resources/js/grade/GradeFactory.js"></script>
+    <script src="resources/js/grade/GradeController.js"></script>
+
+    <script src="resources/js/class/ClassService.js"></script>
+    <script src="resources/js/class/ClassFactory.js"></script>
+    <script src="resources/js/class/ClassController.js"></script>
+
+    <script src="resources/js/course/CourseService.js"></script>
+    <script src="resources/js/course/CourseFactory.js"></script>
+    <script src="resources/js/course/CourseController.js"></script>
 
   </body>
 </html>

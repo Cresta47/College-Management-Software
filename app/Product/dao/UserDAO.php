@@ -12,7 +12,7 @@ Class UserDAO extends UserModel{
 
     public function __construct(){
         $this->userDTOTransformer = new UserDTOTransformer();
-        $this->userDetailDAO = new UserDetailModelDAO();
+        $this->userDetailDAO = new UserDetailDAO();
     }
 
     public function index(){
