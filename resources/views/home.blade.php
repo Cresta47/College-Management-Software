@@ -53,7 +53,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
-
+    <link rel="stylesheet" href="http://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
@@ -76,6 +77,7 @@
     </style>
   </head>
   <body ng-app="app">
+
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -104,12 +106,11 @@
       @include('partials.left-side-bar')
 
       <main class="mdl-layout__content mdl-color--grey-100">
-        @include('partials.signup')
+        @include('partials.user-form')
         @include('partials.class-form')
         @include('partials.course-form')
         @include('partials.grade-form')
       </main>
-
 
     </div>
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
@@ -162,6 +163,7 @@
 
     <script src="vendor/material/material.min.js"></script>
     <script src="vendor/angular/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 
 
     <script src="vendor/angular/angular-resource/angular-resource.js"></script>
@@ -183,6 +185,8 @@
     <script src="resources/js/course/CourseService.js"></script>
     <script src="resources/js/course/CourseFactory.js"></script>
     <script src="resources/js/course/CourseController.js"></script>
+
+
 
   </body>
 </html>

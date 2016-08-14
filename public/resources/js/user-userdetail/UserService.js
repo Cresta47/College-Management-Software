@@ -10,7 +10,8 @@ var UserService = app.service('UserService', function (UserRESTclient) {
 
 		all: function(){
 			return UserRESTclient.query();
-		}
+		},
+
 
 	}
 });

@@ -15,12 +15,34 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('api/user', 'UserController');
-
-Route::resource('api/userdetail','UserDetailController');
-
-Route::resource('api/grade','GradeController');
+//----------Restful Routes----------//
 
 Route::resource('api/class','ClassController');
 
 Route::resource('api/course','CourseController');
+
+Route::resource('api/grade','GradeController');
+
+Route::resource('api/user', 'UserController');
+
+Route::resource('api/userdetail','UserDetailController');
+
+
+
+//----------Partials----------//
+
+Route::get('partial/class-form', function(){
+   return view('partials.class-form');
+});
+
+Route::get('partial/course-form', function(){
+    return view('partials.course-form');
+});
+
+Route::get('partial/grade-form', function(){
+    return view('partials.grade-form');
+});
+
+Route::get('partial/user-form', function(){
+    return view('partials.user-form');
+});
