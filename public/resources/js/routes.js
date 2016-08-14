@@ -3,23 +3,29 @@
  */
 
 app.config(function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/home');
-
     $stateProvider
 
-        .state('class.create', {
+        .state('classCreate', {
             url: '/class/create',
-            templateUrl: 'partial/class-form'
+            views: {
+                // the main template will be placed here (relatively named)
+                '': { templateUrl: 'partial/class-form' },
+                // 'createClassForm@classCreate' : {
+                //     templateUrl: 'partial/class-form',
+                //     controller: 'ClassFormController'
+                // }
+            }
         })
 
-        .state('course.create', {
+        .state('courseCreate', {
             url: '/course/create',
             templateUrl: 'partial/course-form'
         })
 
-        .state('grade.create', {
+        .state('gradeCreate', {
             url: '/grade/create',
             templateUrl: 'partial/grade-form'
         })
+
+    $urlRouterProvider.otherwise('/home');
 });

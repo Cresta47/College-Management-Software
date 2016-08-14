@@ -8,14 +8,21 @@ use App\Http\Requests;
 
 class ClassController extends Controller
 {
+
+    private $classService;
+
+    public function __construct(){
+        $this->classService = new ClassService();
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        return $this->classService->findAll();
     }
 
     /**
@@ -36,7 +43,8 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $class = $request->all();
+        $this->classService->create($class);
     }
 
     /**
@@ -47,7 +55,7 @@ class ClassController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->classService->findById($id);
     }
 
     /**
