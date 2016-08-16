@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\product\service\ClassService;
+use Illuminate\Support\Facades\Input;
 
-use App\Http\Requests;
 
 class ClassController extends Controller
 {
-
     private $classService;
 
     public function __construct(){
@@ -22,6 +22,11 @@ class ClassController extends Controller
 
     public function index()
     {
+
+        if(Input::get('getme') == 'myclasses'){
+            return $this->classService->findAllMyClasses();
+        }
+
         return $this->classService->findAll();
     }
 

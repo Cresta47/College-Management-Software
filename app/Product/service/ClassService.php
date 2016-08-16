@@ -30,7 +30,7 @@ Class ClassService {
         $class = $this->classDAO->findById($Id);
         $this->responseGenerator->setData($class);
         $this->responseGenerator->setHttpStatus(200);
-        $this->responseGenerator->setBusinessStatus("RES-User-1");
+        $this->responseGenerator->setBusinessStatus("RES-Class-1");
         return $this->responseGenerator->getResponse();
     }
 
@@ -45,4 +45,13 @@ Class ClassService {
     public function delete(){
 
     }
+
+    public function findAllMyClasses(){
+        $allMyClasses = $this->classDAO->findAllMyClasses();
+        $this->responseGenerator->setData($allMyClasses);
+        $this->responseGenerator->setHttpStatus(200);
+        $this->responseGenerator->setBusinessStatus("RES-Class-*"); // Response contains many classes
+        return $this->responseGenerator->getResponse();
+    }
+
 }

@@ -46,3 +46,11 @@ Route::get('partial/grade-form', function(){
 Route::get('partial/user-form', function(){
     return view('partials.user-form');
 });
+
+Route::get('partial/user-list-card',function(){
+    return view('partials.user-list-card');
+});
+
+Route::get('partial/class-list-card', function(){
+   return view('partials.class-list-card');
+});

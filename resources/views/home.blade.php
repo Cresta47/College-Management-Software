@@ -106,11 +106,6 @@
       @include('partials.left-side-bar')
 
       <main class="mdl-layout__content mdl-color--grey-100">
-
-        <ul class="nav navbar-nav">
-          <li><a ui-sref="home">Home</a></li>
-          <li><a ui-sref="classCreate">About</a></li>
-        </ul>
         <div ui-view></div>
       </main>
 

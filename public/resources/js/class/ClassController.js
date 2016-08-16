@@ -15,3 +15,45 @@ app.controller('ClassFormController', function ($scope, ClassService) {
     }
 
 });
+
+
+app.controller('ClassListCardsController', function ($scope, ClassService) {
+
+    $scope.classCards;
+    $scope.classList;
+    $scope.temp;
+
+    $scope.showList = false;
+    $scope.showCards = true;
+
+    $scope.loadAll = function(){
+        $scope.temp = ClassService.all();
+    }
+
+    $scope.populate = function(){
+        $scope.classList = $scope.temp;
+        $scope.classCards = $scope.temp;
+        $scope.showList = true;
+        $scope.viewName = $scope.viewNameList;
+    }
+
+    $scope.listCardToggle = function(){
+        if($scope.showList === true){
+            $scope.showCards = true;
+            $scope.viewName = $scope.viewNameCard;
+            $scope.showList = false;
+        }else{
+            $scope.showCards = false;
+            $scope.viewName = $scope.viewNameList;
+            $scope.showList = true;
+        }
+    }
+
+    $scope.showEditForm = function(id){
+        alert(id);
+    }
+
+    $scope.loadAll();
+    $scope.populate();
+
+});

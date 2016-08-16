@@ -6,17 +6,15 @@
  * Time: 7:31 PM
  */
 
-
 namespace  App\Product\daoutil;
-
-use App\Product\daoutil\IDTOTransformer;
+use App\product\daoutil\IDTOTransformer;
 
 class ClassDTOTransformer implements IDTOTransformer{
 
     /*
      * Transforming data coming from the front end and Service to savable object
      */
-    public function marshall($dto){
+    public function formatDataToDb($dto){
         $class['name']='name';
         $class['building']='building';
         $class['room']='room';
@@ -27,7 +25,9 @@ class ClassDTOTransformer implements IDTOTransformer{
     /*
      * Transforming the database rows to a object
      */
-    public function unmarshall($databaseRow){
+    public function formatDataFromDb($databaseRow){
+        var_dump($databaseRow);
+        die;
         $result['id'] = $databaseRow['original']['id'];
         $result['name'] = $databaseRow->name;
         $result['building'] = $databaseRow->building;
@@ -35,7 +35,6 @@ class ClassDTOTransformer implements IDTOTransformer{
         $result['floor'] = $databaseRow->floor;
         $result['createdAt'] = $databaseRow['created_at'];
         $result['updatedAt'] = $databaseRow['updated_at'];
-        $result['rememberToken'] = '';
         return $result;
     }
 

@@ -19,7 +19,7 @@ Class UserDAO extends UserModel{
         $users = UserModel::all();
 
         foreach($users as $user){
-            $result[] = $this->userDTOTransformer->unmarshall($user);
+            $result[] = $this->userDTOTransformer->formatDataToDb($user);
             $userIDs[] = $user['id'];
         }
 
@@ -29,21 +29,21 @@ Class UserDAO extends UserModel{
 
     public function findById($id){
         $user = UserModel::findOrFail($id);
-        $user = $this->userDTOTransformer->unmarshall($user);
+        $user = $this->userDTOTransformer->formatDataFromDb($user);
         return $user;
     }
 
     public function _create($user){
-        $userMarshalled = $this->userDTOTransformer->marshall($user);
-        UserModel::create($userMarshalled);
+        $result = $this->userDTOTransformer->formatDataToDb($user);
+        UserModel::create($result);
     }
 
     public function _update($user){
-
+        $result = $this->userDTOTransformer->formatDataToDb($user);
+        UserModel::where('id','=',$result['id'])->update($result);
     }
 
     public function _delete($id){
-
     }
 
 }

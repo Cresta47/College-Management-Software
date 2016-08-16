@@ -38,8 +38,8 @@ Class UserService {
         $this->userDAO->_create($user);
     }
 
-    public function update(){
-
+    public function update($user){
+        $this->userDAO->_update($user);
     }
 
     public function delete(){

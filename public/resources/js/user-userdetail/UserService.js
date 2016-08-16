@@ -4,6 +4,10 @@ var UserService = app.service('UserService', function (UserRESTclient) {
 			return UserRESTclient.get({id:id.id});
 		},
 
+		getEdit:function(id){
+			return UserRestClient.getEdit({id:id.id})
+		},
+
 		post: function(user){
 			UserRESTclient.save(user);
 		},
@@ -12,6 +16,8 @@ var UserService = app.service('UserService', function (UserRESTclient) {
 			return UserRESTclient.query();
 		},
 
-
+		edit: function(user){
+			return UserRESTclient.edit(user)
+		}
 	}
 });

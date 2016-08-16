@@ -5,24 +5,56 @@ app.controller('UserController', function ($scope, UserService) {
     $scope.loadUser();
 });
 
-app.controller('UserFormController', function ($scope, UserService) {
+app.controller('UserFormController', function ($scope, $stateParams, UserService) {
 
-    $scope.email
-    $scope.password;
-    $scope.confirm;
-    $scope.firstName;
-    $scope.lastName;
+    $scope.user = {};
+    $scope.user.email
+    $scope.user.password;
+    $scope.user.confirm;
+    $scope.user.firstName;
+    $scope.user.lastName;
+    $scope.params = $stateParams;
+
+    $scope.loadUser = function () {
+        console.log()
+        UserService.get({id:$scope.params.id}).$promise.then(function(result){
+            $scope.user = result['data'];
+        });
+    }
+
+
+    $scope.loadEditForm = function(){
+        // TODO Hack to get url parameter . Fix Later
+        if($scope.params.id !== undefined){
+            $scope.loadUser();
+            console.log($scope.user);
+        }
+    }
+
+
 
     $scope.signup = function () {
-        user = {email:$scope.email,
-                password:$scope.password,
-                confirm:$scope.confirm,
-                firstName:$scope.firstName,
-                lastName:$scope.lastName
+        user = {email:$scope.user.email,
+                password:$scope.user.password,
+                confirm:$scope.user.confirm,
+                firstName:$scope.user.firstName,
+                lastName:$scope.user.lastName
                 }
-        console.log(user);
         UserService.post(user);
     }
+
+    $scope.edit = function(){
+        user = {id:$scope.user.id,
+            email:$scope.user.email,
+            password:$scope.user.password,
+            confirm:$scope.user.confirm,
+            firstName:$scope.user.firstName,
+            lastName:$scope.user.lastName
+        }
+        UserService.edit(user);
+    }
+
+    $scope.loadEditForm();
 });
 
 app.controller('UserListCardsController', function ($scope, UserService) {

@@ -16,17 +16,17 @@ class UserDTOTransformer implements IDTOTransformer{
     /*
      * Transforming data coming from the front end and Service to savable object
      */
-    public function marshall($dto){
-        $user['email'] = $dto['email']; // Making each email request unique // We will remove this later
+    public function formatDataToDb($dto){
+        $user['id'] = $dto['id'];
+        $user['email'] = $dto['email'];
         $user['password'] = bcrypt($dto['password']);
-        $user['name'] = 'a';
         return $user;
     }
 
     /*
      * Transforming the database rows to a object
      */
-    public function unmarshall($databaseRow){
+    public function formatDataFromDb($databaseRow){
         $result['id'] = $databaseRow['original']['id'];
         $result['name'] = $databaseRow->name;
         $result['email'] = $databaseRow['original']['email'];

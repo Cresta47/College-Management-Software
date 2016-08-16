@@ -9,4 +9,8 @@ class ClassModel extends Model
     protected $fillable = array('name', 'building', 'room', 'floor');
 
     protected $table = 'classes';
+
+    protected function getTableName(){
+        return $this->table;
+    }
 }

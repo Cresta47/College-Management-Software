@@ -7,10 +7,10 @@
  */
 namespace App\Product\daoutil;
 
-
 interface IDTOTransformer{
 
-    public function marshall($dto);
+    public function formatDataToDb($dto);
 
-    public function unmarshall($databaseRow);
+    public function formatDataFromDb($databaseRow);
+
 }

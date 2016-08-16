@@ -1,4 +1,4 @@
-<div ui-view="createClassForm">
+<div ui-view="classForm">
     <div class="mdl-grid demo-content" ng-controller="ClassFormController">
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <form>
@@ -16,4 +16,3 @@
         </div>
     </div>
 </div>
-

@@ -21,6 +21,12 @@
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
     <a ui-sref="classCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Class</a>
+    <a ui-sref="userCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Register</a>
+    <a ui-sref="userListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Users</a>
+    <a ui-sref="classListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Classes</a>
+
+
+
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
