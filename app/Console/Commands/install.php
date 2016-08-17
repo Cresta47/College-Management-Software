@@ -39,6 +39,8 @@ class install extends Command
      */
     public function handle()
     {
+        $this->info("Updating dependencies...");
+        Artisan::call("vendor:publish");
         $this->info("Migrating...");
         Artisan::call("migrate", ['--force' => 'y']); // No Confirmation
         $this->info("Seeding...");
