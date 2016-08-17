@@ -7,7 +7,7 @@ use App\Product\response\ResponseGenerator;
 use Illuminate\Support\Facades\DB;
 
 
-Class ClassDAO extends ClassModel{
+Class ClassDAO {
 
     private $classDTOTransformer;
 
@@ -28,8 +28,19 @@ Class ClassDAO extends ClassModel{
 
     public function findById($id){
         $class = ClassModel::findOrFail($id);
-        $class = $this->userDTOTransformer->formatDataToDb($class);
+        $class = $this->classDTOTransformer->formatDataToDb($class);
         return $class;
+    }
+
+    public function findByIds($classIDs){
+
+        $classes = ClassModel::whereIn('id',$classIDs)->get();
+        $result = array();
+        foreach($classes as $class){
+            $result[] = $this->classDTOTransformer->formatDataFromDb($class);
+        }
+        return $result;
+
     }
 
     public function _create($class){
@@ -45,20 +56,7 @@ Class ClassDAO extends ClassModel{
 
     }
 
-    public function findAllMyClasses(){
-        $allMyclasses = DB::table($this->getTableName())
-                      ->join( 'courses','courses.id', '=' ,'classes.id')
-                      ->join( 'users','users.id','=', 'courses.id')
-                      ->get();
-
-        var_dump($allMyclasses);
-        die;
-
-        foreach($allMyclasses as $class){
-            $result[] = $this->classDTOTransformer->formatDataFromDb($class);
-        }
-
-        return $result;
+    public function getAllClassesWithIds($classIds){
 
     }
 

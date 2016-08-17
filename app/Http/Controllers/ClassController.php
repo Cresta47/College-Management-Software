@@ -22,12 +22,10 @@ class ClassController extends Controller
 
     public function index()
     {
-
-        if(Input::get('getme') == 'myclasses'){
+        if(Input::get('get-me') == 'my-classes'){
             return $this->classService->findAllMyClasses();
         }
-
-        return $this->classService->findAll();
+        return $this->classService->findAllMyClasses();
     }
 
     /**

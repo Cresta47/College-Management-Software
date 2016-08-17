@@ -42,19 +42,19 @@ class install extends Command
         $this->info("Migrating...");
         Artisan::call("migrate", ['--force' => 'y']); // No Confirmation
         $this->info("Seeding...");
-        $this->info("Seeding 'users' Table");
+        $this->info("Seeding 'users' Table...");
         Artisan::call("db:seed" , ['--class'=>'UsersTableSeeder']);
-        $this->info("Seeding 'classes' Table");
+        $this->info("Seeding 'classes' Table...");
         Artisan::call("db:seed" , ['--class'=>'ClassesTableSeeder']);
-        $this->info("Seeding 'grades' Table");
+        $this->info("Seeding 'grades' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradesTableSeeder']);
-        $this->info("Seeding 'user_details' Table");
+        $this->info("Seeding 'user_details' Table...");
         Artisan::call("db:seed" , ['--class'=>'UserDetailsTableSeeder']);
-        $this->info("Seeding 'courses' Table");
+        $this->info("Seeding 'courses' Table...");
         Artisan::call("db:seed" , ['--class'=>'CoursesTableSeeder']);
-        $this->info("Seeding 'course_user' Table");
+        $this->info("Seeding 'course_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'CourseUserTableSeeder']);
-        $this->info("Seeding 'grade_user' Table");
+        $this->info("Seeding 'grade_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradeUserTableSeeder']);
     }
 }

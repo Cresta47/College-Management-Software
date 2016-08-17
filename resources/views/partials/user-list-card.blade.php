@@ -1,4 +1,6 @@
 <div ui-view="userListCard">
+    <h1>Users</h1>
+
 <div class="mdl-grid demo-content" ng-controller="UserListCardsController">
     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
         <div ng-repeat="user in userCards"
@@ -12,7 +14,7 @@
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Profile</a>
-                <a ui-sref="@{{userEdit({id:user.id, partialTitle:'Edit User'})}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>
+                <a ui-sref="userEdit" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>
             </div>
         </div>
     </div>

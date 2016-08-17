@@ -1,5 +1,8 @@
-app.factory('ClassRESTclient', function ($resource) {
+app.factory('ClassRESTClient', function ($resource) {
      return $resource('api/class/:id',{
-          getMyClasses: {method:'GET', params:{getme: 'myclasses'}, url: 'api/class'}
-     });
+     },
+     {
+         userClasses: {method:'GET', params:{ 'get-me' : 'my-classes'}, url: 'api/class'}
+     }
+     );
 });

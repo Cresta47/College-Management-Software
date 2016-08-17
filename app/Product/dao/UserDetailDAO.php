@@ -3,7 +3,7 @@ namespace App\Product\DAO;
 
 use App\UserDetailModel;
 
-Class UserDetailDAO extends UserDetailModel{
+Class UserDetailDAO{
 
     public function index(){
         $userDetails = UserDetailModel::all();

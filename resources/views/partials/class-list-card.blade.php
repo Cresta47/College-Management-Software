@@ -1,4 +1,5 @@
 <div ui-view="classListCard">
+    <h1>My Class Rooms</h1>
     <div class="mdl-grid demo-content" ng-controller="ClassListCardsController">
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <div ng-repeat="class in classCards"
@@ -8,11 +9,12 @@
                     <h2 class="mdl-card__title-text">@{{ class.name }}</h2>
                 </div>
                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                    @{{ class.building }}
+                   <b>Building Name :</b> @{{ class.name }}<br>
+                   <b>Floor :</b> @{{class.building}}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Profile</a>
-                    <a ui-sref="@{{classEdit({id:class.id, partialTitle:'Edit Class'})}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>
+                    {{--<a ui-sref="@{{classEdit({id:class.id, partialTitle:'Edit Class'})}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>--}}
                 </div>
             </div>
         </div>

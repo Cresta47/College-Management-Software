@@ -9,21 +9,24 @@
 namespace App\Product\service;
 
 use App\Product\dao\ClassDAO;
+use App\Product\dao\CourseDAO;
 use App\Product\response\ResponseGeneratorImpl;
 
 Class ClassService {
 
     private $responseGenerator;
     private $classDAO;
+    private $courseDAO;
+    private $courseService;
 
     public function __construct(){
         $this->responseGenerator = new ResponseGeneratorImpl();
         $this->classDAO = new ClassDAO();
+        $this->courseDAO = new CourseDAO();
+        $this->courseService = new CourseService();
     }
 
     public function findAll(){
-        $class = $this->classDAO->index();
-        return $class;
     }
 
     public function findById($Id){
@@ -47,7 +50,9 @@ Class ClassService {
     }
 
     public function findAllMyClasses(){
-        $allMyClasses = $this->classDAO->findAllMyClasses();
+        $allMyCoursesIDs = $this->courseService->findAllMyCoursesIDs();
+        $allMyClassesIDs = $this->courseDAO->getClassesIDByCoursesID($allMyCoursesIDs);
+        $allMyClasses = $this->classDAO->findByIds($allMyClassesIDs);
         $this->responseGenerator->setData($allMyClasses);
         $this->responseGenerator->setHttpStatus(200);
         $this->responseGenerator->setBusinessStatus("RES-Class-*"); // Response contains many classes

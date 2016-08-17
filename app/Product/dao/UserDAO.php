@@ -5,7 +5,7 @@ use App\UserModel;
 use App\Product\daoutil\UserDTOTransformer;
 use App\Product\response\ResponseGenerator;
 
-Class UserDAO extends UserModel{
+Class UserDAO {
 
     private $userDTOTransformer;
     private $userDetailDAO;
@@ -19,8 +19,7 @@ Class UserDAO extends UserModel{
         $users = UserModel::all();
 
         foreach($users as $user){
-            $result[] = $this->userDTOTransformer->formatDataToDb($user);
-            $userIDs[] = $user['id'];
+            $result[] = $this->userDTOTransformer->formatDataFromDb($user);
         }
 
         return $result;

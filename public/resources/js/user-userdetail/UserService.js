@@ -1,23 +1,23 @@
-var UserService = app.service('UserService', function (UserRESTclient) {
+var UserService = app.service('UserService', function (UserRESTClient) {
 	return {
 		get: function(id) {
-			return UserRESTclient.get({id:id.id});
+			return UserRESTClient.get({id:id.id});
 		},
 
 		getEdit:function(id){
-			return UserRestClient.getEdit({id:id.id})
+			return UserRESTClient.getEdit({id:id.id})
 		},
 
 		post: function(user){
-			UserRESTclient.save(user);
+			UserRESTClient.save(user);
 		},
 
 		all: function(){
-			return UserRESTclient.query();
+			return UserRESTClient.query();
 		},
 
 		edit: function(user){
-			return UserRESTclient.edit(user)
+			return UserRESTClient.edit(user)
 		}
 	}
 });

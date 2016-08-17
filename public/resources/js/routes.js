@@ -33,7 +33,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/user/edit/{id}',
             views: {
                 '': {templateUrl: 'partial/user-form',
-                    }
+                    },
+                params: { partialTitle: 'Edit User', }
             }
         })
 
@@ -44,17 +45,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('courseListCard', {
+            url: '/get-me/my-courses',
+            views: {
+                '': {templateUrl: 'partial/course-list-card'}
+            }
+        })
+
         .state('userListCard', {
             url: '/user/listCard',
             views: {
                 '': {templateUrl: 'partial/user-list-card'}
             }
         }),
-
-
-
-
-
 
     $urlRouterProvider.otherwise('/home');
 });

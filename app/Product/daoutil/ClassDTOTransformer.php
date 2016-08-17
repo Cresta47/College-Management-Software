@@ -7,7 +7,7 @@
  */
 
 namespace  App\Product\daoutil;
-use App\product\daoutil\IDTOTransformer;
+use App\Product\daoutil\IDTOTransformer;
 
 class ClassDTOTransformer implements IDTOTransformer{
 
@@ -26,15 +26,13 @@ class ClassDTOTransformer implements IDTOTransformer{
      * Transforming the database rows to a object
      */
     public function formatDataFromDb($databaseRow){
-        var_dump($databaseRow);
-        die;
-        $result['id'] = $databaseRow['original']['id'];
+        $result['id'] = $databaseRow->id;
         $result['name'] = $databaseRow->name;
         $result['building'] = $databaseRow->building;
         $result['room'] = $databaseRow->room;
         $result['floor'] = $databaseRow->floor;
-        $result['createdAt'] = $databaseRow['created_at'];
-        $result['updatedAt'] = $databaseRow['updated_at'];
+        $result['createdAt'] = $databaseRow->created_at;
+        $result['updatedAt'] = $databaseRow->updated_at;
         return $result;
     }
 

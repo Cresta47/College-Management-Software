@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Product\service\CourseService;
+
+use Illuminate\Support\Facades\Input;
 
 class CourseController extends Controller
 {
+
+    private $courseService;
+
+    public function __construct(){
+        $this->courseService = new CourseService();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        if(Input::get('get-me') == 'my-courses'){
+            return $this->courseService->findAllMyCourses();
+        }
     }
 
     /**

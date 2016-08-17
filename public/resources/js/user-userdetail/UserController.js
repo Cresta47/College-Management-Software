@@ -5,8 +5,7 @@ app.controller('UserController', function ($scope, UserService) {
     $scope.loadUser();
 });
 
-app.controller('UserFormController', function ($scope, $stateParams, UserService) {
-
+app.controller('UserFormController', function ($rootScope,$scope, $stateParams, UserService) {
     $scope.user = {};
     $scope.user.email
     $scope.user.password;
@@ -14,24 +13,20 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
     $scope.user.firstName;
     $scope.user.lastName;
     $scope.params = $stateParams;
+    $scope.partialTitle = $scope.partialTitle;
 
     $scope.loadUser = function () {
-        console.log()
         UserService.get({id:$scope.params.id}).$promise.then(function(result){
             $scope.user = result['data'];
         });
     }
 
-
     $scope.loadEditForm = function(){
         // TODO Hack to get url parameter . Fix Later
         if($scope.params.id !== undefined){
             $scope.loadUser();
-            console.log($scope.user);
         }
     }
-
-
 
     $scope.signup = function () {
         user = {email:$scope.user.email,
@@ -55,6 +50,8 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
     }
 
     $scope.loadEditForm();
+
+
 });
 
 app.controller('UserListCardsController', function ($scope, UserService) {
@@ -71,6 +68,7 @@ app.controller('UserListCardsController', function ($scope, UserService) {
 
     $scope.loadAll = function(){
         $scope.temp = UserService.all();
+        $scope.userCards = $scope.temp;
     }
 
     $scope.populate = function(){

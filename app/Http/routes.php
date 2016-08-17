@@ -54,3 +54,7 @@ Route::get('partial/user-list-card',function(){
 Route::get('partial/class-list-card', function(){
    return view('partials.class-list-card');
 });
+
+Route::get('partial/course-list-card', function(){
+    return view('partials.course-list-card');
+});
