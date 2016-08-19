@@ -22,6 +22,7 @@ Class RoleService {
     }
 
     public function findAll(){
+        return $this->roleDAO->index();
     }
 
     public function findById($Id){

@@ -23,6 +23,7 @@ Class RoleDAO {
     }
 
     public function findById($id){
+
     }
 
     public function _create($role){

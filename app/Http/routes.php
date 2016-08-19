@@ -27,7 +27,7 @@ Route::resource('api/user', 'UserController');
 
 Route::resource('api/userdetail','UserDetailController');
 
-
+Route::resource('api/role','RoleController');
 
 //----------Partials----------//
 
