@@ -8,6 +8,8 @@ Creating resourseful controller
 
  * php artisan make:controller ??????? --resource
 
+Notes : DAO and Service can NOT be created with Commands
+
 Process :
 
 A.) Backend WorkFlow
