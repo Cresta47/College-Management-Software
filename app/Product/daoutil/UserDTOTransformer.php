@@ -8,18 +8,18 @@
 
 
 namespace  App\Product\daoutil;
-
 use App\Product\daoutil\IDTOTransformer;
+use App\Product\productTrait\dateTime\NepaliDateConvertible;
 
 class UserDTOTransformer implements IDTOTransformer{
+
+    use NepaliDateConvertible;
 
     /*
      * Transforming data coming from the front end and Service to savable object
      */
     public function formatDataToDb($dto){
-        $user['id'] = $dto['id'];
         $user['email'] = $dto['email'];
-        $user['password'] = bcrypt($dto['password']);
         return $user;
     }
 
@@ -31,6 +31,7 @@ class UserDTOTransformer implements IDTOTransformer{
         $result['name'] = $databaseRow->name;
         $result['email'] = $databaseRow['original']['email'];
         $result['createdAt'] = $databaseRow['created_at'];
+        $result['createdAtNp'] = $this->convertToBS($databaseRow['created_at']);
         $result['updatedAt'] = $databaseRow['updated_at'];
         $result['rememberToken'] = '';
         $result['password'] = '';

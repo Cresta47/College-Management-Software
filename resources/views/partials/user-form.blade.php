@@ -17,7 +17,7 @@
 
                 <div class="form-group label-static is-empty">
                     <input type="password" name="password" class="signup form-control"
-                           id="i2" placeholder="Password" ng-model=" user.pasasword">
+                           id="i2" placeholder="Password" ng-model=" user.password">
                 </div>
 
                 <div class="form-group label-static is-empty">
