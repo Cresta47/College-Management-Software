@@ -22,7 +22,7 @@ Class UserService {
     }
 
     public function findAll(){
-        $users = $this->userDAO->index();
+        $users = $this->userDAO->findAll(array());
         return $users;
     }
 
