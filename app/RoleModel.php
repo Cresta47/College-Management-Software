@@ -8,7 +8,7 @@ class RoleModel extends Model
 {
     protected $table = 'roles';
 
-    protected $fillable = array('name');
+    protected $fillable = array('name', 'display_name','description');
 
     public function getTableName(){
         return $this->table;

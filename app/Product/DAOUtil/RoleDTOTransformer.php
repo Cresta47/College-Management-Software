@@ -20,6 +20,8 @@ class RoleDTOTransformer implements IDTOTransformer{
      */
     public function formatDataToDb($dto){
         $role['name'] = $dto['name'];
+        $role['display_name'] = $dto['displayName'];
+        $role['description'] = $dto['description'];
         return $role;
     }
 
@@ -28,6 +30,8 @@ class RoleDTOTransformer implements IDTOTransformer{
      */
     public function formatDataFromDb($databaseRow){
         $result['name'] = $databaseRow->name;
+        $result['displayName'] = $databaseRow->display_name;
+        $result['description'] = $databaseRow->description;
         return $result;
     }
 

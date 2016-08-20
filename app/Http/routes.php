@@ -27,7 +27,7 @@ Route::resource('api/user', 'UserController');
 
 Route::resource('api/userdetail','UserDetailController');
 
-Route::resource('api/role','RoleController');
+Route::resource('api/role','RoleController'); // QWERTY
 
 //----------Partials----------//
 
@@ -57,4 +57,8 @@ Route::get('partial/class-list-card', function(){
 
 Route::get('partial/course-list-card', function(){
     return view('partials.course-list-card');
+});
+
+Route::get('partial/role-form', function(){
+    return view('partials.role-form');
 });

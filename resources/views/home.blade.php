@@ -183,6 +183,9 @@
     <script src="resources/js/course/CourseFactory.js"></script>
     <script src="resources/js/course/CourseController.js"></script>
 
+    <script src="resources/js/role/RoleController.js"></script>
+    <script src="resources/js/role/RoleService.js"></script>
+    <script src="resources/js/role/RoleFactory.js"></script>
 
 
   </body>

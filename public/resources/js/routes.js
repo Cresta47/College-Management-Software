@@ -52,6 +52,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('roleCreate', {
+            url: '/role/create',
+            views: {
+                '': {templateUrl: 'partial/role-form'}
+            }
+        })
+
+
         .state('userListCard', {
             url: '/user/listCard',
             views: {
