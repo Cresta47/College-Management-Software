@@ -10,6 +10,9 @@ use App\Product\service\UserDetailService;
 
 class UserDetailController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      *

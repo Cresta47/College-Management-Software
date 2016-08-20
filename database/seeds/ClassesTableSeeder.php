@@ -15,6 +15,8 @@ class ClassesTableSeeder extends Seeder
 
         $limit = 100;
 
+        $building = ['A','B','C'];
+
         for ($i = 0; $i < $limit; $i++) {
             \DB::table('classes')->insert([ //,
                 'name' => $faker->firstName,

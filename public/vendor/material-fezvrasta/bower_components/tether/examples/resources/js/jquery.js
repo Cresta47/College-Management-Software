@@ -7575,7 +7575,7 @@ jQuery.fn.load = function( url, params, callback ) {
             data: params
         }).done(function( responseText ) {
 
-            // Save response for use in complete callback
+            // Save Response for use in complete callback
             response = arguments;
 
             self.html( selector ?
@@ -7795,7 +7795,7 @@ jQuery.extend({
                     return this;
                 },
 
-                // Overrides response content-type header
+                // Overrides Response content-type header
                 overrideMimeType: function( type ) {
                     if ( !state ) {
                         s.mimeType = type;
@@ -8009,13 +8009,13 @@ jQuery.extend({
             // (no matter how long the jqXHR object will be used)
             transport = undefined;
 
-            // Cache response headers
+            // Cache Response headers
             responseHeadersString = headers || "";
 
             // Set readyState
             jqXHR.readyState = status > 0 ? 4 : 0;
 
-            // Get response data
+            // Get Response data
             if ( responses ) {
                 response = ajaxHandleResponses( s, jqXHR, responses );
             }
@@ -8112,7 +8112,7 @@ jQuery.extend({
 /* Handles responses to an ajax request:
  * - sets all responseXXX fields accordingly
  * - finds the right dataType (mediates between content-type and expected dataType)
- * - returns the corresponding response
+ * - returns the corresponding Response
  */
 function ajaxHandleResponses( s, jqXHR, responses ) {
     var firstDataType, ct, finalDataType, type,
@@ -8145,7 +8145,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
         }
     }
 
-    // Check to see if we have a response for the expected dataType
+    // Check to see if we have a Response for the expected dataType
     if ( dataTypes[ 0 ] in responses ) {
         finalDataType = dataTypes[ 0 ];
     } else {
@@ -8165,7 +8165,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 
     // If we found a dataType
     // We add the dataType to the list if needed
-    // and return the corresponding response
+    // and return the corresponding Response
     if ( finalDataType ) {
         if ( finalDataType !== dataTypes[ 0 ] ) {
             dataTypes.unshift( finalDataType );
@@ -8174,7 +8174,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
     }
 }
 
-// Chain conversions given the request and the original response
+// Chain conversions given the request and the original Response
 function ajaxConvert( s, response ) {
     var conv2, current, conv, tmp,
         converters = {},
@@ -8201,7 +8201,7 @@ function ajaxConvert( s, response ) {
         // There's only work to do if current dataType is non-auto
         if ( current !== "*" ) {
 
-            // Convert response if prev dataType is non-auto and differs from current
+            // Convert Response if prev dataType is non-auto and differs from current
             if ( prev !== "*" && prev !== current ) {
 
                 // Seek a direct converter
@@ -8412,7 +8412,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
                 oldCallbacks.push( callbackName );
             }
 
-            // Call if it was a function and we have a response
+            // Call if it was a function and we have a Response
             if ( responseContainer && jQuery.isFunction( overwritten ) ) {
                 overwritten( responseContainer[ 0 ] );
             }

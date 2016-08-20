@@ -10,7 +10,7 @@ class ClassModel extends Model
 
     protected $table = 'classes';
 
-    protected function getTableName(){
+    public function getTableName(){
         return $this->table;
     }
 }

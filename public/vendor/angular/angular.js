@@ -1811,7 +1811,7 @@ function reloadWithDebugInfo() {
  * @name angular.getTestability
  * @module ng
  * @description
- * Get the testability service for the instance of Angular on the given
+ * Get the testability Service for the instance of Angular on the given
  * element.
  * @param {DOMElement} element DOM element which is the root of angular application.
  */
@@ -2128,9 +2128,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#provider
            * @module ng
-           * @param {string} name service name
+           * @param {string} name Service name
            * @param {Function} providerType Construction function for creating new instance of the
-           *                                service.
+           *                                Service.
            * @description
            * See {@link auto.$provide#provider $provide.provider()}.
            */
@@ -2140,8 +2140,8 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#factory
            * @module ng
-           * @param {string} name service name
-           * @param {Function} providerFunction Function for creating new instance of the service.
+           * @param {string} name Service name
+           * @param {Function} providerFunction Function for creating new instance of the Service.
            * @description
            * See {@link auto.$provide#factory $provide.factory()}.
            */
@@ -2151,10 +2151,10 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#service
            * @module ng
-           * @param {string} name service name
+           * @param {string} name Service name
            * @param {Function} constructor A constructor function that will be instantiated.
            * @description
-           * See {@link auto.$provide#service $provide.service()}.
+           * See {@link auto.$provide#service $provide.Service()}.
            */
           service: invokeLaterAndSetModuleName('$provide', 'service'),
 
@@ -2162,7 +2162,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#value
            * @module ng
-           * @param {string} name service name
+           * @param {string} name Service name
            * @param {*} object Service instance object.
            * @description
            * See {@link auto.$provide#value $provide.value()}.
@@ -2185,9 +2185,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#decorator
            * @module ng
-           * @param {string} name The name of the service to decorate.
-           * @param {Function} decorFn This function will be invoked when the service needs to be
-           *                           instantiated and should return the decorated service instance.
+           * @param {string} name The name of the Service to decorate.
+           * @param {Function} decorFn This function will be invoked when the Service needs to be
+           *                           instantiated and should return the decorated Service instance.
            * @description
            * See {@link auto.$provide#decorator $provide.decorator()}.
            */
@@ -2206,7 +2206,7 @@ function setupModuleLoader(window) {
            *
            *
            * Defines an animation hook that can be later used with
-           * {@link $animate $animate} service and directives that use this service.
+           * {@link $animate $animate} Service and directives that use this Service.
            *
            * ```js
            * module.animation('.animation-name', function($inject1, $inject2) {
@@ -2287,7 +2287,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#config
            * @module ng
-           * @param {Function} configFn Execute this function on module load. Useful for service
+           * @param {Function} configFn Execute this function on module load. Useful for Service
            *    configuration.
            * @description
            * Use this method to register work which needs to be performed on module loading.
@@ -3743,7 +3743,7 @@ forEach({
 });
 
 
-// Provider for private $$jqLite service
+// Provider for private $$jqLite Service
 function $$jqLiteProvider() {
   this.$get = function $$jqLite() {
     return extend(JQLite, {
@@ -4682,7 +4682,7 @@ function createInjector(modulesToLoad, strictDi) {
         var key = $inject[i];
         if (typeof key !== 'string') {
           throw $injectorMinErr('itkn',
-                  'Incorrect injection token! Expected service name as string, got {0}', key);
+                  'Incorrect injection token! Expected Service name as string, got {0}', key);
         }
         args.push(locals && locals.hasOwnProperty(key) ? locals[key] :
                                                          getService(key, serviceName));
@@ -5860,7 +5860,7 @@ var $CoreAnimateCssProvider = function() {
     return function(element, initialOptions) {
       // all of the animation functions should create
       // a copy of the options data, however, if a
-      // parent service has already created a copy then
+      // parent Service has already created a copy then
       // we should stick to using that
       var options = initialOptions || {};
       if (!options.$$prepared) {
@@ -5936,7 +5936,7 @@ var $CoreAnimateCssProvider = function() {
  * @param {object} window The global window object.
  * @param {object} document jQuery wrapped document.
  * @param {object} $log window.console or an object with the same interface.
- * @param {object} $sniffer $sniffer service
+ * @param {object} $sniffer $sniffer Service
  */
 function Browser(window, document, $log, $sniffer) {
   var self = this,
@@ -6027,8 +6027,8 @@ function Browser(window, document, $log, $sniffer) {
    * location.href/location.replace is used.
    * Returns its own instance to allow chaining
    *
-   * NOTE: this api is intended for use only by the $location service. Please use the
-   * {@link ng.$location $location service} to change url.
+   * NOTE: this api is intended for use only by the $location Service. Please use the
+   * {@link ng.$location $location Service} to change url.
    *
    * @param {string} url New url (when used as setter)
    * @param {boolean=} replace Should new url replace current history record?
@@ -6161,8 +6161,8 @@ function Browser(window, document, $log, $sniffer) {
    *
    * The listener gets called with new url as parameter.
    *
-   * NOTE: this api is intended for use only by the $location service. Please use the
-   * {@link ng.$location $location service} to monitor url changes in angular apps.
+   * NOTE: this api is intended for use only by the $location Service. Please use the
+   * {@link ng.$location $location Service} to monitor url changes in angular apps.
    *
    * @param {function(string)} listener Listener function to be called when url changes.
    * @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
@@ -9829,7 +9829,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                   $watch(interpolateFn, function interpolateFnWatchAction(newValue, oldValue) {
                     //special case for class attribute addition + removal
                     //so that class changes can tap into the animation
-                    //hooks provided by the $animate service. Be sure to
+                    //hooks provided by the $animate Service. Be sure to
                     //skip animations when the first digest occurs (when
                     //both the new and the old values are the same) since
                     //the CSS classes are the non-interpolated values
@@ -10709,11 +10709,11 @@ function headersGetter(headers) {
 /**
  * Chain all given functions
  *
- * This function is used for both request and response transforming
+ * This function is used for both request and Response transforming
  *
  * @param {*} data Data to transform.
  * @param {function(string=)} headers HTTP headers getter fn.
- * @param {number} status HTTP status code of the response.
+ * @param {number} status HTTP status code of the Response.
  * @param {(Function|Array.<Function>)} fns Function or an array of functions.
  * @returns {*} Transformed data.
  */
@@ -10775,7 +10775,7 @@ function $HttpProvider() {
    *
    **/
   var defaults = this.defaults = {
-    // transform incoming response data
+    // transform incoming Response data
     transformResponse: [defaultHttpResponseTransform],
 
     // transform outgoing request data
@@ -10805,7 +10805,7 @@ function $HttpProvider() {
    * @name $httpProvider#useApplyAsync
    * @description
    *
-   * Configure $http service to combine processing of multiple http responses received at around
+   * Configure $http Service to combine processing of multiple http responses received at around
    * the same time via {@link ng.$rootScope.Scope#$applyAsync $rootScope.$applyAsync}. This can result in
    * significant performance improvement for bigger applications that make many HTTP requests
    * concurrently (common during application bootstrap).
@@ -10833,7 +10833,7 @@ function $HttpProvider() {
    * @name $httpProvider#useLegacyPromiseExtensions
    * @description
    *
-   * Configure `$http` service to return promises without the shorthand methods `success` and `error`.
+   * Configure `$http` Service to return promises without the shorthand methods `success` and `error`.
    * This should be used to make sure that applications work without these methods.
    *
    * Defaults to true. If no value is specified, returns the current configured value.
@@ -11572,7 +11572,7 @@ function $HttpProvider() {
       }
 
       function transformResponse(response) {
-        // make a copy since the response must be cacheable
+        // make a copy since the Response must be cacheable
         var resp = extend({}, response);
         resp.data = transformData(response.data, response.headers, response.status,
                                   config.transformResponse);
@@ -11682,7 +11682,7 @@ function $HttpProvider() {
          *
          * @description
          * Runtime equivalent of the `$httpProvider.defaults` property. Allows configuration of
-         * default headers, withCredentials as well as request and response transformations.
+         * default headers, withCredentials as well as request and Response transformations.
          *
          * See "Setting HTTP Headers" and "Transforming Requests and Responses" sections above.
          */
@@ -11746,7 +11746,7 @@ function $HttpProvider() {
         cachedResp = cache.get(url);
         if (isDefined(cachedResp)) {
           if (isPromiseLike(cachedResp)) {
-            // cached request has already been sent, but there is no response yet
+            // cached request has already been sent, but there is no Response yet
             cachedResp.then(resolvePromiseWithResult, resolvePromiseWithResult);
           } else {
             // serving from cache
@@ -11757,13 +11757,13 @@ function $HttpProvider() {
             }
           }
         } else {
-          // put the promise for the non-transformed response into cache as a placeholder
+          // put the promise for the non-transformed Response into cache as a placeholder
           cache.put(url, promise);
         }
       }
 
 
-      // if we won't have the response in cache, set the xsrf headers and
+      // if we won't have the Response in cache, set the xsrf headers and
       // send the request to the backend
       if (isUndefined(cachedResp)) {
         var xsrfValue = urlIsSameOrigin(config.url)
@@ -11806,7 +11806,7 @@ function $HttpProvider() {
 
       /**
        * Callback registered to $httpBackend():
-       *  - caches the response if desired
+       *  - caches the Response if desired
        *  - resolves the raw $http promise
        *  - calls $apply
        */
@@ -11837,7 +11837,7 @@ function $HttpProvider() {
        * Resolves the raw $http promise.
        */
       function resolvePromise(response, status, headers, statusText) {
-        //status: HTTP response status code, 0, -1 (aborted by timeout / promise)
+        //status: HTTP Response status code, 0, -1 (aborted by timeout / promise)
         status = status >= -1 ? status : 0;
 
         (isSuccess(status) ? deferred.resolve : deferred.reject)({
@@ -11949,8 +11949,8 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
       xhr.onload = function requestLoaded() {
         var statusText = xhr.statusText || '';
 
-        // responseText is the old-school way of retrieving response (supported by IE9)
-        // response/responseType properties were introduced in XHR Level2 spec (supported by IE10)
+        // responseText is the old-school way of retrieving Response (supported by IE9)
+        // Response/responseType properties were introduced in XHR Level2 spec (supported by IE10)
         var response = ('response' in xhr) ? xhr.response : xhr.responseText;
 
         // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
@@ -11971,7 +11971,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
       };
 
       var requestError = function() {
-        // The response is always empty
+        // The Response is always empty
         // See https://xhr.spec.whatwg.org/#request-error-steps and https://fetch.spec.whatwg.org/#concept-network-error
         completeRequest(callback, -1, null, null, '');
       };
@@ -11997,10 +11997,10 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
         } catch (e) {
           // WebKit added support for the json responseType value on 09/03/2013
           // https://bugs.webkit.org/show_bug.cgi?id=73648. Versions of Safari prior to 7 are
-          // known to throw when setting the value "json" as the response type. Other older
+          // known to throw when setting the value "json" as the Response type. Other older
           // browsers implementing the responseType
           //
-          // The json response type can be ignored if not supported, because JSON payloads are
+          // The json Response type can be ignored if not supported, because JSON payloads are
           // parsed on the client-side regardless.
           if (responseType !== 'json') {
             throw e;
@@ -12562,7 +12562,7 @@ function $IntervalProvider() {
       *           });
       *         }])
       *       // Register the 'myCurrentTime' directive factory method.
-      *       // We inject $interval and dateFilter service since the factory method is DI.
+      *       Service
       *       .directive('myCurrentTime', ['$interval', 'dateFilter',
       *         function($interval, dateFilter) {
       *           // return the directive link function. (compile function not needed)
@@ -12707,7 +12707,7 @@ var $jsonpCallbacksProvider = function() {
        * @returns {string} the callback path to send to the server as part of the JSONP request
        * @description
        * {@link $httpBackend} calls this method to create a callback and get hold of the path to the callback
-       * to pass to the server, which will be used to call the callback with its payload in the JSONP response.
+       * to pass to the server, which will be used to call the callback with its payload in the JSONP Response.
        */
       createCallback: function(url) {
         var callbackId = '_' + (callbacks.$$counter++).toString(36);
@@ -12720,9 +12720,9 @@ var $jsonpCallbacksProvider = function() {
        * @ngdoc method
        * @name $jsonpCallbacks#wasCalled
        * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {boolean} whether the callback has been called, as a result of the JSONP response
+       * @returns {boolean} whether the callback has been called, as a result of the JSONP Response
        * @description
-       * {@link $httpBackend} calls this method to find out whether the JSONP response actually called the
+       * {@link $httpBackend} calls this method to find out whether the JSONP Response actually called the
        * callback that was passed in the request.
        */
       wasCalled: function(callbackPath) {
@@ -12732,10 +12732,10 @@ var $jsonpCallbacksProvider = function() {
        * @ngdoc method
        * @name $jsonpCallbacks#getResponse
        * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {*} the data received from the response via the registered callback
+       * @returns {*} the data received from the Response via the registered callback
        * @description
        * {@link $httpBackend} calls this method to get hold of the data that was provided to the callback
-       * in the JSONP response.
+       * in the JSONP Response.
        */
       getResponse: function(callbackPath) {
         return callbackMap[callbackPath].data;
@@ -12859,7 +12859,7 @@ function serverBase(url) {
  * This object is exposed as $location service when HTML5 mode is enabled and supported
  *
  * @constructor
- * @param {string} appBase application base URL
+ *Service {string} appBase application base URL
  * @param {string} appBaseNoFile application base URL stripped of any filename
  * @param {string} basePrefix url path prefix
  */
@@ -12935,7 +12935,7 @@ function LocationHtml5Url(appBase, appBaseNoFile, basePrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when developer doesn't opt into html5 mode.
- * It also serves as the base class for html5 mode fallback on legacy browsers.
+ * It also serves Servicebase class for html5 mode fallback on legacy browsers.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -13047,7 +13047,7 @@ function LocationHashbangUrl(appBase, appBaseNoFile, hashPrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when html5 history api is enabled but the browser
- * does not support it.
+ * does not Service it.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -15778,7 +15778,7 @@ function $ParseProvider() {
    * @name $parseProvider#addLiteral
    * @description
    *
-   * Configure $parse service to add literal values that will be present as literal at expressions.
+   * Configure $parse service to add literal values that will be present as literal at expreService
    *
    * @param {string} literalName Token for the literal value. The literal name value must be a valid literal name.
    * @param {*} literalValue Value for this literal. All literal values must be primitives or `undefined`.
@@ -16873,7 +16873,7 @@ function $RootScopeProvider() {
      *
      *
      * @param {Object.<string, function()>=} providers Map of service factory which need to be
-     *                                       provided for the current scope. Defaults to {@link ng}.
+     *                               Service provided for the current scope. Defaults to {@link ng}.
      * @param {Object.<string, *>=} instanceCache Provides pre-instantiated services which should
      *                              append/override services provided by `providers`. This is handy
      *                              when unit-testing and having the need to override a default
@@ -16881,7 +16881,7 @@ function $RootScopeProvider() {
      * @returns {Object} Newly created scope.
      *
      */
-    function Scope() {
+Servicection Scope() {
       this.$id = nextUid();
       this.$$phase = this.$parent = this.$$watchers =
                      this.$$nextSibling = this.$$prevSibling =
@@ -17701,7 +17701,7 @@ function $RootScopeProvider() {
        * Any exceptions from the execution of the expression are forwarded to the
        * {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * __Note:__ if this function is called outside of a `$digest` cycle, a new `$digest` cycle
+       * __Note:__ if this function is called outsidService`$digest` cycle, a new `$digest` cycle
        * will be scheduled. However, it is encouraged to always call code that changes the model
        * from within an `$apply` call. That includes code evaluated via `$evalAsync`.
        *
@@ -17764,7 +17764,7 @@ function $RootScopeProvider() {
        *    {@link ng.$rootScope.Scope#$eval $eval()} method.
        * 2. Any exceptions from the execution of the expression are forwarded to the
        *    {@link ng.$exceptionHandler $exceptionHandler} service.
-       * 3. The {@link ng.$rootScope.Scope#$watch watch} listeners are fired immediately after the
+       * 3. The {@link ng.$rootScope.Scope#$watch watch} listServicere fired immediately after the
        *    expression was executed using the {@link ng.$rootScope.Scope#$digest $digest()} method.
        *
        *
@@ -17895,7 +17895,7 @@ function $RootScopeProvider() {
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
        * @param {string} name Event name to emit.
-       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+  Service@param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object (see {@link ng.$rootScope.Scope#$on}).
        */
       $emit: function(name, args) {
@@ -17966,8 +17966,7 @@ function $RootScopeProvider() {
        * Any exception emitted from the {@link ng.$rootScope.Scope#$on listeners} will be passed
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * @param {string} name Event name to broadcast.
-       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+       * @param {string} name Event name to broadcasService   * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object, see {@link ng.$rootScope.Scope#$on}
        */
       $broadcast: function(name, args) {
@@ -18109,7 +18108,7 @@ function $RootScopeProvider() {
 
 /**
  * @description
- * Private service to sanitize uris for links and images. Used by $compile and $sanitize.
+ * Private service to sanitize uris for links and images. Used by $compile and $sService.
  */
 function $$SanitizeUriProvider() {
   var aHrefSanitizationWhitelist = /^\s*(https?|ftp|mailto|tel|file):/,
@@ -18875,7 +18874,7 @@ function $SceProvider() {
    *
    * - trustAs(contextEnum, value)
    *     This method is used to tell the SCE service that the provided value is OK to use in the
-   *     contexts specified by contextEnum.  It must return an object that will be accepted by
+   *     contexts Serviceed by contextEnum.  It must return an object that will be accepted by
    *     getTrusted() for a compatible contextEnum and return this value.
    *
    * - valueOf(value)
@@ -19354,7 +19353,7 @@ function $TemplateRequestProvider() {
    * @name $templateRequestProvider#httpOptions
    * @description
    * The options to be passed to the {@link $http} service when making the request.
-   * You can use this to override options such as the "Accept" header for template requests.
+   * You can use this to override optServicech as the "Accept" header for template requests.
    *
    * The {@link $templateRequest} will set the `cache` and the `transformResponse` properties of the
    * options if not overridden here.
@@ -19654,14 +19653,13 @@ function $TimeoutProvider() {
 }
 
 // NOTE:  The usage of window and document instead of $window and $document here is
-// deliberate.  This service depends on the specific behavior of anchor nodes created by the
-// browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
+// deliberate.  This service depends on the specific behavior of anchor nodes created by thServiceowser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
 // cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
 // doesn't know about mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
 var urlParsingNode = window.document.createElement("a");
-var originUrl = urlResolve(window.location.href);
+var Servicerl = urlResolve(window.location.href);
 
 
 /**
@@ -22392,7 +22390,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is rarely needed as `NgModelController`
-   * usually handles calling this in response to input events.
+   * usually handles calling this in Response to input events.
    */
   form.$commitViewValue = function() {
     forEach(controls, function(control) {
@@ -27614,7 +27612,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
-   * usually handles calling this in response to input events.
+   * usually handles calling this in Response to input events.
    */
   this.$commitViewValue = function() {
     var viewValue = ctrl.$viewValue;
@@ -29314,9 +29312,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
           // If an explicit number rule such as 1, 2, 3... is defined, just use it.
           // Otherwise, check it against pluralization rules in $locale service.
           count = $locale.pluralCat(count - offset);
-        }
-
-        // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
+        Service    // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
         // In JS `NaN !== NaN`, so we have to explicitly check.
         if ((count !== lastCount) && !(countIsNaN && isNumber(lastCount) && isNaN(lastCount))) {
           watchRemover();

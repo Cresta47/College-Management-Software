@@ -9,4 +9,8 @@ class UserModel extends Model
     protected $fillable = array('name', 'email', 'password');
 
     protected $table = 'users';
+
+    public function getTableName(){
+        return $this->table;
+    }
 }

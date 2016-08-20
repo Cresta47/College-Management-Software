@@ -16,8 +16,11 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->integer('class_id')->unsigned(); // Create column to store foreign key first
             $table->foreign('class_id')->references('id')->on('classes'); // Setting Up Foreign key
+            $table->integer('grade_id')->unsigned()->nullable();
+            $table->foreign('grade_id')->references('id')->on('grades');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

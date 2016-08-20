@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Product\service\RoleService;
-use App\Product\service\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input; // Remember this line
 
 use App\Http\Requests;
 
 class RoleController extends Controller
 {
-
     private $roleService;
 
-    public function __construct(){
-        $this->roleService = new RoleService();
+    public function __construct(RoleService $rService){
+        $this->roleService = $rService;
     }
 
     /**
@@ -44,7 +41,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-       $this->roleService->create(Input::all());
+       $this->roleService->create($request->all());
     }
 
     /**

@@ -21,6 +21,7 @@ class CreateUserDetailsTable extends Migration
             $table->date('dob');
             $table->text('gender');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

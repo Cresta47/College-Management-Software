@@ -19,6 +19,7 @@ class CreateClassesTable extends Migration
             $table->string('room');
             $table->string('floor');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

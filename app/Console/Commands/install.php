@@ -39,8 +39,10 @@ class install extends Command
      */
     public function handle()
     {
-        $this->info("Updating dependencies...");
+        $this->info("Publishing Vendors...");
         Artisan::call("vendor:publish");
+        $this->info("Rolling back all migrations...");
+        Artisan::call("migrate:reset", ['--force' => 'y']); // No Confirmation
         $this->info("Migrating...");
         Artisan::call("migrate", ['--force' => 'y']); // No Confirmation
         $this->info("Seeding...");
@@ -58,5 +60,6 @@ class install extends Command
         Artisan::call("db:seed" , ['--class'=>'CourseUserTableSeeder']);
         $this->info("Seeding 'grade_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradeUserTableSeeder']);
+        $this->info("Installation Complete!!!");
     }
 }
