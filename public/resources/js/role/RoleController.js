@@ -13,6 +13,4 @@ app.controller('RoleFormController', function ($scope, RoleService) {
         RoleService.post($scope.role);
     }
 
-    console.log(RoleService.get());
-
 });
