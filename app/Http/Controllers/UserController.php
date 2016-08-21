@@ -51,9 +51,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-         * NOTE : save(user) request from UserService.js is captured here
-         */
         return $this->userService->create($request);
     }
 

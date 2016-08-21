@@ -24,12 +24,12 @@ class UserDTOTransformer implements IDTOTransformer{
         if(is_array($dto)){
             $dto = (object) $dto;
         }
-        $user['id'] = isset($dto->id) ? $dto->id : null;
-        $user['email'] = isset($dto->email) ? $dto->email : null;
+        $result['id'] = isset($dto->id) ? $dto->id : null;
+        $result['email'] = isset($dto->email) ? $dto->email : null;
         if(isset($dto->password)){
-            $user['password'] = isset($dto->password)? $this->encrypt($dto->password) : null;
+            $result['password'] = isset($dto->password)? $this->encrypt($dto->password) : null;
         }
-        return $user;
+        return $result;
     }
 
     /*

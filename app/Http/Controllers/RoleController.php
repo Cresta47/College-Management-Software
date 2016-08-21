@@ -21,7 +21,7 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return $this->roleService->findAll();
+
     }
 
     /**
@@ -41,7 +41,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-       $this->roleService->create($request->all());
+        return $this->roleService->create($request);
     }
 
     /**
