@@ -33,9 +33,6 @@ Class RoleDAO implements IRoleDAO{
 
     public function create($role){
         $result = $this->roleDTOTransformer->formatDataToDb($role);
-        RoleModel::create($result);
-
-        $result = $this->roleDTOTransformer->formatDataToDb($role);
         unset($result->id); // As we are inserting new record we need to remove any ID that may have come from frontends or services
         $insertedRoleModel = RoleModel::create($result);
         return $this->roleDTOTransformer

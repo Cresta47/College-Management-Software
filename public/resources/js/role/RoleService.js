@@ -4,7 +4,7 @@
 var RoleService = app.service('RoleService', function (RoleRESTClient) {
     return {
         post: function(role){
-            RoleRESTClient.save(role);
+            return RoleRESTClient.save(role).$promise;
         },
     }
 });

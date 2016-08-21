@@ -10,7 +10,10 @@ app.controller('RoleFormController', function ($scope, RoleService) {
     $scope.role.description;
 
     $scope.create = function(){
-        RoleService.post($scope.role);
+        RoleService.post($scope.role).then(function(response){
+           alert("Role Created. Check console.log for returned object.");
+           console.log(response.data);
+        });
     }
 
 });
