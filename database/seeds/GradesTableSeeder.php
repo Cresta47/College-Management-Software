@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\GradeModel;
+
 
 class GradesTableSeeder extends Seeder
 {
@@ -16,7 +18,7 @@ class GradesTableSeeder extends Seeder
         $limit = 10;
 
         for ($i = 0; $i < $limit; $i++) {
-            \DB::table('grades')->insert([ //,
+            GradeModel::create([
                 'name' => $i+1
             ]);
         }

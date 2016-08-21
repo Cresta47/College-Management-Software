@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
 
         .state('userCreate', {
-            url: '/user/create',
+            url: '/register',
             views: {
                 '': {templateUrl: 'partial/user-form'}
             }
@@ -59,13 +59,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('dashboard',{
+           url:'/my/home',
+            views:{
+                '': {templateUrl: 'partial/dashboard'}
+            }
+        })
 
         .state('userListCard', {
             url: '/user/listCard',
             views: {
                 '': {templateUrl: 'partial/user-list-card'}
             }
-        }),
+        })
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/my/home');
 });

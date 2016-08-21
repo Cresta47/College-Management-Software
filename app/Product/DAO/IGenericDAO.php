@@ -12,7 +12,7 @@ namespace App\Product\DAO;
 interface IGenericDAO{
     public function findAll($columns);
 
-    public function findById($ids,$columns);
+    public function findById($id,$columns);
 
     public function findByIds($ids,$columns);
 

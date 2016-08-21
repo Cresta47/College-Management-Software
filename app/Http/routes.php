@@ -27,7 +27,18 @@ Route::resource('api/user', 'UserController');
 
 Route::resource('api/userdetail','UserDetailController');
 
-Route::resource('api/role','RoleController'); // QWERTY
+Route::resource('api/role','RoleController');
+
+
+//----------Session----------//
+/*
+ * We are using this endpoint only to test whether user is logged in or not.
+ * As we send request to (any) this endpoint our ProductAuthentication.php middleware intercept the request and send
+ * information about whether the user is logged in or not. Based on that User will see Login Page
+ */
+Route::get('session/ping', function(){
+    return "Beep Beep Beep";
+});
 
 //----------Partials----------//
 
@@ -61,4 +72,12 @@ Route::get('partial/course-list-card', function(){
 
 Route::get('partial/role-form', function(){
     return view('partials.role-form');
+});
+
+Route::get('partial/login-form', function(){
+    return view('partials.login-form');
+});
+
+Route::get('partial/dashboard', function(){
+    return view('partials.dashboard');
 });

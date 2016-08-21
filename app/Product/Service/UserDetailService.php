@@ -10,17 +10,19 @@ namespace App\Product\Service;
 
 use App\Product\dao\UserDetailModelDAO;
 
-Class UserDetailService {
+Class UserDetailService implements IUserDetailService{
+    public function findAll($request){}
 
-    public function findAll(){
-        $userDetailDAO = new UserDetailModelDAO();
-        $userDetails = $userDetailDAO->index();
-        return $userDetails;
-    }
+    public function findById($request,$id){}
 
-    public function findById($userDetailId){
-        $userDetailService = new UserDetailModelDAO();
-        return $userDetailService->findById($userDetailId);
-    }
+    public function findByIds($request,$ids){}
+
+    public function create($request){}
+
+    public function update($request,$id){}
+
+    public function deleteById($request,$id){}
+
+    public function deleteByIds($request){}
 
 }

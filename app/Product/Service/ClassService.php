@@ -8,11 +8,11 @@
 
 namespace App\Product\Service;
 
-use App\Product\dao\ClassDAO;
-use App\Product\dao\CourseDAO;
+use App\Product\DAO\ClassDAO;
+use App\Product\DAO\CourseDAO;
 use App\Product\response\ResponseGeneratorImpl;
 
-Class ClassService {
+Class ClassService implements IClassService{
 
     private $responseGenerator;
     private $classDAO;
@@ -26,37 +26,36 @@ Class ClassService {
         $this->courseService = new CourseService();
     }
 
-    public function findAll(){
-    }
-
-    public function findById($Id){
-        $class = $this->classDAO->findById($Id, array());
-        $this->responseGenerator->setData($class);
-        $this->responseGenerator->setHttpStatus(200);
-        $this->responseGenerator->setBusinessStatus("RES-Class-1");
-        return $this->responseGenerator->getResponse();
-    }
-
-    public function create($class){
-        $this->classDAO->_create($class);
-    }
-
-    public function update(){
+    public function findAll($request){
 
     }
 
-    public function delete(){
+    public function findById($request,$Id){
 
     }
 
-    public function findAllMyClasses(){
-        $allMyCoursesIDs = $this->courseService->findAllMyCoursesIDs();
-        $allMyClassesIDs = $this->courseDAO->getClassesIDByCoursesID($allMyCoursesIDs);
-        $allMyClasses = $this->classDAO->findByIds($allMyClassesIDs, array());
-        $this->responseGenerator->setData($allMyClasses);
-        $this->responseGenerator->setHttpStatus(200);
-        $this->responseGenerator->setBusinessStatus("RES-Class-*"); // Response contains many classes
-        return $this->responseGenerator->getResponse();
+    public function findByIds($request,$ids)
+    {
+        // TODO: Implement findByIds() method.
+    }
+
+    public function create($request){
+    }
+
+    public function update($request,$id){
+
+    }
+
+    public function deleteById($request,$id){
+
+    }
+
+    public function deleteByIds($request){
+
+    }
+
+    public function findUserAssociatedClasses($request){
+
     }
 
 }

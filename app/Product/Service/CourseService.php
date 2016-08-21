@@ -8,11 +8,11 @@
 
 namespace App\Product\Service;
 
-use App\Product\dao\ClassDAO;
-use App\Product\dao\CourseDAO;
+use App\Product\DAO\ClassDAO;
+use App\Product\DAO\CourseDAO;
 use App\Product\response\ResponseGeneratorImpl;
 
-class CourseService {
+class CourseService implements ICourseService{
 
     private $courseDAO;
     private $responseGenerator;
@@ -21,6 +21,20 @@ class CourseService {
         $this->courseDAO = new CourseDAO();
         $this->responseGenerator = new ResponseGeneratorImpl();
     }
+
+    public function findAll($request){}
+
+    public function findById($request,$id){}
+
+    public function findByIds($request,$ids){}
+
+    public function create($request){}
+
+    public function update($request,$id){}
+
+    public function deleteById($request,$id){}
+
+    public function deleteByIds($request){}
 
     public function findAllMyCoursesIDs(){
         $allMyCoursesIDs = $this->courseDAO->getCoursesIDByUserID(1);

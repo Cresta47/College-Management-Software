@@ -10,31 +10,43 @@
 namespace  App\Product\DAOUtil;
 use App\Product\DAOUtil\IDTOTransformer;
 use App\Product\ProductTrait\DateTime\NepaliDateConvertible;
+use App\Product\ProductTrait\Password\EncryptPassword;
 
 class UserDTOTransformer implements IDTOTransformer{
 
     use NepaliDateConvertible;
+    use EncryptPassword;
 
     /*
      * Transforming data coming from the front end and Service to savable object
      */
     public function formatDataToDb($dto){
-        $user['email'] = $dto['email'];
+        if(is_array($dto)){
+            $dto = (object) $dto;
+        }
+        $user['id'] = isset($dto->id) ? $dto->id : null;
+        $user['email'] = isset($dto->email) ? $dto->email : null;
+        if(isset($dto->password)){
+            $user['password'] = isset($dto->password)? $this->encrypt($dto->password) : null;
+        }
         return $user;
     }
 
     /*
-     * Transforming the database rows to a object
+     * Transforming the database rows coming directly from Database to a object
      */
     public function formatDataFromDb($databaseRow){
-        $result['id'] = $databaseRow['original']['id'];
-        $result['name'] = $databaseRow->name;
-        $result['email'] = $databaseRow['original']['email'];
-        $result['createdAt'] = $databaseRow['created_at'];
-        $result['createdAtNp'] = $this->convertToBS($databaseRow['created_at']);
-        $result['updatedAt'] = $databaseRow['updated_at'];
-        $result['rememberToken'] = '';
-        $result['password'] = '';
+        if(is_array($databaseRow)){
+            $databaseRow = (object) $databaseRow;
+        }
+        $result['id'] = isset($databaseRow->id) ? $databaseRow->id : '';
+        $result['name'] = isset($databaseRow->name) ? $databaseRow->name : null;
+        $result['email'] = isset($databaseRow->email)? $databaseRow->email : null;
+        $result['createdAt'] = isset($databaseRow->created_at) ? $databaseRow->created_at : null;
+        $result['createdAtNp'] = isset($databaseRow->created_at) ? $this->convertToBS($databaseRow->created_at) : null;
+        $result['updatedAt'] = isset($databaseRow->updated_at)? $databaseRow->updated_at : null;
+        $result['rememberToken'] = null;
+        $result['password'] = null;
         return $result;
     }
 

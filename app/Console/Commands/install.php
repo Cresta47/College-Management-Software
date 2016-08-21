@@ -46,14 +46,16 @@ class install extends Command
         $this->info("Migrating...");
         Artisan::call("migrate", ['--force' => 'y']); // No Confirmation
         $this->info("Seeding...");
-        $this->info("Seeding 'users' Table...");
-        Artisan::call("db:seed" , ['--class'=>'UsersTableSeeder']);
+        $this->info("Seeding 'users' & 'user_detail' Table...");
+        Artisan::call("db:seed" , ['--class'=>'UsersAndUserDetailsTableSeeder']);
         $this->info("Seeding 'classes' Table...");
         Artisan::call("db:seed" , ['--class'=>'ClassesTableSeeder']);
         $this->info("Seeding 'grades' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradesTableSeeder']);
-        $this->info("Seeding 'user_details' Table...");
-        Artisan::call("db:seed" , ['--class'=>'UserDetailsTableSeeder']);
+
+//        $this->info("Seeding 'user_details' Table...");
+//        Artisan::call("db:seed" , ['--class'=>'UserDetailsTableSeeder']);
+
         $this->info("Seeding 'courses' Table...");
         Artisan::call("db:seed" , ['--class'=>'CoursesTableSeeder']);
         $this->info("Seeding 'course_user' Table...");
@@ -62,4 +64,5 @@ class install extends Command
         Artisan::call("db:seed" , ['--class'=>'GradeUserTableSeeder']);
         $this->info("Installation Complete!!!");
     }
+
 }

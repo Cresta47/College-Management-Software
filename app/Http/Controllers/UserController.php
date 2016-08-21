@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Product\ProductTrait\Request\RequestContainsIds;
 use App\Product\service\UserService;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class UserController extends Controller
 {
+    use RequestContainsIds;
+
     private $userService;
 
     public function __construct(UserService $userService){
@@ -20,9 +22,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->userService->findAll();
+        $_ids = $this->getValidIds($request);
+        if(!empty($_ids)){
+            return $this->userService->findByIds($request,$_ids);
+        }
+
+        //Returning All Users
+        return $this->userService->findAll($request);
     }
 
     /**
@@ -46,8 +54,7 @@ class UserController extends Controller
         /*
          * NOTE : save(user) request from UserService.js is captured here
          */
-        $user = $request->all();
-        $this->userService->create($user);
+        return $this->userService->create($request);
     }
 
     /**
@@ -56,9 +63,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return $this->userService->findById($id);
+        return $this->userService->findById($request,$id);
     }
 
     /**
@@ -81,8 +88,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = $request->all();
-        $this->userService->update($user);
+        return $this->userService->update($request,$id);
     }
 
     /**

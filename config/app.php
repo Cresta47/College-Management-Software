@@ -173,6 +173,11 @@ return [
         App\Providers\UserDAOProvider::class,
         App\Providers\RoleDAOProvider::class,
 
+
+        /*
+         * Product Utility Providers...
+         */
+        App\Providers\ResponseGeneratorProvider::class,
     ],
 
     /*
@@ -219,5 +224,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+
+        /*
+         * Product Facades
+         */
+        'ResponseGenerator' => App\Facades\ResponseGenerator::class,
     ],
 ];

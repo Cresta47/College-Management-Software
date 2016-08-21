@@ -8,35 +8,27 @@
 
 namespace App\Product\Service;
 
-use App\Product\DAO\IRoleDAO;
 use App\Product\DAO\RoleDAO;
-use App\Product\Response\ResponseGeneratorImpl;
 
-Class RoleService {
-
-    private $responseGenerator;
+Class RoleService implements IRoleService{
     private $roleDAO;
 
     public function __construct(RoleDAO $rDAO){
-        $this->responseGenerator = new ResponseGeneratorImpl();
         $this->roleDAO = $rDAO;
     }
 
-    public function findAll(){
-        return $this->roleDAO->findAll(array());
-    }
+    public function findAll($request){}
 
-    public function findById($Id){
-    }
+    public function findById($request,$id){}
 
-    public function create($role){
-        $this->roleDAO->create($role);
-    }
+    public function findByIds($request,$ids){}
 
-    public function update($role){
-    }
+    public function create($request){}
 
-    public function delete(){
+    public function update($request,$id){}
 
-    }
+    public function deleteById($request,$id){}
+
+    public function deleteByIds($request){}
+
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\ClassModel;
+
 
 class ClassesTableSeeder extends Seeder
 {
@@ -18,11 +20,11 @@ class ClassesTableSeeder extends Seeder
         $building = ['A','B','C'];
 
         for ($i = 0; $i < $limit; $i++) {
-            \DB::table('classes')->insert([ //,
+            ClassModel::create([
                 'name' => $faker->firstName,
-                'building' => $faker->bankAccountNumber,
-                'room' => $faker->bankAccountNumber,
-                'floor' => $faker->numberBetween(0,100)
+                'building' => $faker->randomElement(array('A','B','C')),
+                'room' => $faker->randomElement(array(1,2,3,4,5,6,7,8,9,10)),
+                'floor' => $faker->randomElement(array(0,1,2,3)),
             ]);
         }
     }

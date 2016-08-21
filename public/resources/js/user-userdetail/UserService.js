@@ -1,7 +1,7 @@
 var UserService = app.service('UserService', function (UserRESTClient) {
 	return {
 		get: function(id) {
-			return UserRESTClient.get({id:id.id});
+			return UserRESTClient.get({id:id.id}).$promise;
 		},
 
 		getEdit:function(id){
@@ -9,11 +9,11 @@ var UserService = app.service('UserService', function (UserRESTClient) {
 		},
 
 		post: function(user){
-			UserRESTClient.save(user);
+			return UserRESTClient.save(user).$promise;
 		},
 
 		all: function(){
-			return UserRESTClient.query();
+			return UserRESTClient.query().$promise;
 		},
 
 		edit: function(user){

@@ -5,7 +5,7 @@
 app.controller('RoleFormController', function ($scope, RoleService) {
 
     $scope.role = {};
-    $scope.role.name ;
+    $scope.role.name;
     $scope.role.displayName;
     $scope.role.description;
 

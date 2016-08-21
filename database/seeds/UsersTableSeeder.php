@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
+use App\UserModel;
+
 
 class UsersTableSeeder extends Seeder
 {
@@ -10,16 +12,25 @@ class UsersTableSeeder extends Seeder
     */
     public function run()
     {
-        $faker = Faker\Factory::create();
-
-        $limit = 500;
-
-        for ($i = 1; $i <= $limit; $i++) {
-            \DB::table('users')->insert([
-                'name' => $faker->bankAccountNumber,
-                'email' => $faker->unique()->email,
-                'password' => bcrypt($faker->randomNumber()),
-            ]);
-        }
+//        $faker = Faker\Factory::create();
+//
+//        $limit = 500;
+//
+//        for ($i = 1; $i <= $limit; $i++) {
+//
+//            if($i==1){
+//                $email = 'teacher@cts.com';
+//            }else if ($i==2){
+//                $email = 'student@cts.com';
+//            }else{
+//                $email = $faker->unique()->email();
+//            }
+//
+//            UserModel::create([
+//                'name' => $faker->bankAccountNumber,
+//                'email' => $email,
+//                'password' => bcrypt('abc'),
+//            ]);
+//        }
     }
 }

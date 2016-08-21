@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\CourseUserModel;
+
 
 class CourseUserTableSeeder extends Seeder
 {
@@ -17,7 +19,7 @@ class CourseUserTableSeeder extends Seeder
 
         for($j = 1 ; $j <= ( $coursePerUserLimit ); $j++){
             for($i=1; $i<=$userLimit ; $i++){
-                \DB::table('course_user')->insert([
+                CourseUserModel::create([
                     'course_id' => $faker->numberBetween(1,50),
                     'user_id' => ($i)
                 ]);

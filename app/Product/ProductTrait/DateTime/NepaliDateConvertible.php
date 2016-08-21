@@ -12,8 +12,7 @@ use App\Vendor\pachabhajiya\nepalidate\AdToBs;
 
 trait NepaliDateConvertible
 {
-    public function convertToBS($dateInAD)
-    {
+    public function convertToBS($dateInAD){
         $adToBs = new AdToBs($dateInAD);
         return $adToBs->getNepaliDate();
     }

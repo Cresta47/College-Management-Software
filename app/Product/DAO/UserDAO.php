@@ -4,6 +4,7 @@ namespace App\Product\DAO;
 use App\UserModel;
 use App\Product\daoutil\UserDTOTransformer;
 use App\Product\response\ResponseGenerator;
+use App\Product\Exception\DAOException;
 
 Class UserDAO implements IUserDAO{
 
@@ -17,38 +18,60 @@ Class UserDAO implements IUserDAO{
 
     public function findAll($columns){
         $users = UserModel::all();
-        foreach($users as $user){
-            $result[] = $this->userDTOTransformer->formatDataFromDb($user);
+        if($users != null){
+            foreach($users as $user){
+                $result[] = $this->userDTOTransformer->formatDataFromDb($user);
+            }
+        }else{
+            throw new DAOException("Error fetching all Users!");
         }
         return $result;
     }
 
     public function findById($id,$columns){
-        $user = UserModel::findOrFail($id);
-        $user = $this->userDTOTransformer->formatDataFromDb($user);
+        $user = UserModel::find($id);
+        if($user != null){
+            $user = $this->userDTOTransformer->formatDataFromDb($user);
+        }else{
+            throw new DAOException("Error fetching User with id:".$id." !");
+        }
         return $user;
     }
 
-    public function findByIds($ids,$columns)
-    {
-        // TODO: Implement findByIds() method.
+    public function findByIds($ids,$columns){
+        $users = UserModel::whereIn('id',$ids)->get();
+        if($users != null){
+            foreach($users as $user){
+                $result[] = $this->userDTOTransformer->formatDataFromDb($user);
+            }
+        }else{
+            throw new DAOException("Error fetching all Users!");
+        }
+        return $result;
     }
 
     public function create($user){
         $result = $this->userDTOTransformer->formatDataToDb($user);
-        UserModel::create($result);
+        unset($result->id); // As we are inserting new record we need to remove any ID
+        $insertedUserModel = UserModel::create($result);
+        return $this->userDTOTransformer
+                    ->formatDataFromDb(
+                        $insertedUserModel
+                    );
     }
 
     public function update($user){
-        $result = $this->userDTOTransformer->formatDataToDb($user);
-        UserModel::where('id','=',$result['id'])->update($result);
+        $transformedUserEntity = $this->userDTOTransformer->formatDataToDb($user);
+        UserModel::where('id','=',$user['id'])
+                  ->update($transformedUserEntity);
+        return $this->userDTOTransformer->formatDataFromDb($transformedUserEntity);
     }
 
     public function deleteById($id){
-        // TODO: Implement deleteByIds() method.
+
     }
 
     public function deleteByIds($ids){
-        // TODO: Implement deleteByIds() method.
+
     }
 }

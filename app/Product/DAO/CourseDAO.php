@@ -38,10 +38,6 @@ Class CourseDAO implements ICourseDAO{
 
     }
 
-    public function deleteBy($id){
-
-    }
-
     public function getCoursesIDByUserID($userID){
         $coursesUser = CourseUserModel::where('user_id','=',$userID)->get();
         $result = array();

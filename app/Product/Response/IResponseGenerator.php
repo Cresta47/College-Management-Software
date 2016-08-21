@@ -10,18 +10,20 @@ namespace App\Product\Response;
 
 interface IResponseGenerator{
 
-    public function setData($data);
+    public function setData($responseDTO,$data);
 
-    public function setHttpStatus($status);
+    public function setHttpStatus($responseDTO,$status);
 
-    public function setBusinessStatus($businessStatusCode);
+    public function setBusinessStatusCode($responseDTO,$businessStatusCode);
 
-    public function addInfoMessage($msg);
+    public function addInfoMessage($responseDTO,$msg);
 
-    public function addErrorMessage($msg);
+    public function addErrorMessage($responseDTO,$msg);
 
-    public function addWarningMessage($msg);
+    public function addWarningMessage($responseDTO,$msg);
 
-    public function getResponse();
+    public function createResponseDTO();
+
+    public function getResponse($responseDTO);
 
 }

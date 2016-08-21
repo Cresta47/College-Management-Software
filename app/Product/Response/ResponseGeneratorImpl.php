@@ -10,48 +10,38 @@ namespace App\Product\Response;
 
 class ResponseGeneratorImpl implements IResponseGenerator{
 
-    private $response;
+    public function __construct(){}
 
-    public function __construct()
-    {
-        $this->response['data'];
-        $this->response['status'];
-        $this->response['businessStatusCode'];
-        $this->response['info'] = [];
-        $this->response['warning'] = [];
-        $this->response['error'] = [];
+    public function setData($responseDTO, $data){
+        $responseDTO->setData($data);
     }
 
-    public function setData($data){
-        $this->response['data'] = $data;
+    public function setHttpStatus($responseDTO, $status){
+        $responseDTO->setHttpStatus($status);
     }
 
-    public function setHttpStatus($status){
-        $this->response['status'] = $status;
+    public function setBusinessStatusCode($responseDTO, $businessStatusCode){
+        $responseDTO->setBusinessStatusCode($businessStatusCode);
     }
 
-    public function setBusinessStatus($businessStatusCode){
-        $this->response['businessStatusCode'] = $businessStatusCode;
+    public function addInfoMessage($responseDTO, $msg){
+        $responseDTO->addInfoMessage($msg);
     }
 
-    public function addInfoMessage($msg){
-        $this->response['info'][] = $msg;
+    public function addErrorMessage($responseDTO, $msg){
+        $responseDTO->addErrorMessage($msg);
     }
 
-    public function addErrorMessage($msg){
-        $this->response['warning'][] = $msg;
+    public function addWarningMessage($responseDTO, $msg){
+        $responseDTO->addWarningMessage($msg);
     }
 
-    public function addWarningMessage($msg){
-        $this->response['error'][] = $msg;
+    public function createResponseDTO(){
+        return new ResponseDTO();
     }
 
-    public function getResponse(){
-        return $this->response;
-    }
-
-    public static function getInstance(){
-        return new ResponseGeneratorImpl();
+    public function getResponse($responseDTO){
+        return $responseDTO->getResponse();
     }
 
 }

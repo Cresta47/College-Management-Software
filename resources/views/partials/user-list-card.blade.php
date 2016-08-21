@@ -14,7 +14,7 @@
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Profile</a>
-                <a ui-sref="userEdit" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>
+                {{--<a ui-sref="userEdit" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>--}}
             </div>
         </div>
     </div>
@@ -25,17 +25,17 @@
             <th class="full-width">ID</th>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th>Email</th>
-            <th>Actions</th>
+            {{--<th>Actions</th>--}}
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="user in userList">
             <td>@{{ user.id }}</td>
             <td class="mdl-data-table__cell--non-numeric">John Doe</td>
-            <td>@{{ user.email }}</td>
-            <td>
-                <a href="#" ng-click="showEditForm(user.id)"><i class="fa fa-pencil fa-fw"></i></a>
-            </td>
+            <td>@{{ user.firstName }}</td>
+            {{--<td>--}}
+                {{--<a href="#" ng-click="showEditForm(user.id)"><i class="fa fa-pencil fa-fw"></i></a>--}}
+            {{--</td>--}}
         </tr>
         </tbody>
     </table>
