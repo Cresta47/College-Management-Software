@@ -9,11 +9,9 @@ use App\Product\Exception\DAOException;
 Class UserDAO implements IUserDAO{
 
     private $userDTOTransformer;
-    private $userDetailDAO;
 
     public function __construct(){
         $this->userDTOTransformer = new UserDTOTransformer();
-        $this->userDetailDAO = new UserDetailDAO();
     }
 
     public function findAll($columns){
@@ -67,11 +65,20 @@ Class UserDAO implements IUserDAO{
         return $this->userDTOTransformer->formatDataFromDb($transformedUserEntity);
     }
 
-    public function deleteById($id){
 
+    public function deleteById($id){
+        $users = UserModel::where('id','=',$id)->delete();
+        if($users == null){
+            throw new DAOException("Error deleting a Users!");
+        }
+        return null;
     }
 
     public function deleteByIds($ids){
-
+        $users = UserModel::whereIn('id',$ids)->delete();
+        if($users == null){
+            throw new DAOException("Error deleting all Users!");
+        }
+        return null;
     }
 }

@@ -23,6 +23,6 @@ Class UserDetailService implements IUserDetailService{
 
     public function deleteById($request,$id){}
 
-    public function deleteByIds($request){}
+    public function deleteByIds($request,$ids){}
 
 }

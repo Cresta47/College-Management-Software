@@ -97,10 +97,32 @@ Class UserService implements IUserService{
     }
 
     public function deleteById($request,$id){
-
+        $responseDTO = ResponseGenerator::createResponseDTO();
+        try {
+            $user = $this->userDAO->deleteById($id);
+            ResponseGenerator::setData($responseDTO,$user);
+            ResponseGenerator::setHttpStatus($responseDTO,200);
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-User-Deleted-1");
+        }catch(\Exception $e) {
+            ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
+            ResponseGenerator::setHttpStatus($responseDTO,500);
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-User-Deleted");
+        }
+        return ResponseGenerator::getResponse($responseDTO);
     }
 
-    public function deleteByIds($request){
-
+    public function deleteByIds($request,$ids){
+        $responseDTO = ResponseGenerator::createResponseDTO();
+        try {
+            $user = $this->userDAO->deleteByIds($ids);
+            ResponseGenerator::setData($responseDTO,$user);
+            ResponseGenerator::setHttpStatus($responseDTO,200);
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-User-Deleted-*");
+        }catch(\Exception $e) {
+            ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
+            ResponseGenerator::setHttpStatus($responseDTO,500);
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-User-Deleted");
+        }
+        return ResponseGenerator::getResponse($responseDTO);
     }
 }

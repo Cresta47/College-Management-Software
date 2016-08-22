@@ -50,7 +50,7 @@ Class ClassService implements IClassService{
 
     }
 
-    public function deleteByIds($request){
+    public function deleteByIds($request,$ids){
 
     }
 
