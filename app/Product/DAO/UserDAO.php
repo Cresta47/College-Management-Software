@@ -67,9 +67,9 @@ Class UserDAO implements IUserDAO{
 
 
     public function deleteById($id){
-        $users = UserModel::where('id','=',$id)->delete();
-        if($users == null){
-            throw new DAOException("Error deleting a Users!");
+        $user = UserModel::where('id','=',$id)->delete();
+        if($user == null){
+            throw new DAOException("Error deleting a User!");
         }
         return null;
     }

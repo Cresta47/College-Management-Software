@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Product\service\CourseService;
 
-use Illuminate\Support\Facades\Input;
 
 class CourseController extends Controller
 {
 
     private $courseService;
 
-    public function __construct(){
-        $this->courseService = new CourseService();
+    public function __construct(CourseService $crsService){
+        $this->courseService = $crsService;
     }
 
 
@@ -23,11 +22,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if(Input::get('get-me') == 'my-courses'){
-            return $this->courseService->findAllMyCourses();
-        }
+    public function index(){
     }
 
     /**

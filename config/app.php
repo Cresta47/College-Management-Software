@@ -172,7 +172,7 @@ return [
          */
         App\Providers\UserDAOProvider::class,
         App\Providers\RoleDAOProvider::class,
-
+        App\Providers\CourseServiceProvider::class,
 
         /*
          * Product Utility Providers...

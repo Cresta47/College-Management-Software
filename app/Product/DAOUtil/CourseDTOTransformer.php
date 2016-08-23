@@ -15,17 +15,12 @@ class CourseDTOTransformer implements IDTOTransformer{
      * Transforming data coming from the front end and Service to savable object
      */
     public function formatDataToDb($dto){
-
     }
 
     /*
      * Transforming the database rows to a object
      */
     public function formatDataFromDb($databaseRow){
-        $result['id'] = $databaseRow->id;
-        $result['class_id'] = $databaseRow->class_id;
-        $result['name'] = $databaseRow->name;
-        return $result;
     }
 
 }
