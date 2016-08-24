@@ -166,6 +166,7 @@ return [
         App\Providers\CourseServiceProvider::class,
         App\Providers\GradeServiceProvider::class,
         App\Providers\RoleServiceProvider::class,
+        App\Providers\PermissionServiceProvider::class,
 
         /*
          * Product DAO Providers...
@@ -177,7 +178,7 @@ return [
         /*
          * Product Utility Providers...
          */
-        App\Providers\ResponseGeneratorProvider::class,
+//        App\Providers\ResponseGeneratorProvider::class,
     ],
 
     /*

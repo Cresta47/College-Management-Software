@@ -29,6 +29,8 @@ Route::resource('api/userdetail','UserDetailController');
 
 Route::resource('api/role','RoleController');
 
+Route::resource('api/permission','PermissionController');
+
 
 //----------Session----------//
 /*
