@@ -22,7 +22,11 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {   
+        $_ids = $this->getValidIds($request);
+        if(!empty($_ids)){
+            return $this->permissionService->findByIds($request,$_ids);
+        }
         return $this->permissionService->findAll($request);
     }
 
@@ -44,7 +48,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->permissionService->create($request);
     }
 
     /**
@@ -53,9 +57,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        return $this->permissionService->findById($request,$id);
     }
 
     /**
@@ -78,7 +82,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         return $this->permissionService->update($request,$id);
     }
 
     /**
@@ -87,8 +91,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+        return $this->permissionService->deleteById($request,$id);
+//        return $this->permissionService->deleteByIds($request,array($id));
     }
 }

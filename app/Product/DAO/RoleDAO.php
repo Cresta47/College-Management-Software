@@ -4,6 +4,8 @@ namespace App\Product\DAO;
 
 use App\RoleModel;
 use App\Product\daoutil\RoleDTOTransformer;
+use App\Product\response\ResponseGenerator;
+use App\Product\Exception\DAOException;
 
 Class RoleDAO implements IRoleDAO{
 
@@ -23,12 +25,26 @@ Class RoleDAO implements IRoleDAO{
     }
 
     public function findById($id, $columns){
-
+        $role = RoleModel::find($id);
+        if($role != null){
+            $role = $this->roleDTOTransformer->formatDataFromDb($role);
+        }else{
+            throw new DAOException("Error fetching Role with id:".$id." !");
+        }
+        return $role;
     }
 
     public function findByIds($ids, $columns)
     {
-        // TODO: Implement findByIds() method.
+        $roles = RoleModel::whereIn('id',$ids)->get();
+        if($roles != null){
+            foreach($roles as $role){
+                $result[] = $this->roleDTOTransformer->formatDataFromDb($role);
+            }
+        }else{
+            throw new DAOException("Error fetching all Roles!");
+        }
+        return $result;
     }
 
     public function create($role){
@@ -42,16 +58,27 @@ Class RoleDAO implements IRoleDAO{
     }
 
     public function update($role){
-
+        $transformedRoleEntity = $this->roleDTOTransformer->formatDataToDb($role);
+        RoleModel::where('id','=',$role['id'])
+                  ->update($transformedRoleEntity);
+        return $this->roleDTOTransformer->formatDataFromDb($transformedRoleEntity);
     }
 
     public function deleteById($id){
-
+        $role = RoleModel::where('id','=',$id)->delete();
+        if($role == null){
+            throw new DAOException("Error deleting a Role!");
+        }
+        return null;
     }
 
     public function deleteByIds($ids)
     {
-        // TODO: Implement deleteByIds() method.
+       $roles = RoleModel::whereIn('id',$ids)->delete();
+        if($roles == null){
+            throw new DAOException("Error deleting all Roles!");
+        }
+        return null;
     }
 
 }

@@ -16,4 +16,12 @@ class UserModel extends Model
     public function getTableName(){
         return $this->table;
     }
+
+    /**
+     * Get the User Detail associated with the user.
+     */
+    public function userDetail()
+    {
+        return $this->hasOne('App\UserDetailModel');
+    }
 }

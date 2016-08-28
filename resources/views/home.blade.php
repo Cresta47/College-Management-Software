@@ -50,6 +50,8 @@
     <link rel="stylesheet" href="vendor/template/styles.css">
     <link rel="stylesheet" href="resources/css/main.css">
 
+    <link rel="stylesheet" href="vendor/angular-ui-grid/ui-grid.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
@@ -83,9 +85,12 @@
   <script src="vendor/angular/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 
+  <script src="vendor/angular-ui-grid/ui-grid.js"></script>
+
   <script src="vendor/angular/angular-resource/angular-resource.js"></script>
   <script src="resources/js/app.js"></script>
   <script src="resources/js/routes.js"></script>
+
 
   <script src="resources/js/user-userdetail/UserService.js"></script>
   <script src="resources/js/user-userdetail/UserFactory.js"></script>

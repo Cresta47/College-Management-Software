@@ -1,4 +1,4 @@
 /**
 * AngularJS Web Application Declaration
 */
-var app = angular.module('app', ['ui.router','ngResource']);
+var app = angular.module('app',['ui.router','ngResource','ui.grid',]);

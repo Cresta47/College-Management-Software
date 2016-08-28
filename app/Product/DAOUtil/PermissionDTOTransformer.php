@@ -19,12 +19,23 @@ class PermissionDTOTransformer implements IDTOTransformer{
      * Transforming data coming from the front end and Service to savable array
      */
     public function formatDataToDb($dto){
+        if(is_array($dto)){
+            $dto = (object) $dto;
+        }
+        $result['name'] = isset($dto->name) ? $dto->name : null ;
+        return $result;
     }
+
 
     /*
      * Transforming the database rows coming directly from Database to a array
      */
     public function formatDataFromDb($databaseRow){
+        if(is_array($databaseRow)){
+            $databaseRow = (object) $databaseRow;
+        }
+        $result['name'] = isset($databaseRow->name) ? $databaseRow->name : null;
         $result['createdAtNp'] = isset($databaseRow->created_at) ? $this->convertToBS($databaseRow->created_at) : null;
+        return $result;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProductAuthentication
 {
@@ -16,12 +17,15 @@ class ProductAuthentication
      */
     public function handle($request, Closure $next)
     {
-//        dd(Auth::attempt([
-//            'email' => 'hills.gene@lebsack.info',
-//            'password' => 'abcss'
-//        ]));
 
-//        dd($request);
+        // Apply this middleware for every other request
+//        if(!$request->is('login'))
+//        {
+//            if(!Auth::check()){
+//                return redirect('login');
+//            }
+//        }
+
         return $next($request);
     }
 }

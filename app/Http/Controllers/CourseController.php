@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Product\ProductTrait\Request\RequestContainsIds;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 
 use App\Product\service\CourseService;
 
 
 class CourseController extends Controller
 {
-
+    use RequestContainsIds;
     private $courseService;
 
     public function __construct(CourseService $crsService){
@@ -22,7 +23,14 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index(Request $request){
+        $_ids = $this->getValidIds($request);
+        if(!empty($_ids)){
+            return $this->courseService->findByIds($request,$_ids);
+        }
+
+        //Returning All Course
+        return $this->courseService->findAll($request);
     }
 
     /**
@@ -43,7 +51,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->courseService->create($request);
     }
 
     /**
@@ -52,9 +60,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        return $this->courseService->findById($request,$id);
     }
 
     /**
@@ -77,7 +85,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->courseService->update($request,$id);
     }
 
     /**
@@ -86,8 +94,8 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        return $this->courseService->deleteById($request,$id);
     }
 }

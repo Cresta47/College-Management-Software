@@ -38,20 +38,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
-        .state('classListCard', {
-            url: '/get-me/my-classes',
-            views: {
-                '': {templateUrl: 'partial/class-list-card'}
-            }
-        })
-
-        .state('courseListCard', {
-            url: '/get-me/my-courses',
-            views: {
-                '': {templateUrl: 'partial/course-list-card'}
-            }
-        })
-
         .state('roleCreate', {
             url: '/role/create',
             views: {
@@ -67,7 +53,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
 
         .state('userListCard', {
-            url: '/user/listCard',
+            url: '/user/all',
             views: {
                 '': {templateUrl: 'partial/user-list-card'}
             }

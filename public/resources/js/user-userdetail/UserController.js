@@ -37,15 +37,22 @@ app.controller('UserFormController', function ($scope, UserService) {
 });
 
 app.controller('UserListCardsController', function ($scope, UserService) {
-    $scope.userCards;
 
-    $scope.showList = false;
-    $scope.showCards = true;
+    $scope.users;
+
+    $scope.gridOptions = { data: 'users',
+        columnDefs:
+            [{field: 'id', displayName: 'ID', width: 50 },
+             {field: 'email', displayName: 'Email', width: 300  }
+            ]
+    };
 
     $scope.loadAll = function(){
         UserService.all().then(function(response) {
-            $scope.userCards = response.data;
+            $scope.users = response.data;
         });
     }
+
     $scope.loadAll();
+
 });

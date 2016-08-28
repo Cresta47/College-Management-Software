@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product\ProductTrait\Request\RequestContainsIds;
 use App\Product\service\RoleService;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,7 @@ use App\Http\Requests;
 
 class RoleController extends Controller
 {
+    use RequestContainsIds;
     private $roleService;
 
     public function __construct(RoleService $rService){
@@ -20,8 +22,14 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index(Request $request){
+        $_ids = $this->getValidIds($request);
+        if(!empty($_ids)){
+            return $this->roleService->findByIds($request,$_ids);
+        }
 
+        //Returning All Roles
+        return $this->roleService->findAll($request);
     }
 
     /**
@@ -50,9 +58,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        return $this->roleService->findById($request,$id);
     }
 
     /**
@@ -75,7 +83,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->roleService->update($request,$id);
     }
 
     /**
@@ -84,7 +92,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        return $this->roleService->deleteById($request,$id);
+//        return $this->roleService->deleteByIds($request,array($id));
     }
 }

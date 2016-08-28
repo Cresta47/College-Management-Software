@@ -178,7 +178,7 @@ return [
         /*
          * Product Utility Providers...
          */
-//        App\Providers\ResponseGeneratorProvider::class,
+        App\Providers\ResponseGeneratorProvider::class,
     ],
 
     /*
