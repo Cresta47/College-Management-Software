@@ -44,7 +44,10 @@ app.controller('UserListCardsController', function ($scope, UserService) {
         columnDefs:
             [{field: 'id', displayName: 'ID', width: 50 },
              {field: 'email', displayName: 'Email', width: 300  }
-            ]
+            ],
+        enableRowSelection: true,
+        enableSelectAll: true,
+        selectionRowHeaderWidth: 35,
     };
 
     $scope.loadAll = function(){

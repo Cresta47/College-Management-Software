@@ -31,5 +31,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::drop('users');
+        Schema::drop('migrations');
+        Scheme::drop('password_resets');
     }
 }

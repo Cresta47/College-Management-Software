@@ -5,7 +5,7 @@
 
     {{--This is where the Table is being created.--}}
     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-        <div id="grid1" ui-grid="gridOptions" class="user-grid"></div>
+        <div id="grid1" ui-grid="gridOptions" ui-grid-selection class="user-grid"></div>
     </div>
 
 
