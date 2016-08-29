@@ -6,7 +6,10 @@
  * Time: 8:03 PM
  */
 
+
+
 return [
-    'servername' => 'CTS-Demo',
-    'org.name' => 'Cloud Tech Service',
+    'serverName' => 'CTS-Demo',
+    'orgName' => 'Cloud Tech Service',
+    'defaultRoles' => array('Student','Teacher'),
 ];

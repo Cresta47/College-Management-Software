@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
-
 class install extends Command
 {
     /**
@@ -41,15 +40,33 @@ class install extends Command
     {
         $this->info("Publishing Vendors...");
         Artisan::call("vendor:publish");
+
+        $this->info("Generating new application key...");
+        Artisan::call("key:generate");
+
         $this->info("Rolling back all migrations...");
         Artisan::call("migrate:reset", ['--force' => 'y']); // No Confirmation
+
         $this->info("Migrating...");
         Artisan::call("migrate", ['--force' => 'y']); // No Confirmation
+
         $this->info("Seeding...");
+
         $this->info("Seeding 'users' & 'user_detail' Table...");
         Artisan::call("db:seed" , ['--class'=>'UsersAndUserDetailsTableSeeder']);
+
+        $this->info("Seeding 'roles' Table...");
+        Artisan::call("db:seed" , ['--class'=>'RolesTableSeeder']);
+
+        $this->info("Seeding 'role_user' Table...");
+        Artisan::call("db:seed" , ['--class'=>'RoleUserTableSeeder']);
+
+        $this->info("Seeding 'permissions' Table...");
+        Artisan::call("db:seed" , ['--class'=>'PermissionsTableSeeder']);
+
         $this->info("Seeding 'classes' Table...");
         Artisan::call("db:seed" , ['--class'=>'ClassesTableSeeder']);
+
         $this->info("Seeding 'grades' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradesTableSeeder']);
 
@@ -58,10 +75,19 @@ class install extends Command
 
         $this->info("Seeding 'courses' Table...");
         Artisan::call("db:seed" , ['--class'=>'CoursesTableSeeder']);
+
         $this->info("Seeding 'course_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'CourseUserTableSeeder']);
+
         $this->info("Seeding 'grade_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradeUserTableSeeder']);
+
+        $this->info("Seeding 'attendance' Table...");
+        Artisan::call("db:seed" , ['--class'=>'AttendanceTableSeeder']);
+
+        $this->info("Optimizing Class Loader...");
+        Artisan::call("optimize");
+
         $this->info("Installation Complete!!!");
     }
 

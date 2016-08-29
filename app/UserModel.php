@@ -22,6 +22,6 @@ class UserModel extends Model
      */
     public function userDetail()
     {
-        return $this->hasOne('App\UserDetailModel');
+        return $this->hasOne('App\UserDetailModel','user_id','user_id');
     }
 }

@@ -9,7 +9,7 @@ use App\Http\Requests;
 
 class ExaminationController extends Controller
 {
-   use RequestContainsIds;
+    use RequestContainsIds;
     private $examinationService;
 
     public function __construct(ExaminationService $exmService){

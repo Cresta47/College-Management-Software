@@ -27,7 +27,7 @@
     {{--<a ui-sref="classListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Class Rooms</a>--}}
     {{--<a ui-sref="courseListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Subjects</a>--}}
     <div class="mdl-layout-spacer"></div>
-    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Help</a>
+    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>{{$serverName}}</a>
 </nav>
 
 

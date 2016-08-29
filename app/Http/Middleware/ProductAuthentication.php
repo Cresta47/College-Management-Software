@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ProductAuthentication
 {
@@ -17,7 +18,6 @@ class ProductAuthentication
      */
     public function handle($request, Closure $next)
     {
-
         // Apply this middleware for every other request
 //        if(!$request->is('login'))
 //        {

@@ -291,6 +291,10 @@ class UsersAndUserDetailsTableSeeder extends Seeder
     public function run(){
         $limit = 500;
 
+        $users = array();
+
+        $userDetails = array();
+
         for ($i = 1; $i <= $limit; $i++) {
 
             $firstName = $this->getRandomFirstName();
@@ -311,18 +315,33 @@ class UsersAndUserDetailsTableSeeder extends Seeder
                             '.com';
             }
 
-            UserModel::create([
-                'name' => $this->faker->bankAccountNumber,
-                'email' => $email,
-                'password' => bcrypt('abc'),
-            ]);
+            array_push($users ,
+                [
+                    'name' => $this->faker->bankAccountNumber,
+                    'email' => $email,
+                    'password' => bcrypt('abc'),
+                ]
 
-            UserDetailModel::create([
-                'user_id' => $i,
-                'first_name' => $firstName,
-                'last_name' => $lastName
-            ]);
+                );
+
+            array_push($userDetails,
+                [
+                    'user_id' => $i,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName
+                ]
+                );
+
+            UserModel::insert($users);
+
+            UserDetailModel::insert($userDetails);
+
+            $users = array();
+
+            $userDetails = array();
+
         }
+
     }
 
     private function getRandomFirstName(){

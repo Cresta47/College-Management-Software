@@ -13,4 +13,9 @@ class UserDetailModel extends Model
     public function getTableName(){
         return $this->table;
     }
+
+    public function user(){
+        return $this->belongsTo('App\UserModel','id');
+    }
+
 }

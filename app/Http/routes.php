@@ -16,9 +16,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::get('/', function () {
-        return view('home');
+        return view('home', Config::get('client.info'));
     });
-
 
 //----------Login Routes----------//
 
@@ -52,7 +51,7 @@ Route::group(['middleware' => ['web']], function () {
      * As we send request to (any) this endpoint our ProductAuthentication.php middleware intercept the request and send
      * information about whether the user is logged in or not. Based on that User will see Login Page
      */
-    Route::get('session/ping', function(){
+    Route::get('ping', function(){
         return "Beep Beep Beep";
     });
 
