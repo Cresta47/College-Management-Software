@@ -1,4 +1,3 @@
-
 app.controller('ExaminationFormController', function ($scope, ExaminationService) {
     $scope.examination = {};
     $scope.examination.name;

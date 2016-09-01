@@ -117,6 +117,15 @@
   <script src="resources/js/attendance/AttendanceFactory.js"></script>
 
 
+  <script src="resources/js/marks/MarksController.js"></script>
+  <script src="resources/js/marks/MarksService.js"></script>
+  <script src="resources/js/marks/MarksFactory.js"></script>
+
+  <script src="resources/js/examination/ExaminationController.js"></script>
+  <script src="resources/js/examination/ExaminationService.js"></script>
+  <script src="resources/js/examination/ExaminationFactory.js"></script>
+
+
 
   <script src="resources/js/session/SessionController.js"></script>
   <script src="resources/js/session/SessionService.js"></script>

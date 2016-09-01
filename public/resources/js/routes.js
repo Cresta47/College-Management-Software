@@ -22,10 +22,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partial/grade-form'
         })
 
+        .state('marksCreate', {
+            url: '/marks/create',
+            templateUrl: 'partial/marks-form'
+        })
+
         .state('userCreate', {
             url: '/register',
             views: {
                 '': {templateUrl: 'partial/user-form'}
+            }
+        })
+
+        .state('scheduleCreate', {
+            url: '/schedule/create',
+            views: {
+                '': {templateUrl: 'partial/schedule-form'}
             }
         })
 
@@ -63,6 +75,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/course/all',
             views: {
                 '': {templateUrl: 'partial/course-list-card'}
+            }
+        })
+
+        .state('marksListCard', {
+            url: '/marks/all',
+            views: {
+                '': {templateUrl: 'partial/marks-list-card'}
+            }
+        })
+
+        .state('scheduleListCard', {
+            url: '/schedule/all',
+            views: {
+                '': {templateUrl: 'partial/schedule-list-card'}
             }
         })
 

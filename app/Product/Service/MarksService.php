@@ -7,10 +7,11 @@
  */
 
 namespace App\Product\Service;
-use App\Facades\ResponseGenerator;
-use App\Product\DAO\MarksDAO;
 
-class MarksService implements IMarksService{
+use App\Facades\ResponseGenerator;
+use App\Product\dao\MarksDAO;
+
+Class MarksService implements IMarksService{
 
     private $marksDAO;
 
@@ -28,22 +29,22 @@ class MarksService implements IMarksService{
         }catch(\Exception $e) {
             ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
             ResponseGenerator::setHttpStatus($responseDTO,500);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Marks"); // Means Sending Response with no marks
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Marks"); // Means Sending Response with no Marks
         }
         return ResponseGenerator::getResponse($responseDTO);
     }
 
-    public function findById($request,$id){
+    public function findById($request,$Id){
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->findById($id, array());
-            ResponseGenerator::setData($responseDTO,$marks);
+            $mark = $this->marksDAO->findById($Id, array());
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Marks-1");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Mark-1");
         }catch(\Exception $e) {
             ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
             ResponseGenerator::setHttpStatus($responseDTO,500);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Marks");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Mark");
         }
         return ResponseGenerator::getResponse($responseDTO);
     }
@@ -51,24 +52,24 @@ class MarksService implements IMarksService{
     public function findByIds($request,$ids){
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->findByIds($ids, array());
-            ResponseGenerator::setData($responseDTO,$marks);
+            $mark = $this->marksDAO->findByIds($ids, array());
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Marks-*");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Mark-*");
         }catch(\Exception $e) {
             ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
             ResponseGenerator::setHttpStatus($responseDTO,500);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Marks");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Mark");
         }
         return ResponseGenerator::getResponse($responseDTO);
     }
 
     public function create($request){
-        $marks = $request->all();
+        $mark = $request->all();
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->create($marks);
-            ResponseGenerator::setData($responseDTO,$marks);
+            $mark = $this->marksDAO->create($mark);
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
             ResponseGenerator::setBusinessStatusCode($responseDTO,"Marks-Created-1");
         }catch(\Exception $e) {
@@ -80,17 +81,17 @@ class MarksService implements IMarksService{
     }
 
     public function update($request,$id){
-        $marks = $request->all();
+        $mark = $request->all();
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->update($marks);
-            ResponseGenerator::setData($responseDTO,$marks);
+            $user = $this->marksDAO->update($mark);
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"Marks-Updated-1");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"Mark-Updated-1");
         }catch(\Exception $e) {
             ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
             ResponseGenerator::setHttpStatus($responseDTO,500);
-            ResponseGenerator::setBusinessStatusCode($responseDTO,"!Marks-Updated");
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!Mark-Updated");
         }
         return ResponseGenerator::getResponse($responseDTO);
     }
@@ -98,8 +99,8 @@ class MarksService implements IMarksService{
     public function deleteById($request,$id){
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->deleteById($id);
-            ResponseGenerator::setData($responseDTO,$marks);
+            $mark = $this->marksDAO->deleteById($id);
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
             ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Marks-Deleted-1");
         }catch(\Exception $e) {
@@ -113,8 +114,8 @@ class MarksService implements IMarksService{
     public function deleteByIds($request,$ids){
         $responseDTO = ResponseGenerator::createResponseDTO();
         try {
-            $marks = $this->marksDAO->deleteByIds($ids);
-            ResponseGenerator::setData($responseDTO,$marks);
+            $mark = $this->marksDAO->deleteByIds($ids);
+            ResponseGenerator::setData($responseDTO,$mark);
             ResponseGenerator::setHttpStatus($responseDTO,200);
             ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Marks-Deleted-*");
         }catch(\Exception $e) {
@@ -124,5 +125,4 @@ class MarksService implements IMarksService{
         }
         return ResponseGenerator::getResponse($responseDTO);
     }
-
 }

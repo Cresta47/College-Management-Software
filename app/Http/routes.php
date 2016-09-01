@@ -44,9 +44,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('api/examination','ExaminationController');
 
-    Route::resource('api/marks','ExaminationController');
+    Route::resource('api/marks','MarksController');
 
     Route::resource('api/attendance','AttendanceController');
+
+    Route::resource('api/schedule','ScheduleController');
 
 //----------Session----------//
     /*
@@ -72,12 +74,22 @@ Route::group(['middleware' => ['web']], function () {
         return view('partials.grade-form');
     });
 
+    Route::get('partial/schedule-form', function(){
+        return view('partials.schedule-form');
+    });
+
+
+
     Route::get('partial/user-form', function(){
         return view('partials.user-form');
     });
 
     Route::get('partial/user-list-card',function(){
         return view('partials.user-list-card');
+    });
+
+    Route::get('partial/schedule-list-card',function(){
+        return view('partials.schedule-list-card');
     });
 
     Route::get('partial/examination-list-card',function(){
@@ -96,12 +108,20 @@ Route::group(['middleware' => ['web']], function () {
         return view('partials.attendance-list-card');
     });
 
+    Route::get('partial/marks-list-card', function(){
+        return view('partials.marks-list-card');
+    });
+
     Route::get('partial/role-form', function(){
         return view('partials.role-form');
     });
 
     Route::get('partial/attendance-form', function(){
         return view('partials.attendance-form');
+    });
+
+    Route::get('partial/marks-form', function(){
+        return view('partials.marks-form');
     });
 
     Route::get('partial/login-form', function(){

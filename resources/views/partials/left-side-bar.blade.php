@@ -20,6 +20,9 @@
 
 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
     <a ui-sref="dashboard" class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+    <a ui-sref="attendanceCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Take Attendance</a>
+    <a ui-sref="examinationCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Examination</a>
+
     <a ui-sref="classCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Class</a>
     <a ui-sref="userCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Register</a>
     <a ui-sref="roleCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Role</a>
@@ -27,6 +30,8 @@
     {{--<a ui-sref="classListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Class Rooms</a>--}}
     <a ui-sref="courseListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Subjects</a>
     <a ui-sref="attendanceListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Attendance</a>
+    <a ui-sref="examinationListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Examinations</a>
+    <a ui-sref="marksListCard" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>My Marks</a>
 
     <div class="mdl-layout-spacer"></div>
     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>{{$serverName}}</a>

@@ -2,11 +2,11 @@
 namespace App\Product\DAO;
 
 use App\MarksModel;
-use App\product\daoutil\MarksDTOTransformer;
+use App\Product\daoutil\MarksDTOTransformer;
 use App\Product\response\ResponseGenerator;
 use App\Product\Exception\DAOException;
 
-Class MarksDAO implements IMarksDAO{
+Class MarksDAO implements IUserDAO{
 
     private $marksDTOTransformer;
 
@@ -15,7 +15,7 @@ Class MarksDAO implements IMarksDAO{
     }
 
     public function findAll($columns){
-        $marks = MarksModel::all();
+        $marks = MarksModel::where('id','<','51')->get();
         if($marks != null){
             foreach($marks as $mark){
                 $result[] = $this->marksDTOTransformer->formatDataFromDb($mark);
@@ -27,17 +27,17 @@ Class MarksDAO implements IMarksDAO{
     }
 
     public function findById($id,$columns){
-        $marks = MarksModel::find($id);
-        if($marks != null){
-            $marks = $this->marksDTOTransformer->formatDataFromDb($marks);
+        $mark = MarksModel::find($id);
+        if($mark != null){
+            $mark = $this->marksDTOTransformer->formatDataFromDb($mark);
         }else{
             throw new DAOException("Error fetching Marks with id:".$id." !");
         }
-        return $marks;
+        return $mark;
     }
 
-    public function findByIds($marksIDs,$columns){
-        $marks = MarksModel::whereIn('id',$marksIDs)->get();
+    public function findByIds($ids,$columns){
+        $marks = MarksModel::whereIn('id',$ids)->get();
         if($marks != null){
             foreach($marks as $mark){
                 $result[] = $this->marksDTOTransformer->formatDataFromDb($mark);
@@ -48,27 +48,28 @@ Class MarksDAO implements IMarksDAO{
         return $result;
     }
 
-    public function create($marks){
-        $result = $this->marksDTOTransformer->formatDataToDb($marks);
+    public function create($mark){
+        $result = $this->marksDTOTransformer->formatDataToDb($mark);
         unset($result->id); // As we are inserting new record we need to remove any ID
-        $insertedMarksModel = MarksModel::create($result);
+        $insertedMarkModel = MarksModel::create($result);
         return $this->marksDTOTransformer
             ->formatDataFromDb(
-                $insertedMarksModel
+                $insertedMarkModel
             );
     }
 
-    public function update($marks){
-        $transformedMarksEntity = $this->marksDTOTransformer->formatDataToDb($marks);
-        MarksModel::where('id','=',$marks['id'])
+    public function update($mark){
+        $transformedMarksEntity = $this->marksDTOTransformer->formatDataToDb($mark);
+        MarksModel::where('id','=',$mark['id'])
             ->update($transformedMarksEntity);
         return $this->marksDTOTransformer->formatDataFromDb($transformedMarksEntity);
     }
 
+
     public function deleteById($id){
-        $marks = MarksModel::where('id','=',$id)->delete();
-        if($marks == null){
-            throw new DAOException("Error deleting a Mark!");
+        $user = MarksModel::where('id','=',$id)->delete();
+        if($user == null){
+            throw new DAOException("Error deleting a Marks!");
         }
         return null;
     }
@@ -80,5 +81,4 @@ Class MarksDAO implements IMarksDAO{
         }
         return null;
     }
-
 }

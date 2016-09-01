@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Product\Service\MarksService;
 use Illuminate\Http\Request;
 use App\Product\ProductTrait\Request\RequestContainsIds;
-use App\Product\service\MarksService;
+use App\Product\service\UserService;
+
 use App\Http\Requests;
 
 class MarksController extends Controller
 {
-     use RequestContainsIds;
-    private $marksService;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    use RequestContainsIds;
 
-    public function __construct(MarksService $mService){
-        $this->marksService = $mService;
+    private $markService;
+
+    public function __construct(MarksService $marksService){
+        $this->markService = $marksService;
     }
 
     public function index(Request $request)
     {
         $_ids = $this->getValidIds($request);
         if(!empty($_ids)){
-            return $this->marksService->findByIds($request,$_ids);
+            return $this->markService->findByIds($request,$_ids);
         }
 
-        //Returning All Marks
-        return $this->marksService->findAll($request);
+        //Returning All Users
+        return $this->markService->findAll($request);
     }
 
     /**
@@ -45,7 +53,7 @@ class MarksController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->marksService->create($request);
+        return $this->markService->create($request);
     }
 
     /**
@@ -54,9 +62,10 @@ class MarksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,Request $request)
+    public function show($id)
     {
-        return $this->marksService->findById($request,$id);    }
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +87,8 @@ class MarksController extends Controller
      */
     public function update(Request $request, $id)
     {
-         return $this->marksService->update($request,$id);    }
+        return $this->markService->update($request,$id);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -86,7 +96,9 @@ class MarksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id, Request $request)
     {
-         return $this->marksService->deleteById($request,$id);    }
+        return $this->markService->deleteById($request,$id);
+//        return $this->userService->deleteByIds($request,array($id));
+    }
 }
