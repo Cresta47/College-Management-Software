@@ -15,7 +15,7 @@ Class AttendanceDAO implements IAttendanceDAO{
     }
 
     public function findAll($columns){
-        $attendances = AttendanceModel::all();
+        $attendances = AttendanceModel::where('id','<','100')->get();
         if($attendances != null){
             foreach($attendances as $attendance){
                 $result[] = $this->attendanceDTOTransformer->formatDataFromDb($attendance);

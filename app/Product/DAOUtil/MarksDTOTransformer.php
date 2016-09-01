@@ -10,7 +10,7 @@ namespace  App\Product\DAOUtil;
 use App\Product\DAOUtil\IDTOTransformer;
 use App\Product\ProductTrait\DateTime\NepaliDateConvertible;
 
-class CourseDTOTransformer implements IDTOTransformer{
+class MarksDTOTransformer implements IDTOTransformer{
 
     use NepaliDateConvertible;
     /*
@@ -22,11 +22,9 @@ class CourseDTOTransformer implements IDTOTransformer{
         }
         $result['id'] = isset($dto->id) ? $dto->id : null;
         $result['name'] = isset($dto->name) ? $dto->name : null;
-        $result['class_id'] = isset($dto->class_id) ? $dto->class_id : null;
-        $result['grade_id'] = isset($dto->grade_id) ? $dto->grade_id : null;
-        if(isset($dto->password)){
-            $result['password'] = isset($dto->password)? $this->encrypt($dto->password) : null;
-        }
+        $result['course_id'] = isset($dto->course_id) ? $dto->course_id : null;
+        $result['exam_id'] = isset($dto->exam_id) ? $dto->exam_id : null;
+        
         return $result;
     }
 
@@ -39,8 +37,9 @@ class CourseDTOTransformer implements IDTOTransformer{
         }
         $result['id'] = isset($databaseRow->id) ? $databaseRow->id : '';
         $result['name'] = isset($databaseRow->name) ? $databaseRow->name : null;
-        $result['class_id'] = isset($databaseRow->class_id)? $databaseRow->class_id : null;
-        $result['grade_id'] = isset($databaseRow->grade_id)? $databaseRow->grade_id : null;
+        $result['course_id'] = isset($databaseRow->course_id)? $databaseRow->course_id : null;
+        $result['exam_id'] = isset($databaseRow->exam_id)? $databaseRow->exam_id : null;
+
         $result['createdAt'] = isset($databaseRow->created_at) ? $databaseRow->created_at : null;
         $result['createdAtNp'] = isset($databaseRow->created_at) ? $this->convertToBS($databaseRow->created_at) : null;
         $result['updatedAt'] = isset($databaseRow->updated_at)? $databaseRow->updated_at : null;

@@ -3,29 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\product\service\ClassService;
-use Illuminate\Support\Facades\Input;
+use App\Product\ProductTrait\Request\RequestContainsIds;
+use App\Product\Service\ScheduleService;
+use App\Http\Requests;
 
-
-class ClassController extends Controller
+class ScheduleController extends Controller
 {
-    private $classService;
+    use RequestContainsIds;
+    private $scheduleService;
 
-    public function __construct(){
-        $this->classService = new ClassService();
+    public function __construct(ScheduleService $sService){
+        $this->scheduleService = $sService;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    public function index()
+
+    public function index(Request $request)
     {
-        if(Input::get('get-me') == 'my-classes'){
-            return $this->classService->findAllMyClasses();
+        $_ids = $this->getValidIds($request);
+        if(!empty($_ids)){
+            return $this->scheduleService->findByIds($request,$_ids);
         }
-        return $this->classService->findAllMyClasses();
+        return $this->scheduleService->findAll($request);
     }
 
     /**
@@ -46,8 +44,7 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        $class = $request->all();
-        $this->classService->create($class);
+        return $this->scheduleService->create($request);
     }
 
     /**
@@ -56,9 +53,9 @@ class ClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        return $this->classService->findById($id);
+        return $this->scheduleService->findById($request,$id);
     }
 
     /**
@@ -81,7 +78,7 @@ class ClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->scheduleService->update($request,$id);
     }
 
     /**
@@ -90,8 +87,9 @@ class ClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        //
+        return $this->scheduleService->deleteById($request,$id);
+//        return $this->scheduleService->deleteByIds($request,array($id));
     }
 }

@@ -18,7 +18,8 @@ class RoleUserTableSeeder extends Seeder
 
         for ($i = 1; $i <= $userlimit; $i++) {
             \DB::table('role_user')->insert([
-                'role_id' => $faker->numberBetween(1,$roleLimit),
+                'role_id' => $faker->randomElement(array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2)),
+//                'role_id' => $faker->numberBetween(1,$roleLimit),
                 'user_id' => $i
             ]);
         }

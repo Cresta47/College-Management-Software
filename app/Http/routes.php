@@ -14,7 +14,6 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-
     Route::get('/', function () {
         return view('home', Config::get('client.info'));
     });
@@ -44,6 +43,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('api/permission','PermissionController');
 
     Route::resource('api/examination','ExaminationController');
+
+    Route::resource('api/marks','ExaminationController');
+
+    Route::resource('api/attendance','AttendanceController');
 
 //----------Session----------//
     /*
@@ -77,6 +80,10 @@ Route::group(['middleware' => ['web']], function () {
         return view('partials.user-list-card');
     });
 
+    Route::get('partial/examination-list-card',function(){
+        return view('partials.examination-list-card');
+    });
+
     Route::get('partial/class-list-card', function(){
         return view('partials.class-list-card');
     });
@@ -85,15 +92,28 @@ Route::group(['middleware' => ['web']], function () {
         return view('partials.course-list-card');
     });
 
+    Route::get('partial/attendance-list-card', function(){
+        return view('partials.attendance-list-card');
+    });
+
     Route::get('partial/role-form', function(){
         return view('partials.role-form');
+    });
+
+    Route::get('partial/attendance-form', function(){
+        return view('partials.attendance-form');
     });
 
     Route::get('partial/login-form', function(){
         return view('partials.login-form');
     });
 
+    Route::get('partial/examination-form', function(){
+        return view('partials.examination-form');
+    });
+
     Route::get('partial/dashboard', function(){
         return view('partials.dashboard');
     });
+
 });

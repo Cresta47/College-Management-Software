@@ -1,44 +1,66 @@
+// app.controller('CourseController', function ($scope, CourseService, SessionService) {
+//     $scope.loadCourse = function () {
+//         CourseService.get({id:1}).then(function(response) {
+//             $scope.course = response.data;
+//         });
+//     }
+//     $scope.loadCourse();
+// });
+
+
+app.controller('CourseFormController', function ($scope,CourseService) {
+
+    $scope.course = {};
+    $scope.course.name;
+    $scope.course.class_id;
+    $scope.course.grade_id;
+
+    $scope.loadCourse = function () {
+        $scope.course = CourseService.get({id:$scope.params.id});
+    }
+
+    $scope.createCourse = function () {
+        course = {name:$scope.course.name,
+            class_id:$scope.course.class_id,
+            grade_id:$scope.course.grade_id,
+        }
+
+        
+        CourseService.post(course).then(function(response){
+             alert('Course successfully added in the system.'+'\n'+'Check console.log for response.');
+             console.log(response.data);
+         });
+
+    }
+});
+
+
 app.controller('CourseListCardsController', function ($scope, CourseService) {
 
-    $scope.courseCards;
-    $scope.courseList;
-    $scope.temp;
+    $scope.courses;
 
-    $scope.showList = false;
+    // View Options
     $scope.showCards = true;
+    $scope.showTable = false;
+
+    $scope.gridOptions = {
+        data: 'courses',
+         columnDefs:
+            [   {field: 'name', displayName: 'Name',width: 100 },
+                {field: 'class_id', displayName: 'Class ID', width: 100},
+                {field: 'grade_id', displayName: 'Grade ID', width: 100},
+            ],
+        enableRowSelection: true,
+        enableSelectAll: true,
+        selectionRowHeaderWidth: 35,
+    };
 
     $scope.loadAll = function(){
-        $scope.temp = CourseService.userCourses().$promise.then(function(result){
-            $scope.temp = result.data;
-            $scope.courseCards = $scope.temp;
-            $scope.courseList = $scope.temp;
+        CourseService.all().then(function(response) {
+            $scope.courses = response.data;
         });
     }
 
-    $scope.populate = function(){
-        $scope.courseList = $scope.temp;
-        $scope.courseCards = $scope.temp;
-        $scope.showList = true;
-        $scope.viewName = $scope.viewNameList;
-    }
-
-    $scope.listCardToggle = function(){
-        if($scope.showList === true){
-            $scope.showCards = true;
-            $scope.viewName = $scope.viewNameCard;
-            $scope.showList = false;
-        }else{
-            $scope.showCards = false;
-            $scope.viewName = $scope.viewNameList;
-            $scope.showList = true;
-        }
-    }
-
-    $scope.showEditForm = function(id){
-        alert(id);
-    }
-
     $scope.loadAll();
-    $scope.populate();
 
 });

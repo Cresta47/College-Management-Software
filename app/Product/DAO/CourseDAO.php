@@ -2,6 +2,7 @@
 namespace App\Product\DAO;
 
 use App\CourseModel;
+use App\UserModel;
 use App\product\daoutil\CourseDTOTransformer;
 use App\Product\response\ResponseGenerator;
 use App\Product\Exception\DAOException;
@@ -15,7 +16,19 @@ Class CourseDAO implements ICourseDAO{
     }
 
     public function findAll($columns){
-        $courses = CourseModel::all();
+//        $courses = \DB::table('courses')
+//                        ->join('course_user','courses.id ','=','course_user.course_id')
+//                        ->where('course_user.id','=','1')
+//                        ->get();
+
+        $courses = \DB::table('courses')
+            ->join('course_user', function ($join) {
+                $join->on('courses.id', '=', 'course_user.course_id')
+                    ->where('course_user.user_id','=','1');
+            })
+            ->get();
+
+        $result = array();
         if($courses != null){
             foreach($courses as $course){
                 $result[] = $this->courseDTOTransformer->formatDataFromDb($course);
@@ -23,6 +36,7 @@ Class CourseDAO implements ICourseDAO{
         }else{
             throw new DAOException("Error fetching all Course!");
         }
+
         return $result;
     }
 

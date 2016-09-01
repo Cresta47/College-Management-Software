@@ -10,7 +10,7 @@ namespace  App\Product\DAOUtil;
 use App\Product\DAOUtil\IDTOTransformer;
 use App\Product\ProductTrait\DateTime\NepaliDateConvertible;
 
-class ExaminationDTOTransformer implements IDTOTransformer{
+class ScheduleDTOTransformer implements IDTOTransformer{
     use NepaliDateConvertible;
 
     /*

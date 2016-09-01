@@ -59,5 +59,38 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('courseListCard', {
+            url: '/course/all',
+            views: {
+                '': {templateUrl: 'partial/course-list-card'}
+            }
+        })
+
+        .state('attendanceListCard', {
+            url: '/attendance/all',
+            views: {
+                '': {templateUrl: 'partial/attendance-list-card'}
+            }
+        })
+
+        .state('attendanceCreate', {
+            url: '/attendance/create',
+            views: {
+                '': {templateUrl: 'partial/attendance-form'}
+            }
+        })
+
+        .state('examinationListCard', {
+            url: '/examination/all',
+            views: {
+                '': {templateUrl: 'partial/examination-list-card'}
+            }
+        })
+
+        .state('examinationCreate', {
+            url: '/examination/create',
+            templateUrl: 'partial/examination-form'
+        })
+
     $urlRouterProvider.otherwise('/my/home');
 });

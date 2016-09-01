@@ -11,14 +11,14 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-        $defaultRolePermission = Config::get('client.config')['permissions'];
-
-        foreach ( $defaultRolePermission as $key => $value) {
-            \DB::table('permissions')->insert([
-                'name' => $key,
-                'description' => $key . ' : ' . $value[0],
-            ]);
-        }
+//        $faker = Faker\Factory::create();
+//        $defaultRolePermission = Config::get('client.config')['permissions'];
+//
+//        foreach ( $defaultRolePermission as $key => $value) {
+//            \DB::table('permissions')->insert([
+//                'name' => $value[0],
+//                'description' => $key . ' : ' . $value[0],
+//            ]);
+//        }
     }
 }

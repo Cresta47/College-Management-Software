@@ -22,6 +22,7 @@ class AttendanceDTOTransformer implements IDTOTransformer{
         if(is_array($dto)){
             $dto = (object) $dto;
         }
+        $result['id'] = isset($dto->id) ? $dto->id : null;
         $result['user_id'] = isset($dto->user_id) ? $dto->user_id : null;
         $result['in_or_out'] = isset($dto->in_or_out) ? $dto->in_or_out : null;
         $result['comment'] = isset($dto->comment)? $dto->comment: null;
@@ -35,6 +36,7 @@ class AttendanceDTOTransformer implements IDTOTransformer{
         if(is_array($databaseRow)){
             $databaseRow = (object) $databaseRow;
         }
+        $result['id'] = isset($databaseRow->id) ? $databaseRow->id : '';
         $result['user_id'] = isset($databaseRow->user_id) ? $databaseRow->user_id : '';
         $result['in_or_out'] = isset($databaseRow->in_or_out) ? $databaseRow->in_or_out : null;
         $result['comment'] = isset($databaseRow->comment)? $databaseRow->comment : null;

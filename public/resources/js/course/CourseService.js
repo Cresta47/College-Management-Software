@@ -1,7 +1,7 @@
 var CourseService = app.service('CourseService', function (CourseRESTClient) {
     return {
         get: function(id) {
-            return CourseRESTClient.get({id:id.id});
+             return CourseRESTClient.get({id:id.id}).$promise;
         },
 
         getEdit:function(id){
@@ -9,16 +9,15 @@ var CourseService = app.service('CourseService', function (CourseRESTClient) {
         },
 
         post: function(course){
-            CourseRESTClient.save(course);
+            return CourseRESTClient.save(course).$promise;
         },
 
-        userCourses: function(){
-            return CourseRESTClient.userCourses();
+        all: function(){
+            return CourseRESTClient.query().$promise;
         },
 
-        edit: function(courseModel){
-            return CourseRESTClient.edit(courseModel)
+        edit: function(course){
+            return CourseRESTClient.edit(course)
         }
-
     }
 });

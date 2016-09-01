@@ -112,6 +112,12 @@
   <script src="resources/js/role/RoleService.js"></script>
   <script src="resources/js/role/RoleFactory.js"></script>
 
+  <script src="resources/js/attendance/AttendanceController.js"></script>
+  <script src="resources/js/attendance/AttendanceService.js"></script>
+  <script src="resources/js/attendance/AttendanceFactory.js"></script>
+
+
+
   <script src="resources/js/session/SessionController.js"></script>
   <script src="resources/js/session/SessionService.js"></script>
 

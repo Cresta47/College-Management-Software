@@ -24,4 +24,12 @@ class UserModel extends Model
     {
         return $this->hasOne('App\UserDetailModel','user_id','user_id');
     }
+
+    /*
+     * Get courses associated with the user
+     */
+    public function courses(){
+//        return $this->hasManyThrough('App\CourseModel','App\CourseUserModel','id','');
+    }
+
 }
