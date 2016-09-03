@@ -7,7 +7,7 @@ app.controller('UserController', function ($scope, UserService, SessionService) 
     $scope.loadUser();
 });
 
-app.controller('UserFormController', function ($scope, UserService) {
+app.controller('UserFormController', function ($scope, UserService, RoleService) {
     $scope.user = {};
     $scope.user.email
     $scope.user.password;
@@ -34,6 +34,15 @@ app.controller('UserFormController', function ($scope, UserService) {
         });
 
     }
+
+    $scope.roles = {};
+
+    $scope.loadRoles = function(){
+        $scope.roles = RoleService.all();
+    }
+
+    $scope.loadRoles();
+
 });
 
 app.controller('UserListCardsController', function ($scope, UserService) {

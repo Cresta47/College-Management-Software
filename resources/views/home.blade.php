@@ -125,8 +125,6 @@
   <script src="resources/js/examination/ExaminationService.js"></script>
   <script src="resources/js/examination/ExaminationFactory.js"></script>
 
-
-
   <script src="resources/js/session/SessionController.js"></script>
   <script src="resources/js/session/SessionService.js"></script>
 

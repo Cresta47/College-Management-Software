@@ -50,6 +50,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('api/schedule','ScheduleController');
 
+
+//----------Filter----------//
+
+    Route::get('api/filter',"FilterController@filter");
+
 //----------Session----------//
     /*
      * We are using this endpoint only to test whether user is logged in or not.

@@ -320,8 +320,8 @@ class UsersAndUserDetailsTableSeeder extends Seeder
                     'name' => $this->faker->bankAccountNumber,
                     'email' => $email,
                     'password' => bcrypt('abc'),
+                    'status' => $this->faker->randomElement(array('REGISTERED','ACTIVE','ACTIVE','ACTIVE','ACTIVE','ACTIVE','ACTIVE','ACTIVE')),
                 ]
-
                 );
 
             array_push($userDetails,
