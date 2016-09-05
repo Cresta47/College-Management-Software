@@ -6,8 +6,6 @@
  * Time: 8:03 PM
  */
 
-
-
 return [
     'serverName' => 'CTS-Demo',
     'orgName' => 'Cloud Tech Service',

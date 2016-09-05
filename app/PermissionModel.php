@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustPermission;
 
-class PermissionModel extends Model{
+class PermissionModel extends EntrustPermission{
 
     protected $fillable = array('name');
 
@@ -13,6 +14,5 @@ class PermissionModel extends Model{
     public function getTableName(){
         return $this->table;
     }
-
 
 }

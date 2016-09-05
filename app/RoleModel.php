@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustRole;
 
-class RoleModel extends Model
+class RoleModel extends EntrustRole
 {
     protected $table = 'roles';
 

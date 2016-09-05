@@ -5,90 +5,11 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-        .state('classCreate', {
-            url: '/class/create',
+        // ATTENDANCE
+        .state('attendanceCreate', {
+            url: '/attendance/create',
             views: {
-                '': { templateUrl: 'partial/class-form' }
-            }
-        })
-
-        .state('courseCreate', {
-            url: '/course/create',
-            templateUrl: 'partial/course-form'
-        })
-
-        .state('gradeCreate', {
-            url: '/grade/create',
-            templateUrl: 'partial/grade-form'
-        })
-
-        .state('marksCreate', {
-            url: '/marks/create',
-            templateUrl: 'partial/marks-form'
-        })
-
-        .state('userCreate', {
-            url: '/register',
-            views: {
-                '': {templateUrl: 'partial/user-form'}
-            }
-        })
-
-        .state('scheduleCreate', {
-            url: '/schedule/create',
-            views: {
-                '': {templateUrl: 'partial/schedule-form'}
-            }
-        })
-
-        .state('userEdit', {
-            url: '/user/edit/{id}',
-            views: {
-                '': {templateUrl: 'partial/user-form',
-                    },
-                params: { partialTitle: 'Edit User', }
-            }
-        })
-
-        .state('roleCreate', {
-            url: '/role/create',
-            views: {
-                '': {templateUrl: 'partial/role-form'}
-            }
-        })
-
-        .state('dashboard',{
-           url:'/my/home',
-            views:{
-                '': {templateUrl: 'partial/dashboard'}
-            }
-        })
-
-        .state('userListCard', {
-            url: '/user/all',
-            views: {
-                '': {templateUrl: 'partial/user-list-card'}
-            }
-        })
-
-        .state('courseListCard', {
-            url: '/course/all',
-            views: {
-                '': {templateUrl: 'partial/course-list-card'}
-            }
-        })
-
-        .state('marksListCard', {
-            url: '/marks/all',
-            views: {
-                '': {templateUrl: 'partial/marks-list-card'}
-            }
-        })
-
-        .state('scheduleListCard', {
-            url: '/schedule/all',
-            views: {
-                '': {templateUrl: 'partial/schedule-list-card'}
+                '': {templateUrl: 'partial/attendance-form'}
             }
         })
 
@@ -99,11 +20,39 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
-        .state('attendanceCreate', {
-            url: '/attendance/create',
+        // CLASS
+        .state('classCreate', {
+            url: '/class/create',
             views: {
-                '': {templateUrl: 'partial/attendance-form'}
+                '': { templateUrl: 'partial/class-form' }
             }
+        })
+
+        // COURSE
+        .state('courseCreate', {
+            url: '/course/create',
+            templateUrl: 'partial/course-form'
+        })
+
+        .state('courseListCard', {
+            url: '/course/all',
+            views: {
+                '': {templateUrl: 'partial/course-list-card'}
+            }
+        })
+
+        // DASHBOARD / HOME
+        .state('dashboard',{
+            url:'/my/home',
+            views:{
+                '': {templateUrl: 'partial/dashboard'}
+            }
+        })
+
+        // EXAMINATION
+        .state('examinationCreate', {
+            url: '/examination/create',
+            templateUrl: 'partial/examination-form'
         })
 
         .state('examinationListCard', {
@@ -113,10 +62,77 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
-        .state('examinationCreate', {
-            url: '/examination/create',
-            templateUrl: 'partial/examination-form'
+        // GRADE
+        .state('gradeCreate', {
+            url: '/grade/create',
+            templateUrl: 'partial/grade-form'
+        })
+
+        // MARKS
+        .state('marksCreate', {
+            url: '/marks/create',
+            templateUrl: 'partial/marks-form'
+        })
+
+        .state('marksListCard', {
+            url: '/marks/all',
+            views: {
+                '': {templateUrl: 'partial/marks-list-card'}
+            }
+        })
+
+        // ROLE
+        .state('roleCreate', {
+            url: '/role/create',
+            views: {
+                '': {templateUrl: 'partial/role-form'}
+            }
+        })
+
+        // SCHEDULE
+        .state('scheduleCreate', {
+            url: '/schedule/create',
+            views: {
+                '': {templateUrl: 'partial/schedule-form'}
+            }
+        })
+
+        .state('scheduleListCard', {
+            url: '/schedule/all',
+            views: {
+                '': {templateUrl: 'partial/schedule-list-card'}
+            }
+        })
+
+        // USER
+        .state('userCreate', {
+            url: '/register',
+            params: {
+                stateTitle: 'Create User',
+            },
+            views: {
+                '': {templateUrl: 'partial/user-form'}
+            }
+        })
+
+        .state('userListCard', {
+            url: '/user/all',
+            views: {
+                '': {templateUrl: 'partial/user-list-card'}
+            }
+        })
+
+        .state('userEdit', {
+            url: '/user/edit/{id}',
+            params: {
+                stateTitle: 'Edit User',
+            },
+            views: {
+                '': {templateUrl: 'partial/user-form',
+                },
+            }
         })
 
     $urlRouterProvider.otherwise('/my/home');
+
 });

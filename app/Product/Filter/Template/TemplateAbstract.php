@@ -71,24 +71,39 @@ class TemplateAbstract{
 
     public function validate(){
 
-        $validCmpOperators = array('=','<','>','in');
+        $validCmpOperators = array('=','<','>','in','!=','notIn','inBtn');
+
         if(!in_array($this->comparisonOperator,$validCmpOperators)){
             throw new FilterException("Invalid comparison operator. '".$this->comparisonOperator."' is not allowed.!");
         }
 
-        if($this->comparisonOperator == '='){
+        if($this->comparisonOperator == '='
+            || $this->comparisonOperator == '<'
+            || $this->comparisonOperator == '>'
+            || $this->comparisonOperator == '!='
+        ){
+
             if($this->validateParams($this->params,'value')){
                 return true;
             }
+
+        }else if($this->comparisonOperator == 'in'
+                || $this->comparisonOperator == 'inBtn'
+                || $this->comparisonOperator == 'notIn'
+        ){
+
+            if($this->validateParams($this->params,'array')){
+                return true;
+            }
+
         }
     }
 
-    public function validateComparisonOperator($op, $expected){
-        if($expected == '='){
-            if(! ($op == '=')){
-                throw new FilterException("Comparison Operator should be '='.");
-            }
+    public function validateComparisonOperator($op, array $expected){
+        if(!in_array($op ,$expected)) {
+            throw new FilterException("Comparison Operator '".$op."' is not allowed for the requested filter Id!");
         }
+        return true;
     }
 
     public function validateParams($params, $typeExpected){
@@ -96,11 +111,12 @@ class TemplateAbstract{
         if($typeExpected == 'value'){
             if(is_array($params) || is_object($params)){
                 throw new FilterException("Parameter for the filter should be a value.");
-            }else{
-                return true;
+            }
+        }else if($typeExpected == 'array'){
+            if(!is_array($typeExpected)){
+                throw new FilterException("Parameter for the filter should be an array.");
             }
         }
-
-
+        return true;
     }
 }

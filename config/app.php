@@ -158,24 +158,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Product Service Providers...
-         */
-//        App\Providers\UserServiceProvider::class,
-//        App\Providers\UserDetailServiceProvider::class,
-//        App\Providers\ClassServiceProvider::class,
-//        App\Providers\CourseServiceProvider::class,
-//        App\Providers\GradeServiceProvider::class,
-//        App\Providers\RoleServiceProvider::class,
-//        App\Providers\PermissionServiceProvider::class,
-
-        /*
-         * Product DAO Providers...
-         */
-//        App\Providers\UserDAOProvider::class,
-//        App\Providers\RoleDAOProvider::class,
-//        App\Providers\CourseServiceProvider::class,
-
-        /*
          * Product Utility Providers...
          */
         App\Providers\ResponseGeneratorProvider::class,

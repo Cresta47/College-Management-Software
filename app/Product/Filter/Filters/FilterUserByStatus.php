@@ -19,7 +19,7 @@ class FilterUserByStatus extends TemplateAbstract implements IFilterValidation, 
     public function __construct($id, $comparisonOp, $params)
     {
         parent::__construct($id, $comparisonOp, $params);
-        $this->validateComparisonOperator($comparisonOp, '=');
+        $this->validateComparisonOperator($comparisonOp, array('=','in'));
     }
 
     public function filterFromDB(){

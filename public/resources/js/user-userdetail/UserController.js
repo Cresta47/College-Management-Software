@@ -7,41 +7,44 @@ app.controller('UserController', function ($scope, UserService, SessionService) 
     $scope.loadUser();
 });
 
-app.controller('UserFormController', function ($scope, UserService, RoleService) {
-    $scope.user = {};
-    $scope.user.email
-    $scope.user.password;
-    $scope.user.confirm;
-    $scope.user.firstName;
-    $scope.user.lastName;
-
+app.controller('UserFormController', function ($scope, $stateParams, UserService, RoleService) {
     $scope.loadUser = function () {
         $scope.user = UserService.get({id:$scope.params.id});
     }
 
-    $scope.signup = function () {
+    $scope.stateParams = $stateParams;
+
+    $scope.signUp = function () {
 
         user = {email:$scope.user.email,
                 password:$scope.user.password,
                 confirm:$scope.user.confirm,
                 firstName:$scope.user.firstName,
-                lastName:$scope.user.lastName
+                lastName:$scope.user.lastName,
+                // roles:$scope.form.selectedRoles,
                 }
 
         UserService.post(user).then(function(response){
             alert('User successfully added in the system.'+'\n'+'Check console.log for response.');
-            console.log(response.data);
         });
-
     }
 
-    $scope.roles = {};
-
-    $scope.loadRoles = function(){
-        $scope.roles = RoleService.all();
+    $scope.loadRoles = function() {
+        $scope.roles = RoleService.all().then(function (response) {
+            $scope.roles = response.data;
+        });
     }
 
     $scope.loadRoles();
+
+
+    if($scope.stateParams.action === 'edit'){
+        console.log('asd');
+    }
+
+
+
+
 
 });
 

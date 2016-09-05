@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class UserModel extends Model
 {
-    use SoftDeletes;
+    use EntrustUserTrait;
 
     protected $fillable = array('name', 'email', 'password');
 
@@ -25,11 +25,10 @@ class UserModel extends Model
         return $this->hasOne('App\UserDetailModel','user_id','user_id');
     }
 
-    /*
-     * Get courses associated with the user
-     */
-    public function courses(){
-//        return $this->hasManyThrough('App\CourseModel','App\CourseUserModel','id','');
+    public function roles(){
+        return $this->hasMany('App\Role');
     }
+
+
 
 }

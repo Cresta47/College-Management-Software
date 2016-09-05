@@ -35,6 +35,7 @@ class RoleDTOTransformer implements IDTOTransformer{
         if(is_array($databaseRow)){
             $databaseRow = (object) $databaseRow;
         }
+        $result['id'] = isset($databaseRow->id) ? $databaseRow->id: null;
         $result['name'] = isset($databaseRow->name) ? $databaseRow->name : null;
         $result['displayName'] = isset($databaseRow->display_name) ? $databaseRow->display_name : null;
         $result['description'] = isset($databaseRow->description) ? $databaseRow->description : null;

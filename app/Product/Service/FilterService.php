@@ -6,6 +6,7 @@
  * Time: 11:59 AM
  */
 namespace App\Product\Service;
+use App\Product\Exception\DAOException;
 use App\Product\Filter\Filters\FilterUserByStatus;
 use App\Facades\ResponseGenerator;
 
@@ -30,7 +31,13 @@ class FilterService implements IFilterService{
             ResponseGenerator::setData($responseDTO,$result);
             ResponseGenerator::setHttpStatus($responseDTO,200);
             ResponseGenerator::setBusinessStatusCode($responseDTO,"RES-Filter");
-        }catch(\Exception $e) {
+        }
+        catch(DAOException $e){
+            ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
+            ResponseGenerator::setHttpStatus($responseDTO,400);
+            ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Filter");
+        }
+        catch(\Exception $e) {
             ResponseGenerator::addErrorMessage($responseDTO,$e->getMessage());
             ResponseGenerator::setHttpStatus($responseDTO,500);
             ResponseGenerator::setBusinessStatusCode($responseDTO,"!RES-Filter");

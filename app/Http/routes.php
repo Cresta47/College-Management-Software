@@ -11,20 +11,31 @@
 |
 */
 
+//----------Login Routes----------//
+    //    Route::controllers([
+    //        'auth' => 'Auth\AuthController',
+    //        'password' => 'Auth\PasswordController',
+    //    ]);
 
-Route::group(['middleware' => ['web']], function () {
+    Route::get('login', function () {
+        return view('auth.login');
+    });
+
+    Route::get('password/reset', function () {
+        return redirect('login');
+    });
+
+    Route::post('logout', 'LoginController@logout'); // Using our Own logout logic
+
+    Route::post('login', 'Auth\AuthController@postLogin', Config::get('client.info'));
+
+
+    /* Authenticated users */
+    Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/', function () {
         return view('home', Config::get('client.info'));
     });
-
-//----------Login Routes----------//
-
-    Route::get('login', function () {
-        return view('login');
-    });
-
-    Route::post('login', array('uses' => 'LoginController@doLogin'));
 
 //----------Restful Routes----------//
 
@@ -51,11 +62,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('api/schedule','ScheduleController');
 
 
-//----------Filter----------//
-
+    //----------Filter----------//
     Route::get('api/filter',"FilterController@filter");
 
-//----------Session----------//
+});
+    //----------Session----------//
     /*
      * We are using this endpoint only to test whether user is logged in or not.
      * As we send request to (any) this endpoint our ProductAuthentication.php middleware intercept the request and send
@@ -65,8 +76,7 @@ Route::group(['middleware' => ['web']], function () {
         return "Beep Beep Beep";
     });
 
-//----------Partials----------//
-
+    //----------Partials----------//
     Route::get('partial/class-form', function(){
         return view('partials.class-form');
     });
@@ -140,5 +150,3 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('partial/dashboard', function(){
         return view('partials.dashboard');
     });
-
-});

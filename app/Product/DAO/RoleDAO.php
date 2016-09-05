@@ -2,6 +2,7 @@
 
 namespace App\Product\DAO;
 
+use App\Product\Service\UserService;
 use App\RoleModel;
 use App\Product\daoutil\RoleDTOTransformer;
 use App\Product\response\ResponseGenerator;
@@ -11,12 +12,16 @@ Class RoleDAO implements IRoleDAO{
 
     private $roleDTOTransformer;
 
-    public function __construct(){
+    private $userService;
+
+    public function __construct(UserService $usrService){
         $this->roleDTOTransformer = new RoleDTOTransformer();
+        $this->userService = $usrService;
     }
 
     public function findAll($columns){
         $roles = RoleModel::all();
+
         $result = array();
         foreach($roles as $role){
             array_push($result,$this->roleDTOTransformer->formatDataFromDb($role));

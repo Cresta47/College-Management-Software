@@ -16,16 +16,16 @@ class ProductAuthentication
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        // Apply this middleware for every other request
+    public function handle($request, Closure $next){
+
+//        dd(Auth::check());
+//        Apply this middleware for every other request
 //        if(!$request->is('login'))
 //        {
 //            if(!Auth::check()){
 //                return redirect('login');
 //            }
 //        }
-
         return $next($request);
     }
 }

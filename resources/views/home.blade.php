@@ -16,7 +16,7 @@
   limitations under the License
 -->
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -62,71 +62,74 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
     <script>
-      $.material.init();
+        $.material.init();
     </script>
 
-  </head>
-  <body ng-app="app">
-  {{--<div ng-controller="SessionController">--}}
-    {{--<div ng-if="isUserLoggedIn">--}}
+</head>
+<body ng-app="app">
+{{--<div ng-controller="SessionController">--}}
+{{--<div ng-if="isUserLoggedIn">--}}
 
-      <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        @include('partials.top-menu')
-        @include('partials.left-side-bar')
-        <main class="mdl-layout__content mdl-color--grey-100">
-          <div ui-view></div>
-        </main>
-      </div>
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    @include('partials.top-menu')
+    @include('partials.left-side-bar')
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div ui-view></div>
+    </main>
+</div>
 
-    {{--</div>--}}
-  {{--</div>--}}
+{{--</div>--}}
+{{--</div>--}}
 
-  <script src="vendor/material/material.min.js"></script>
-  <script src="vendor/angular/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="vendor/material/material.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 
-  <script src="vendor/angular-ui-grid/ui-grid.js"></script>
+<script src="vendor/angular-ui-grid/ui-grid.js"></script>
 
-  <script src="vendor/angular/angular-resource/angular-resource.js"></script>
-  <script src="resources/js/app.js"></script>
-  <script src="resources/js/routes.js"></script>
-
-
-  <script src="resources/js/user-userdetail/UserService.js"></script>
-  <script src="resources/js/user-userdetail/UserFactory.js"></script>
-  <script src="resources/js/user-userdetail/UserController.js"></script>
-
-  <script src="resources/js/grade/GradeService.js"></script>
-  <script src="resources/js/grade/GradeFactory.js"></script>
-  <script src="resources/js/grade/GradeController.js"></script>
-
-  <script src="resources/js/class/ClassService.js"></script>
-  <script src="resources/js/class/ClassFactory.js"></script>
-  <script src="resources/js/class/ClassController.js"></script>
-
-  <script src="resources/js/course/CourseService.js"></script>
-  <script src="resources/js/course/CourseFactory.js"></script>
-  <script src="resources/js/course/CourseController.js"></script>
-
-  <script src="resources/js/role/RoleController.js"></script>
-  <script src="resources/js/role/RoleService.js"></script>
-  <script src="resources/js/role/RoleFactory.js"></script>
-
-  <script src="resources/js/attendance/AttendanceController.js"></script>
-  <script src="resources/js/attendance/AttendanceService.js"></script>
-  <script src="resources/js/attendance/AttendanceFactory.js"></script>
+<script src="vendor/angular/angular-resource/angular-resource.js"></script>
+<script src="resources/js/app.js"></script>
+<script src="resources/js/routes.js"></script>
 
 
-  <script src="resources/js/marks/MarksController.js"></script>
-  <script src="resources/js/marks/MarksService.js"></script>
-  <script src="resources/js/marks/MarksFactory.js"></script>
+<script src="resources/js/user-userdetail/UserService.js"></script>
+<script src="resources/js/user-userdetail/UserFactory.js"></script>
+<script src="resources/js/user-userdetail/UserController.js"></script>
 
-  <script src="resources/js/examination/ExaminationController.js"></script>
-  <script src="resources/js/examination/ExaminationService.js"></script>
-  <script src="resources/js/examination/ExaminationFactory.js"></script>
+<script src="resources/js/grade/GradeService.js"></script>
+<script src="resources/js/grade/GradeFactory.js"></script>
+<script src="resources/js/grade/GradeController.js"></script>
 
-  <script src="resources/js/session/SessionController.js"></script>
-  <script src="resources/js/session/SessionService.js"></script>
+<script src="resources/js/class/ClassService.js"></script>
+<script src="resources/js/class/ClassFactory.js"></script>
+<script src="resources/js/class/ClassController.js"></script>
 
-  </body>
+<script src="resources/js/course/CourseService.js"></script>
+<script src="resources/js/course/CourseFactory.js"></script>
+<script src="resources/js/course/CourseController.js"></script>
+
+<script src="resources/js/role/RoleController.js"></script>
+<script src="resources/js/role/RoleService.js"></script>
+<script src="resources/js/role/RoleFactory.js"></script>
+
+<script src="resources/js/attendance/AttendanceController.js"></script>
+<script src="resources/js/attendance/AttendanceService.js"></script>
+<script src="resources/js/attendance/AttendanceFactory.js"></script>
+
+
+<script src="resources/js/marks/MarksController.js"></script>
+<script src="resources/js/marks/MarksService.js"></script>
+<script src="resources/js/marks/MarksFactory.js"></script>
+
+<script src="resources/js/examination/ExaminationController.js"></script>
+<script src="resources/js/examination/ExaminationService.js"></script>
+<script src="resources/js/examination/ExaminationFactory.js"></script>
+
+<script src="resources/js/session/SessionController.js"></script>
+<script src="resources/js/session/SessionService.js"></script>
+
+<script src="resources/js/Authentication/Auth.js"></script>
+
+
+</body>
 </html>

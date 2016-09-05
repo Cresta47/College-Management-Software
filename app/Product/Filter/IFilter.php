@@ -14,4 +14,7 @@ interface IFilter
 
     public function filterFromDB();
 
+    public function validateComparisonOperator($op, array $expected);
+
+
 }

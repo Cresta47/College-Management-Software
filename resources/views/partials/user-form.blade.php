@@ -3,8 +3,7 @@
     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
         <form>
             <div class="form-group label-static is-empty">
-                <h3>Register</h3>
-
+                <h3>@{{stateParams.stateTitle}}</h3>
                 {{--<div class="form-group label-static is-empty">--}}
                     <input type="hidden" name="id" class="signup form-control"
                            id="i2" placeholder="" ng-model="user.id" value="@{{user.id}}">
@@ -39,22 +38,17 @@
                     <input
                             type="checkbox"
                             name="roles[]"
-                            value="@{{role.displayName}}"
-                            ng-model="role.selected"
-                    > @{{role.displayName}}
+                            value="@{{role.id}}"
+                            ng-model="form.selectedRoles"
+                    >@{{role.displayName}}
                 </label>
 
-
                 <div class="signup form-group label-static is-empty ripple-container signup">
-                    <input type="button" value="Sign up" class="btn btn-raised btn-primary" ng-click="signup()">
+                    <input type="button" value="Sign up" class="btn btn-raised btn-primary" ng-click="signUp()">
                 </div>
-
-
-
                 {{--<div class="edit form-group label-static is-empty ripple-container signup">--}}
                     {{--<input type="button" value="Edit" class="btn btn-raised btn-primary" ng-click="edit()">--}}
                 {{--</div>--}}
-
             </div>
         </form>
     </div>

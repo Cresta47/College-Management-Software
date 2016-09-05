@@ -28,6 +28,7 @@ Class UserDAO implements IUserDAO{
 
     public function findById($id,$columns){
         $user = UserModel::find($id);
+//        dd($user->roles());
         if($user != null){
             $user = $this->userDTOTransformer->formatDataFromDb($user);
         }else{

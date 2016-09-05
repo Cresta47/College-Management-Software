@@ -1,4 +1,4 @@
-<header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+<header ng-controller="LoginController" class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
     <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">Home</span>
         <div class="mdl-layout-spacer"></div>
@@ -17,7 +17,7 @@
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item">About</li>
             <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
+            <li class="mdl-menu__item" ng-click="logout()">Log out</li>
         </ul>
     </div>
 </header>
