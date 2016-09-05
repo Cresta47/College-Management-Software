@@ -4,10 +4,8 @@
         <form>
             <div class="form-group label-static is-empty">
                 <h3>@{{stateParams.stateTitle}}</h3>
-                {{--<div class="form-group label-static is-empty">--}}
                     <input type="hidden" name="id" class="signup form-control"
-                           id="i2" placeholder="" ng-model="user.id" value="@{{user.id}}">
-                {{--</div>--}}
+                           id="i2" placeholder="" ng-model="user.id" >
 
                 <div class="form-group label-static is-empty">
                     <input type="email" name="email" class="signup form-control"
@@ -43,12 +41,14 @@
                     >@{{role.displayName}}
                 </label>
 
-                <div class="signup form-group label-static is-empty ripple-container signup">
+                <div ng-show="!editState" class="signup form-group label-static is-empty ripple-container signup">
                     <input type="button" value="Sign up" class="btn btn-raised btn-primary" ng-click="signUp()">
                 </div>
-                {{--<div class="edit form-group label-static is-empty ripple-container signup">--}}
-                    {{--<input type="button" value="Edit" class="btn btn-raised btn-primary" ng-click="edit()">--}}
-                {{--</div>--}}
+
+                <div ng-show="editState" class="edit form-group label-static is-empty ripple-container signup">
+                    <input type="button" value="Edit" class="btn btn-raised btn-primary" ng-click="edit()">
+                </div>
+
             </div>
         </form>
     </div>

@@ -29,41 +29,40 @@
 
     Route::post('login', 'Auth\AuthController@postLogin', Config::get('client.info'));
 
-
     /* Authenticated users */
     Route::group(['middleware' => 'auth'], function() {
 
-    Route::get('/', function () {
-        return view('home', Config::get('client.info'));
-    });
+        Route::get('/', function () {
+            return view('home', Config::get('client.info'));
+        });
 
-//----------Restful Routes----------//
+        //----------Restful Routes----------//
 
-    Route::resource('api/class','ClassController');
+        Route::resource('api/class','ClassController');
 
-    Route::resource('api/course','CourseController');
+        Route::resource('api/course','CourseController');
 
-    Route::resource('api/grade','GradeController');
+        Route::resource('api/grade','GradeController');
 
-    Route::resource('api/user', 'UserController');
+        Route::resource('api/user', 'UserController');
 
-    Route::resource('api/userdetail','UserDetailController');
+        Route::resource('api/userdetail','UserDetailController');
 
-    Route::resource('api/role','RoleController');
+        Route::resource('api/role','RoleController');
 
-    Route::resource('api/permission','PermissionController');
+        Route::resource('api/permission','PermissionController');
 
-    Route::resource('api/examination','ExaminationController');
+        Route::resource('api/examination','ExaminationController');
 
-    Route::resource('api/marks','MarksController');
+        Route::resource('api/marks','MarksController');
 
-    Route::resource('api/attendance','AttendanceController');
+        Route::resource('api/attendance','AttendanceController');
 
-    Route::resource('api/schedule','ScheduleController');
+        Route::resource('api/schedule','ScheduleController');
 
 
-    //----------Filter----------//
-    Route::get('api/filter',"FilterController@filter");
+        //----------Filter----------//
+        Route::get('api/filter',"FilterController@filter");
 
 });
     //----------Session----------//

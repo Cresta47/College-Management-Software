@@ -8,25 +8,22 @@ app.controller('UserController', function ($scope, UserService, SessionService) 
 });
 
 app.controller('UserFormController', function ($scope, $stateParams, UserService, RoleService) {
-    $scope.loadUser = function () {
+    $scope.stateParams = $stateParams;
+
+    $scope.loadUserforEdit = function () {
         UserService.get({id:$scope.stateParams.id}).then(function(response){
             $scope.user = response.data;
         });
     }
 
-    $scope.stateParams = $stateParams;
+    $scope.editState = false;
+    if($scope.stateParams.actionParams.action === 'edit'){
+        $scope.editState = true;
+        $scope.loadUserforEdit();
+    }
 
     $scope.signUp = function () {
-
-        user = {email:$scope.user.email,
-                password:$scope.user.password,
-                confirm:$scope.user.confirm,
-                firstName:$scope.user.firstName,
-                lastName:$scope.user.lastName,
-                // roles:$scope.form.selectedRoles,
-                }
-
-        UserService.post(user).then(function(response){
+        UserService.post($scope.getUserModel()).then(function(response){
             alert('User successfully added in the system.'+'\n'+'Check console.log for response.');
         });
     }
@@ -40,8 +37,26 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
     $scope.loadRoles();
 
 
-    if($scope.stateParams.actionParams.action === 'edit'){
-        $scope.loadUser();
+    $scope.getUserModel = function(){
+        var user = {email:$scope.user.email,
+            password:$scope.user.password,
+            confirm:$scope.user.confirm,
+            firstName:$scope.user.firstName,
+            lastName:$scope.user.lastName,
+            // roles:$scope.form.selectedRoles,
+        }
+
+        if($scope.user.id){
+            user['id'] = $scope.user.id;
+        }
+
+        return user;
+    }
+
+    $scope.edit = function(){
+        UserService.update($scope.getUserModel()).then(function (response) {
+            alert('User Updated.');
+        });
     }
 
 });

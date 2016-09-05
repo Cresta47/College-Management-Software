@@ -108,7 +108,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('userCreate', {
             url: '/register',
             params: {
-                stateTitle: 'Create User',
+                stateTitle: 'Register',
+                actionParams: {action:'create'},
             },
             views: {
                 '': {templateUrl: 'partial/user-form'}
@@ -126,7 +127,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/user/edit/{id}',
             params: {
                 stateTitle: 'Edit User',
-                actionParams: {action:'edit'}
+                actionParams: {action:'edit'},
             },
             views: {
                 '': {templateUrl: 'partial/user-form',

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\product\service\ClassRoomService;
+use App\product\service\ClassService;
 use Illuminate\Support\Facades\Input;
 
 
-class ClassRoomController extends Controller
+class ClassController extends Controller
 {
     private $classService;
 

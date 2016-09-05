@@ -10,6 +10,7 @@ namespace App\Product\Service;
 
 use App\Product\DAO\ClassDAO;
 use App\Product\DAO\CourseDAO;
+use App\Product\service\CourseService;
 use App\Product\response\ResponseGeneratorImpl;
 
 Class ClassService implements IClassService{
@@ -23,7 +24,7 @@ Class ClassService implements IClassService{
         $this->responseGenerator = new ResponseGeneratorImpl();
         $this->classDAO = new ClassDAO();
         $this->courseDAO = new CourseDAO();
-        $this->courseService = new CourseService();
+        $this->courseService = new CourseService(new CourseDAO());
     }
 
     public function findAll($request){
