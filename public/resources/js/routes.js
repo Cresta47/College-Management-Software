@@ -126,6 +126,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/user/edit/{id}',
             params: {
                 stateTitle: 'Edit User',
+                actionParams: {action:'edit'}
             },
             views: {
                 '': {templateUrl: 'partial/user-form',

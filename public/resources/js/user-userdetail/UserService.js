@@ -1,8 +1,8 @@
 var UserService = app.service('UserService', function (UserRESTClient) {
 	return {
-		getMyInfo: function(){
-			return UserRESTClient.get
-		},
+		// getMyInfo: function(){
+		// 	return UserRESTClient.get
+		// },
 
 		get: function(id) {
 			return UserRESTClient.get({id:id.id}).$promise;

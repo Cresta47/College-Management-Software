@@ -9,7 +9,9 @@ app.controller('UserController', function ($scope, UserService, SessionService) 
 
 app.controller('UserFormController', function ($scope, $stateParams, UserService, RoleService) {
     $scope.loadUser = function () {
-        $scope.user = UserService.get({id:$scope.params.id});
+        UserService.get({id:$scope.stateParams.id}).then(function(response){
+            $scope.user = response.data;
+        });
     }
 
     $scope.stateParams = $stateParams;
@@ -38,13 +40,9 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
     $scope.loadRoles();
 
 
-    if($scope.stateParams.action === 'edit'){
-        console.log('asd');
+    if($scope.stateParams.actionParams.action === 'edit'){
+        $scope.loadUser();
     }
-
-
-
-
 
 });
 
