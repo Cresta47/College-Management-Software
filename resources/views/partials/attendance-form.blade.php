@@ -1,28 +1,54 @@
 <div ui-view="attendanceForm">
-    <div class="mdl-grid demo-content" ng-controller='AttendanceFormController'>
+    <div class="mdl-grid demo-content" ng-controller='AttendanceForCourseController'>
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <form>
                 <div class="form-group label-static is-empty">
-                    <h3>Create Attendance</h3>
+                    <h3>Take Attendance</h3>
+                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                        <div ng-repeat="user in users">
+                            <div ng-repeat="(key, user) in user" class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
 
-                    <div class="form-group label-static is-empty">
-                        <input type="text" name="user_id" class="signup form-control"
-                               id="i2" placeholder="user_id" ng-model="attendance.user_id">
+
+
+
+                            <input type="hidden" name="id" class="signup form-control"
+                                   id="i2" placeholder="" ng-model="user.user_id" >
+
+                            <div class="form-group label-static is-empty">
+                                <input type="text" name="comment" class="signup form-control"
+                                       id="i2" placeholder="Comment" ng-model="user.comment" >
+                            </div>
+
+                            <div>
+                                <h3>User Id : @{{user.user_id}}</h3>
+                            </div>
+
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a href="javascript:void(0)" ng-click="absent(user.user_id,user.comment)" class="mdl-button mdl-js-button mdl-js-ripple-effect">Absent</a>
+                                <a href="javascript:void(0)" ng-click="present(user.user_id,user.comment)" class="mdl-button mdl-js-button mdl-js-ripple-effect">Present</a>
+                            </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
                     </div>
 
-                    <div class="form-group label-static is-empty">
-                        <input type="text" name="in_or_out" class="signup form-control"
-                               id="i2" placeholder="in_or_out" ng-model="attendance.in_or_out">
-                    </div>
 
-                    <div class="form-group label-static is-empty">
-                        <input type="text" name="comment" class="signup form-control"
-                               id="i2" placeholder="comment" ng-model="attendance.comment">
-                    </div>
 
-                    <div class="signup form-group label-static is-empty ripple-container signup">
-                        <input type="button" value="Create Attendance" class="btn btn-raised btn-primary" ng-click="createattendance()">
-                    </div>
+
+
+
+
+
+
+
 
                 </div>
             </form>

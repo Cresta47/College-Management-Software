@@ -14,7 +14,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('class_id')->unsigned(); // Create column to store foreign key first
+            $table->integer('class_id')->unsigned()->nullable(); // Create column to store foreign key first
             $table->foreign('class_id')->references('id')->on('classes'); // Setting Up Foreign key
             $table->integer('grade_id')->unsigned()->nullable();
             $table->foreign('grade_id')->references('id')->on('grades');

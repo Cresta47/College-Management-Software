@@ -20,7 +20,7 @@ class ClassesTableSeeder extends Seeder
         $building = ['A','B','C'];
 
         for ($i = 0; $i < $limit; $i++) {
-            ClassModel::create([
+            \App\RoomModel::create([
                 'name' => $faker->firstName,
                 'building' => $faker->randomElement(array('A','B','C')),
                 'room' => $faker->randomElement(array(1,2,3,4,5,6,7,8,9,10)),

@@ -130,6 +130,8 @@
 
 <script src="resources/js/Authentication/Auth.js"></script>
 
+<script src="resources/js/filter/FilterController.js"></script>
+<script src="resources/js/filter/FilterService.js"></script>
 
 </body>
 </html>

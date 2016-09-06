@@ -9,5 +9,7 @@
 namespace App\Product\Service;
 
 interface IFilterService{
+
     public function filterFromRequest($filterRequest);
+
 }

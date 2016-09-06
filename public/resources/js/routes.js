@@ -6,8 +6,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
         // ATTENDANCE
-        .state('attendanceCreate', {
-            url: '/attendance/create',
+        .state('takeAttendanceOfCourse', {
+            url: '/attendance/take/course/{id}',
             views: {
                 '': {templateUrl: 'partial/attendance-form'}
             }

@@ -49,7 +49,6 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
         if($scope.user.id){
             user['id'] = $scope.user.id;
         }
-
         return user;
     }
 

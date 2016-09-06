@@ -1,3 +1,53 @@
+app.controller('AttendanceForCourseController', function ($scope, $stateParams , FilterService, AttendanceService) {
+
+    $scope.stateParams = $stateParams;
+
+    $scope.getAttendanceModel = function(presentOrAbsent,user_id,comment){
+        var attendance = {user_id:user_id, comment: comment};
+        if(presentOrAbsent === true){ // True for present and False for absent
+            attendance['in_or_out'] = '1';
+        }else{
+            attendance['in_or_out'] = '0';
+        }
+        return attendance;
+    }
+
+    $scope.present = function(id,comment){
+        var attendanceRecord = $scope.getAttendanceModel(true,id,comment);
+        $scope.sendAttendance(attendanceRecord);
+    }
+
+    $scope.absent = function(id,comment){
+        var attendanceRecord = $scope.getAttendanceModel(false,id,comment);
+        $scope.sendAttendance(attendanceRecord);
+    }
+
+    $scope.displayFormForUser = function(id){
+        return true;
+    }
+
+    $scope.sendAttendance = function(attendance){
+        AttendanceService.post(attendance).then(function(response){
+            alert('Attendance successfully added in the system.'+'\n'+'Check console.log for response.');
+            console.log(response.data);
+        });
+
+    }
+
+    $scope.loadUsers = function(){
+        FilterService.filterUserByCourseId($scope.stateParams.id).then(function(response){
+            $scope.users = response.data;
+        })
+    }
+    $scope.loadUsers();
+
+    $scope.getUniqueForNg = function(id,entity_id){
+        var unqId =  id+'.'+entity_id ;
+        console.log(unqId)
+        return unqId;
+    }
+});
+
 
 app.controller('AttendanceFormController', function ($scope, AttendanceService) {
     $scope.attendance = {};
@@ -7,16 +57,7 @@ app.controller('AttendanceFormController', function ($scope, AttendanceService) 
     $scope.loadAttendance = function () {
         $scope.attendance = AttendanceService.get({id:$scope.params.id});
     }
-    $scope.createattendance = function () {
-        attendance = {user_id:$scope.attendance.user_id,
-            in_or_out:$scope.attendance.in_or_out,
-            comment:$scope.attendance.comment
-        }
-        AttendanceService.post(attendance).then(function(response){
-            alert('Attendance successfully added in the system.'+'\n'+'Check console.log for response.');
-            console.log(response.data);
-        });
-    }
+
 });
 
 app.controller('AttendanceListCardsController', function ($scope, AttendanceService) {
