@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\ClassModel;
+use App\RoomModel;
 
 
-class ClassesTableSeeder extends Seeder
+class RoomsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

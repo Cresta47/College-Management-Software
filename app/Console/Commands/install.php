@@ -64,8 +64,8 @@ class install extends Command
         $this->info("Seeding 'permissions' Table...");
         Artisan::call("db:seed" , ['--class'=>'PermissionsTableSeeder']);
 
-        $this->info("Seeding 'classes' Table...");
-        Artisan::call("db:seed" , ['--class'=>'ClassesTableSeeder']);
+        $this->info("Seeding 'rooms' Table...");
+        Artisan::call("db:seed" , ['--class'=>'RoomsTableSeeder']);
 
         $this->info("Seeding 'grades' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradesTableSeeder']);

@@ -55,7 +55,7 @@ class CoursesTableSeeder extends Seeder
             CourseModel::create(
                 array(
                     'name' => $faker->randomElement($subjectList),
-                    'class_id' => $faker->numberBetween(1,100)
+                    'room_id' => $faker->numberBetween(1,100)
                     )
             );
         }
