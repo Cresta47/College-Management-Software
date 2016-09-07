@@ -44,8 +44,6 @@ app.controller('AttendanceForCourseController', function ($scope, $stateParams ,
 
     }
 
-
-
     $scope.loadUsers = function(){
 
         FilterService.filterUserByCourseId($scope.stateParams.id).then(function(response){

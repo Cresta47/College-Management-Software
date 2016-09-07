@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\product\service\ClassService;
-use Illuminate\Support\Facades\Input;
+use App\product\service\RoomService;
 
-
-class ClassController extends Controller
+class RoomController extends Controller
 {
-    private $classService;
+    private $roomService;
 
-    public function __construct(){
-        $this->classService = new ClassService();
+    public function __construct(RoomService $roomService){
+        $this->roomService = $roomService;
     }
     /**
      * Display a listing of the resource.
@@ -20,12 +18,8 @@ class ClassController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        if(Input::get('get-me') == 'my-classes'){
-            return $this->classService->findAllMyClasses();
-        }
-        return $this->classService->findAllMyClasses();
+    public function index(){
+
     }
 
     /**
@@ -44,10 +38,7 @@ class ClassController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $class = $request->all();
-        $this->classService->create($class);
+    public function store(Request $request){
     }
 
     /**
@@ -56,9 +47,7 @@ class ClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return $this->classService->findById($id);
+    public function show($id){
     }
 
     /**

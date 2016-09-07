@@ -8,23 +8,19 @@
 
 namespace App\Product\Service;
 
-use App\Product\DAO\ClassDAO;
+use App\Product\DAO\RoomDAO;
 use App\Product\DAO\CourseDAO;
 use App\Product\service\CourseService;
 use App\Product\response\ResponseGeneratorImpl;
 
-Class ClassService implements IClassService{
+Class RoomService implements IRoomService{
 
     private $responseGenerator;
-    private $classDAO;
-    private $courseDAO;
-    private $courseService;
+    private $roomDAO;
 
-    public function __construct(){
+    public function __construct(RoomDAO $roomDAO){
         $this->responseGenerator = new ResponseGeneratorImpl();
-        $this->classDAO = new ClassDAO();
-        $this->courseDAO = new CourseDAO();
-        $this->courseService = new CourseService(new CourseDAO());
+        $this->roomDAO = $roomDAO;
     }
 
     public function findAll($request){
@@ -35,9 +31,7 @@ Class ClassService implements IClassService{
 
     }
 
-    public function findByIds($request,$ids)
-    {
-        // TODO: Implement findByIds() method.
+    public function findByIds($request,$ids){
     }
 
     public function create($request){
@@ -54,9 +48,4 @@ Class ClassService implements IClassService{
     public function deleteByIds($request,$ids){
 
     }
-
-    public function findUserAssociatedClasses($request){
-
-    }
-
 }

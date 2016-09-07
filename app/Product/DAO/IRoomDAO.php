@@ -8,6 +8,6 @@
 
 namespace App\Product\DAO;
 
-interface IClassDAO extends IGenericDAO{
+interface IRoomDAO extends IGenericDAO{
 
 }

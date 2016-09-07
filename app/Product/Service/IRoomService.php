@@ -9,8 +9,6 @@
 namespace App\Product\Service;
 
 
-interface IClassService extends IGenericService{
-
-    public function findUserAssociatedClasses($request);
+interface IRoomService extends IGenericService{
 
 }

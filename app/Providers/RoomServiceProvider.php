@@ -3,14 +3,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Product\Service\ClassService;
+use App\Product\Service\RoomService;
 
-class ClassServiceProvider extends ServiceProvider {
+class RoomServiceProvider extends ServiceProvider {
 
     public function register(){
-        $this->app->singleton('classService', function()
+        $this->app->singleton('roomService', function()
         {
-            return new ClassService();
+            return new RoomService();
         });
     }
 

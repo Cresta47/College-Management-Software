@@ -9,7 +9,7 @@
 namespace  App\Product\DAOUtil;
 use App\Product\DAOUtil\IDTOTransformer;
 
-class ClassDTOTransformer implements IDTOTransformer{
+class RoomDTOTransformer implements IDTOTransformer{
 
     /*
      * Transforming data coming from the front end and Service to savable object

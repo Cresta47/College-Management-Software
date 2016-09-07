@@ -38,7 +38,7 @@
 
         //----------Restful Routes----------//
 
-        Route::resource('api/class','ClassController');
+        Route::resource('api/room','RoomController');
 
         Route::resource('api/course','CourseController');
 
