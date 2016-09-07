@@ -3,6 +3,9 @@ app.controller('AttendanceForCourseController', function ($scope, $stateParams ,
     $scope.stateParams = $stateParams;
 
     $scope.getAttendanceModel = function(presentOrAbsent,user_id,comment){
+        if(!comment){
+            comment = '-';
+        }
         var attendance = {user_id:user_id, comment: comment};
         if(presentOrAbsent === true){ // True for present and False for absent
             attendance['in_or_out'] = '1';
@@ -17,28 +20,39 @@ app.controller('AttendanceForCourseController', function ($scope, $stateParams ,
         $scope.sendAttendance(attendanceRecord);
     }
 
+    $scope.allPresent = function(users){
+
+        console.log(users);
+
+        angular.forEach(users, function(item, key) {
+            var attendanceRecord = $scope.getAttendanceModel(true,item.user_id,item.comment);
+            $scope.sendAttendance(attendanceRecord);
+        });
+    }
+
+    // $scope.users= [];
+
     $scope.absent = function(id,comment){
         var attendanceRecord = $scope.getAttendanceModel(false,id,comment);
         $scope.sendAttendance(attendanceRecord);
     }
 
-    $scope.displayFormForUser = function(id){
-        return true;
-    }
-
     $scope.sendAttendance = function(attendance){
         AttendanceService.post(attendance).then(function(response){
-            alert('Attendance successfully added in the system.'+'\n'+'Check console.log for response.');
             console.log(response.data);
         });
 
     }
 
+
+
     $scope.loadUsers = function(){
+
         FilterService.filterUserByCourseId($scope.stateParams.id).then(function(response){
             $scope.users = response.data;
         })
     }
+
     $scope.loadUsers();
 
     $scope.getUniqueForNg = function(id,entity_id){
