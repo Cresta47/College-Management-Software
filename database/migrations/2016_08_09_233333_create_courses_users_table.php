@@ -15,10 +15,16 @@ class CreateCoursesUsersTable extends Migration
         Schema::create('course_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('course_id')->unsigned(); // Create column to store foreign key first
-            $table->foreign('course_id')->references('id')->on('courses'); // Setting Up Foreign key
+            $table->foreign('course_id')
+                ->references('id')
+                ->on('courses')
+                ->onDelete('cascade'); // Setting Up Foreign key
 
             $table->integer('user_id')->unsigned(); // Create column to store foreign key first
-            $table->foreign('user_id')->references('id')->on('users'); // Setting Up Foreign key
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');// Setting Up Foreign key
 
             $table->string('name');
             $table->timestamps();

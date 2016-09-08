@@ -12,16 +12,20 @@ class AttendanceTableSeeder extends Seeder{
     public function run(){
         $faker = Faker\Factory::create();
         $limit = 500;
-        for ($i = 1; $i <= $limit; $i++) {
-            for($j= 0 ; $j < 10; $j++){
-            $attendanceDate = $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = date_default_timezone_get());
 
-               AttendanceModel::create([
+        $date = '2016-07-01 10:01:01';
+        $endDate = '2016-09-01 10:01:01';
+
+        while (strtotime($date) <= strtotime($endDate)) {
+            for ($i = 1; $i <= $limit; $i++) {
+                AttendanceModel::create([
                     'user_id' => $i,
                     'in_or_out' => $faker->randomElement(array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,0)),
-                    'created_at' => $attendanceDate,
+                    'created_at' => $date,
                 ]);
+
             }
+            $date = date ("Y-m-d H:i:s", strtotime("+1 day", strtotime($date)));
         }
     }
 }

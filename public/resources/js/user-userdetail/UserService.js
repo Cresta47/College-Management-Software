@@ -8,6 +8,10 @@ var UserService = app.service('UserService', function (UserRESTClient) {
 			return UserRESTClient.save(user).$promise;
 		},
 
+		delete: function(id){
+			return UserRESTClient.delete({id:id}).$promise;
+		},
+
 		all: function(){
 			return UserRESTClient.query().$promise;
 		},

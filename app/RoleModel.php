@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Zizaco\Entrust\EntrustRole;
 
 class RoleModel extends EntrustRole
 {
+    use SoftDeletes;
+
     protected $table = 'roles';
 
     protected $fillable = array('name', 'display_name','description');

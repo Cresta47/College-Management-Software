@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class UserModel extends Model
 {
-    use EntrustUserTrait;
+    use SoftDeletes;
 
     protected $fillable = array('name', 'email', 'password');
 

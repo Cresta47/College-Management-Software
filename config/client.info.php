@@ -8,6 +8,6 @@
 
 static $value;
 
-$value = (require __DIR__ . '/../product-client/organization.info.php');
+$value = (require __DIR__ . '/../cts-client-configuration/organization.info.php');
 
 return $value;

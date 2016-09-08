@@ -80,6 +80,13 @@ app.controller('UserListCardsController', function ($scope, UserService) {
         });
     }
 
+    $scope.deleteUser = function (id) {
+        UserService.delete(id).then(function(response) {
+            $scope.loadAll();
+        });
+    }
+
+
     $scope.loadAll();
 
 });

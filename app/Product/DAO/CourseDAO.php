@@ -16,18 +16,7 @@ Class CourseDAO implements ICourseDAO{
     }
 
     public function findAll($columns){
-//        $courses = \DB::table('courses')
-//                        ->join('course_user','courses.id ','=','course_user.course_id')
-//                        ->where('course_user.id','=','1')
-//                        ->get();
-
-        $courses = \DB::table('courses')
-            ->join('course_user', function ($join) {
-                $join->on('courses.id', '=', 'course_user.course_id')
-                    ->where('course_user.user_id','=','1');
-            })
-            ->get();
-
+        $courses = CourseModel::all();
         $result = array();
         if($courses != null){
             foreach($courses as $course){

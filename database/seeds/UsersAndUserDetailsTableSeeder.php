@@ -332,6 +332,8 @@ class UsersAndUserDetailsTableSeeder extends Seeder
                 ]
                 );
 
+
+
             UserModel::insert($users);
 
             UserDetailModel::insert($userDetails);
@@ -339,7 +341,6 @@ class UsersAndUserDetailsTableSeeder extends Seeder
             $users = array();
 
             $userDetails = array();
-
         }
 
     }
