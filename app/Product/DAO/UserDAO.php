@@ -15,7 +15,7 @@ Class UserDAO implements IUserDAO{
     }
 
     public function findAll($columns){
-        $users = UserModel::where('id','<','51')->get();
+        $users = UserModel::with('userDetail')->where('id','<','51')->get();
         if($users != null){
             foreach($users as $user){
                 $result[] = $this->userDTOTransformer->formatDataFromDb($user);

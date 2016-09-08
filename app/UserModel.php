@@ -20,15 +20,8 @@ class UserModel extends Model
     /**
      * Get the User Detail associated with the user.
      */
-    public function userDetail()
-    {
-        return $this->hasOne('App\UserDetailModel','user_id','user_id');
+    public function userDetail(){
+        return $this->hasOne('App\UserDetailModel','user_id');
     }
-
-    public function roles(){
-        return $this->hasMany('App\Role');
-    }
-
-
 
 }
