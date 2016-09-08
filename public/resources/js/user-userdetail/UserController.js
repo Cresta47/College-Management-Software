@@ -97,7 +97,6 @@ app.controller('UserProfileController', function ($scope, $stateParams, UserServ
     $scope.loadUser = function () {
         UserService.get({id:$scope.stateParams.id}).then(function(response) {
             $scope.user = response.data;
-            alert(1);
         });
     }
 
