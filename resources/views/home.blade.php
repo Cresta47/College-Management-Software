@@ -128,7 +128,7 @@
 <script src="resources/js/session/SessionController.js"></script>
 <script src="resources/js/session/SessionService.js"></script>
 
-<script src="resources/js/Authentication/Auth.js"></script>
+<script src="resources/js/auth/auth.js"></script>
 
 <script src="resources/js/filter/FilterController.js"></script>
 <script src="resources/js/filter/FilterService.js"></script>

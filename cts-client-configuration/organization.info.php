@@ -9,5 +9,5 @@
 return [
     'serverName' => 'CTS-Demo',
     'orgName' => 'Cloud Tech Service',
-    'defaultRoles' => array('Student','Teacher'),
+    'defaultRoles' => array('Student','Teacher'), // ! - Order or value should not be changed - ! //
 ];

@@ -6,10 +6,10 @@
                     <h3>Take Attendance</h3>
                     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a href="javascript:void(0)" ng-click="allAbsent()" class="mdl-button mdl-js-button mdl-js-ripple-effect">All Absent</a>
-                            <a href="javascript:void(0)" ng-click="allPresent(users)" class="mdl-button mdl-js-button mdl-js-ripple-effect">All Present</a>
-                        </div>
+                        {{--<div class="mdl-card__actions mdl-card--border">--}}
+                            {{--<a href="javascript:void(0)" ng-click="allAbsent()" class="mdl-button mdl-js-button mdl-js-ripple-effect">All Absent</a>--}}
+                            {{--<a href="javascript:void(0)" ng-click="allPresent(users)" class="mdl-button mdl-js-button mdl-js-ripple-effect">All Present</a>--}}
+                        {{--</div>--}}
                         <div ng-repeat="user in users">
                             <div ng-repeat="(key, user) in user" class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
                             <input type="hidden" name="id" class="signup form-control"

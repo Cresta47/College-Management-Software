@@ -116,6 +116,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('userProfile', {
+            url: '/user/profile/{id}',
+            params: {
+                stateTitle: 'User Profile',
+                actionParams: {action:'viewDetail'},
+            },
+            views: {
+                '': {templateUrl: 'partial/user-detail'}
+            }
+        })
+
         .state('userListCard', {
             url: '/user/all',
             views: {

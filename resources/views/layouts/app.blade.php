@@ -54,7 +54,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    {{--<!-- Authentication Links -->--}}
+                    {{--<!-- auth Links -->--}}
                     {{--@if (Auth::guest())--}}
                         {{--<li><a href="{{ url('/login') }}">Login</a></li>--}}
                         {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}

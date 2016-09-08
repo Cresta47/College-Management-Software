@@ -23,7 +23,6 @@ class AttendanceTableSeeder extends Seeder{
                     'in_or_out' => $faker->randomElement(array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,0)),
                     'created_at' => $date,
                 ]);
-
             }
             $date = date ("Y-m-d H:i:s", strtotime("+1 day", strtotime($date)));
         }

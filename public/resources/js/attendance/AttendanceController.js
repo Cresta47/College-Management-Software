@@ -20,18 +20,6 @@ app.controller('AttendanceForCourseController', function ($scope, $stateParams ,
         $scope.sendAttendance(attendanceRecord);
     }
 
-    $scope.allPresent = function(users){
-
-        console.log(users);
-
-        angular.forEach(users, function(item, key) {
-            var attendanceRecord = $scope.getAttendanceModel(true,item.user_id,item.comment);
-            $scope.sendAttendance(attendanceRecord);
-        });
-    }
-
-    // $scope.users= [];
-
     $scope.absent = function(id,comment){
         var attendanceRecord = $scope.getAttendanceModel(false,id,comment);
         $scope.sendAttendance(attendanceRecord);

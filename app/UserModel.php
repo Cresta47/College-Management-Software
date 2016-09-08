@@ -25,4 +25,12 @@ class UserModel extends Model
         return $this->hasOne('App\UserDetailModel','user_id');
     }
 
+
+    /**
+     * Get the User Detail associated with the user.
+     */
+    public function attendanceRecords(){
+        return $this->hasMany('App\AttendanceModel','user_id');
+    }
+
 }

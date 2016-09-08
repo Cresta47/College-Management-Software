@@ -90,3 +90,28 @@ app.controller('UserListCardsController', function ($scope, UserService) {
     $scope.loadAll();
 
 });
+
+app.controller('UserProfileController', function ($scope, $stateParams, UserService) {
+    $scope.stateParams = $stateParams;
+
+    $scope.loadUser = function () {
+        UserService.get({id:$scope.stateParams.id}).then(function(response) {
+            $scope.user = response.data;
+            alert(1);
+        });
+    }
+
+    $scope.gridOptions = { data: 'user.attendanceRecords',
+        columnDefs:
+            [{field: 'createdAtNp', displayName: 'Date', width: 150},
+             {field: 'in_or_out', displayName: 'Present / Absent', width: 300  },
+             {field: 'comment', displayName: 'Comment', width: 300  },
+            ],
+        enableRowSelection: true,
+        enableSelectAll: true,
+        selectionRowHeaderWidth: 35,
+    };
+
+    $scope.loadUser();
+
+});

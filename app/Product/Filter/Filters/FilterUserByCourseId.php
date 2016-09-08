@@ -13,7 +13,6 @@ use App\Product\Filter\FilterValidation\IFilterValidation;
 use App\Product\Filter\IFilter;
 use Illuminate\Support\Facades\DB;
 
-
 class FilterUserByCourseId extends TemplateAbstract implements IFilterValidation, IFilter{
 
     public function __construct($id, $comparisonOp, $params){
@@ -22,7 +21,7 @@ class FilterUserByCourseId extends TemplateAbstract implements IFilterValidation
     }
 
     public function filterFromDB(){
-        $dbResults =  DB::table('course_user')->where('course_id', '=' , $this->getParams())->select('user_id','id')->distinct()->get();
+        $dbResults =  DB::table('course_user')->where('course_id', '=' , $this->getParams())->select('user_id','id')->get();
         $result = array();
         foreach($dbResults as $key => $value){
             array_push($result,  ['user_id' => $value->user_id]);

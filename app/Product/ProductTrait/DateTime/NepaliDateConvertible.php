@@ -14,6 +14,7 @@ trait NepaliDateConvertible
 {
     public function convertToBS($dateInAD){
         $adToBs = new AdToBs($dateInAD);
-        return $adToBs->getNepaliDate();
+        $convertedDate = $adToBs->getNepaliDate();
+        return $convertedDate['Y'].'-'.$convertedDate['F'].'-'.$convertedDate['d'];
     }
 }

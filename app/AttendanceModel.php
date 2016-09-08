@@ -16,4 +16,12 @@ class AttendanceModel extends Model
     public function getTableName(){
         return $this->table;
     }
+
+    /**
+     * Get the User associated with the user.
+     */
+//    public function user(){
+//        return $this->belongsTo('App\UserModel');
+//    }
+
 }
