@@ -1,5 +1,6 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -12,14 +13,19 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('courses', function (BluePrint $table) {
             $table->increments('id');
             $table->integer('room_id')->unsigned()->nullable(); // Create column to store foreign key first
             $table->foreign('room_id')->references('id')->on('rooms'); // Setting Up Foreign key
             $table->integer('grade_id')->unsigned()->nullable();
             $table->foreign('grade_id')->references('id')->on('grades');
             $table->string('name');
+            $table->boolean('practical');
+            $table->boolean('theory');
+            $table->integer('theory_marks');
+            $table->integer('practical_marks');
             $table->timestamps();
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

@@ -13,7 +13,7 @@ class AttendanceTableSeeder extends Seeder{
         $faker = Faker\Factory::create();
         $limit = 500;
 
-        $date = '2016-07-01 10:01:01';
+        $date = '2016-07-25 10:01:01';
         $endDate = '2016-09-01 10:01:01';
 
         while (strtotime($date) <= strtotime($endDate)) {
@@ -26,5 +26,6 @@ class AttendanceTableSeeder extends Seeder{
             }
             $date = date ("Y-m-d H:i:s", strtotime("+1 day", strtotime($date)));
         }
+
     }
 }

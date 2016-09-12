@@ -1,7 +1,10 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+
 
 class CreateMarksTable extends Migration
 {
@@ -12,6 +15,7 @@ class CreateMarksTable extends Migration
      */
     public function up()
     {
+
         Schema::create('marks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('course_id')->unsigned(); // Create column to store foreign key first
@@ -20,6 +24,7 @@ class CreateMarksTable extends Migration
             $table->foreign('exam_id')->references('id')->on('examinations');
             $table->string('name');
             $table->timestamps();
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

@@ -35,9 +35,10 @@ app.controller('CourseFormController', function ($scope,CourseService) {
 });
 
 
-app.controller('CourseListCardsController', function ($scope, CourseService) {
+app.controller('CourseListCardsController', function ($scope, $interval , CourseService, FilterService) {
 
     $scope.courses;
+    $scope.courseUsers = [];
 
     // View Options
     $scope.showCards = true;
@@ -58,9 +59,18 @@ app.controller('CourseListCardsController', function ($scope, CourseService) {
     $scope.loadAll = function(){
         CourseService.all().then(function(response) {
             $scope.courses = response.data;
+            $scope.loadCourseStudent();
         });
     }
 
-    $scope.loadAll();
+    $scope.loadCourseStudent = function(){
+        var courseIds = [];
+        $scope.courses.forEach(function(course){
+            courseIds.push(course.id);
 
+        });
+        FilterService.filterUserByCourse(courseIds);
+    }
+
+    $scope.loadAll();
 });

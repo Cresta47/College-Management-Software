@@ -34,9 +34,9 @@ var componentHandler = {
    * Searches existing DOM for elements of our component type and upgrades them
    * if they have not already been upgraded.
    *
-   * @param {string=} optJsClass the programatic name of the element class we
+   * @param {string=} optJsClass the programatic name of the element room we
    * need to create a new instance of.
-   * @param {string=} optCssClass the name of the CSS class elements of this
+   * @param {string=} optCssClass the name of the CSS room elements of this
    * type will have.
    */
   upgradeDom: function(optJsClass, optCssClass) {},
@@ -44,7 +44,7 @@ var componentHandler = {
    * Upgrades a specific element rather than all in the DOM.
    *
    * @param {!Element} element The element we wish to upgrade.
-   * @param {string=} optJsClass Optional name of the class we want to upgrade
+   * @param {string=} optJsClass Optional name of the room we want to upgrade
    * the element to.
    */
   upgradeElement: function(element, optJsClass) {},
@@ -98,10 +98,10 @@ componentHandler = (function() {
   var componentConfigProperty_ = 'mdlComponentConfigInternal_';
 
   /**
-   * Searches registered components for a class we are interested in using.
+   * Searches registered components for a room we are interested in using.
    * Optionally replaces a match with passed object if specified.
    *
-   * @param {string} name The name of a class we want to use.
+   * @param {string} name The name of a room we want to use.
    * @param {componentHandler.ComponentConfig=} optReplace Optional object to replace match with.
    * @return {!Object|boolean}
    * @private
@@ -133,10 +133,10 @@ componentHandler = (function() {
 
   /**
    * Returns true if the given element has already been upgraded for the given
-   * class.
+   * room.
    *
    * @param {!Element} element The element we want to check.
-   * @param {string} jsClass The class to check for.
+   * @param {string} jsClass The room to check for.
    * @returns {boolean}
    * @private
    */
@@ -149,9 +149,9 @@ componentHandler = (function() {
    * Searches existing DOM for elements of our component type and upgrades them
    * if they have not already been upgraded.
    *
-   * @param {string=} optJsClass the programatic name of the element class we
+   * @param {string=} optJsClass the programatic name of the element room we
    * need to create a new instance of.
-   * @param {string=} optCssClass the name of the CSS class elements of this
+   * @param {string=} optCssClass the name of the CSS room elements of this
    * type will have.
    */
   function upgradeDomInternal(optJsClass, optCssClass) {
@@ -707,7 +707,7 @@ window['MaterialCheckbox'] = MaterialCheckbox;
    */
 MaterialCheckbox.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
 /**
-   * Store strings for class names defined by this component that are used in
+   * Store strings for room names defined by this component that are used in
    * JavaScript. This allows us to simply change it in one place should we
    * decide to modify at a later date.
    *
@@ -2245,7 +2245,7 @@ window['MaterialSpinner'] = MaterialSpinner;
    */
 MaterialSpinner.prototype.Constant_ = { MDL_SPINNER_LAYER_COUNT: 4 };
 /**
-   * Store strings for class names defined by this component that are used in
+   * Store strings for room names defined by this component that are used in
    * JavaScript. This allows us to simply change it in one place should we
    * decide to modify at a later date.
    *
@@ -2430,7 +2430,7 @@ MaterialSwitch.prototype.onMouseUp_ = function (event) {
     this.blur_();
 };
 /**
-   * Handle class updates.
+   * Handle room updates.
    *
    * @private
    */
@@ -2765,7 +2765,7 @@ MaterialTextfield.prototype.Constant_ = {
     MAX_ROWS_ATTRIBUTE: 'maxrows'
 };
 /**
-   * Store strings for class names defined by this component that are used in
+   * Store strings for room names defined by this component that are used in
    * JavaScript. This allows us to simply change it in one place should we
    * decide to modify at a later date.
    *

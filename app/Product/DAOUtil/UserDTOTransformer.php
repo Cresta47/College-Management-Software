@@ -24,11 +24,21 @@ class UserDTOTransformer implements IDTOTransformer{
         if(is_array($dto)){
             $dto = (object) $dto;
         }
+
         $result['id'] = isset($dto->id) ? $dto->id : null;
         $result['email'] = isset($dto->email) ? $dto->email : null;
         if(isset($dto->password)){
             $result['password'] = isset($dto->password)? $this->encrypt($dto->password) : null;
         }
+
+        if(isset($dto->created_at)){
+            $result['created_at_np'] = $this->convertToBS($dto->created_at);
+        }
+
+        if(isset($dto->updated_at)){
+            $result['updated_at_np'] = $this->convertToBS($dto->updated_at);
+        }
+
         return $result;
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -12,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (BluePrint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -20,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('status');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('created_at_np');
+            $table->string('updated_at_np');
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

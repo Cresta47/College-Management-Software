@@ -10,7 +10,7 @@ class UserModel extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = array('name', 'email', 'password');
+    protected $fillable = array('name', 'email', 'password','created_at_np','updated_at_np');
 
     protected $table = 'users';
 

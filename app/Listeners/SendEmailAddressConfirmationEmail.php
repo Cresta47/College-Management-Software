@@ -9,6 +9,7 @@
 namespace App\Listeners;
 
 use App\Events\UserCreated;
+use Illuminate\Support\Facades\Mail;
 
 class SendEmailAddressConfirmationEmail
 {
@@ -27,8 +28,7 @@ class SendEmailAddressConfirmationEmail
      * @param  UserCreated  $event
      * @return void
      */
-    public function handle(UserCreated $event)
-    {
-
+    public function handle(UserCreated $event){
+//        Mail::se
     }
 }

@@ -63,7 +63,7 @@
 // for top or bottom drawers, setup widths, heights and positions
 @include bmd-drawer-y-out($bmd-drawer-y-size);
 
-// Marker class for both triggering the opening of the drawer (i.e. javascript #addClass('.bmd-drawer-in')), as well
+// Marker room for both triggering the opening of the drawer (i.e. javascript #addClass('.bmd-drawer-in')), as well
 //  as responsive sizes (i.e. bmd-drawer-in-md will open once the browser is wider than 768px).
 //
 //
@@ -75,7 +75,7 @@
 //  NOTE: bmd-drawer-in-* uses media-breakpoint-up()
 //
 // bmd-drawer-out
-//  A marker class that will _force_ the drawer closed regardless of the responsive class present. If (for some
+//  A marker room that will _force_ the drawer closed regardless of the responsive room present. If (for some
 //  strange reason) both bmd-drawer-out and bmd-drawer-in are present, it appears that the closed option wins.
 //
 // bmd-drawer-overlay, bmd-drawer-overlay-sm, bmd-drawer-overlay-md, bmd-drawer-overlay-lg

@@ -26,9 +26,8 @@ Class UserDAO implements IUserDAO{
             $result = array();
             foreach($users as $key => $user){
                 $result[$key] = $this->userDTOTransformer->formatDataFromDb($user);
-                $attachedEntities = $this->attachRelatedEntities($user);
+                $attachedEntities = $this->attachOneToOneRelatedEntities($user);
                 $result[$key]['userDetail'] = $attachedEntities['userDetail'];
-                $result[$key]['attendanceRecords'] = $attachedEntities['attendanceRecords'];
             }
         }else{
             throw new DAOException("Error fetching all Users!");
@@ -36,31 +35,24 @@ Class UserDAO implements IUserDAO{
         return $result;
     }
 
-    private function attachRelatedEntities($user){
+    public function attachOneToOneRelatedEntities($user){
         $result = array();
 
         $userDetail = $user->userDetail()->get();
-        foreach($userDetail as $usrDetail){
-            $result['userDetail'] = $this->userDetailDTOTransformer->formatDataFromDb($usrDetail);
+        if(null != $userDetail && !empty($userDetail)){
+            foreach($userDetail as $usrDetail){
+                $result['userDetail'] = $this->userDetailDTOTransformer->formatDataFromDb($usrDetail);
+            }
         }
-
-        $attendanceRecords = $user->attendanceRecords()->get();
-        foreach($attendanceRecords as  $attendanceRecord){
-            $result['attendanceRecords'][] = $this->attendanceDTOTransformer->formatDataFromDb($attendanceRecord);
-        }
-
         return $result;
     }
 
-
     public function findById($id,$columns){
-        $user = UserModel::find($id);
-        $attachedEntities = $this->attachRelatedEntities($user);
-
+        $user = UserModel::with('userDetail')->find($id);
+        $attachedEntities = $this->attachOneToOneRelatedEntities($user);
         if($user != null){
             $user = $this->userDTOTransformer->formatDataFromDb($user);
             $user['userDetail'] = $attachedEntities['userDetail'];
-            $user['attendanceRecords'] = $attachedEntities['attendanceRecords'];
         }else{
             throw new DAOException("Error fetching User with id:".$id." !");
         }
@@ -70,8 +62,11 @@ Class UserDAO implements IUserDAO{
     public function findByIds($ids,$columns){
         $users = UserModel::whereIn('id',$ids)->get();
         if($users != null){
-            foreach($users as $user){
-                $result[] = $this->userDTOTransformer->formatDataFromDb($user);
+            $result = array();
+            foreach($users as $key => $user){
+                $result[$key] = $this->userDTOTransformer->formatDataFromDb($user);
+                $attachedEntities = $this->attachOneToOneRelatedEntities($user);
+                $result[$key]['userDetail'] = $attachedEntities['userDetail'];
             }
         }else{
             throw new DAOException("Error fetching all Users!");
@@ -80,16 +75,22 @@ Class UserDAO implements IUserDAO{
     }
 
     public function create($user){
+        $user['created_at'] = date("Y-m-d H:i:s");
+        $user['updated_at'] = date("Y-m-d H:i:s");
+
         $result = $this->userDTOTransformer->formatDataToDb($user);
+
         unset($result->id); // As we are inserting new record we need to remove any ID
         $insertedUserModel = UserModel::create($result);
         return $this->userDTOTransformer
-                    ->formatDataFromDb(
-                        $insertedUserModel
-                    );
+            ->formatDataFromDb(
+                $insertedUserModel
+            );
     }
 
     public function update($user){
+        $user['updated_at'] = date("Y-m-d H:i:s");
+
         $transformedUserEntity = $this->userDTOTransformer->formatDataToDb($user);
         UserModel::where('id','=',$user['id'])
                   ->update($transformedUserEntity);

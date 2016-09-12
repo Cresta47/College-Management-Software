@@ -117,7 +117,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
 
         .state('userProfile', {
-            url: '/user/profile/{id}',
+            url: '/user/{id}/profile',
             params: {
                 stateTitle: 'User Profile',
                 actionParams: {action:'viewDetail'},

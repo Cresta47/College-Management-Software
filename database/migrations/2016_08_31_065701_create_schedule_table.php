@@ -1,5 +1,6 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -12,10 +13,11 @@ class CreateScheduleTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('schedules', function (BluePrint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

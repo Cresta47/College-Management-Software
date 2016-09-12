@@ -1,5 +1,6 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -12,7 +13,7 @@ class CreateUserDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_details', function (Blueprint $table) {
+        Schema::create('user_details', function (BluePrint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned(); // Create column to store foreign key first
 			$table->foreign('user_id')
@@ -24,6 +25,7 @@ class CreateUserDetailsTable extends Migration
             $table->date('dob');
             $table->text('gender');
             $table->timestamps();
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

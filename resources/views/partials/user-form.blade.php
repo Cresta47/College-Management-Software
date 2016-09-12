@@ -32,15 +32,6 @@
                            id="i2" placeholder="Last Name" ng-model="user.lastName">
                 </div>
 
-                <label ng-repeat="role in roles">
-                    <input
-                            type="checkbox"
-                            name="roles[]"
-                            value="@{{role.id}}"
-                            ng-model="form.selectedRoles"
-                    >@{{role.displayName}}
-                </label>
-
                 <div ng-show="!editState" class="signup form-group label-static is-empty ripple-container signup">
                     <input type="button" value="Sign up" class="btn btn-raised btn-primary" ng-click="signUp()">
                 </div>

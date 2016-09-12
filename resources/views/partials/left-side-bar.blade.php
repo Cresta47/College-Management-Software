@@ -20,7 +20,6 @@
 
 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
     <a ui-sref="dashboard" class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-    <a ui-sref="takeAttendanceOfCourse" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Take Attendance</a>
     <a ui-sref="examinationCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Examination</a>
 
     <a ui-sref="classCreate" class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_box</i>Create Class</a>

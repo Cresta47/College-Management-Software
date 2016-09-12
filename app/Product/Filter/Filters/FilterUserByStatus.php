@@ -23,7 +23,7 @@ class FilterUserByStatus extends TemplateAbstract implements IFilterValidation, 
     }
 
     public function filterFromDB(){
-        $result =  DB::table('users')->where('status', '=' , $this->getParams())->select('id')->get();
+        $result =  DB::table('users')->where('status', '=' , $this->getParams())->select('users.id as user_id')->get();
         return $result;
     }
 }

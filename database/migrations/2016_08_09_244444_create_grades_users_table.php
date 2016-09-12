@@ -1,5 +1,6 @@
 <?php
 
+use App\Product\Database\CustomBluePrint;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -12,7 +13,7 @@ class CreateGradesUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('grade_user', function (Blueprint $table) {
+        Schema::create('grade_user', function (BluePrint $table) {
             $table->increments('id');
             $table->integer('grade_id')->unsigned();
             $table->foreign('grade_id')
@@ -25,6 +26,7 @@ class CreateGradesUsersTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
             $table->timestamps();
+//            $table->nepaliTimeStamps();
             $table->softDeletes();
         });
     }

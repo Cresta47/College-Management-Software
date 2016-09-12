@@ -100,9 +100,9 @@
 <script src="resources/js/grade/GradeFactory.js"></script>
 <script src="resources/js/grade/GradeController.js"></script>
 
-<script src="resources/js/class/ClassService.js"></script>
-<script src="resources/js/class/ClassFactory.js"></script>
-<script src="resources/js/class/ClassController.js"></script>
+<script src="resources/js/room/RoomService.js"></script>
+<script src="resources/js/room/RoomFactory.js"></script>
+<script src="resources/js/room/RoomController.js"></script>
 
 <script src="resources/js/course/CourseService.js"></script>
 <script src="resources/js/course/CourseFactory.js"></script>
@@ -132,6 +132,8 @@
 
 <script src="resources/js/filter/FilterController.js"></script>
 <script src="resources/js/filter/FilterService.js"></script>
+
+<script src="vendor/ramda/dist/ramda.js"></script>
 
 </body>
 </html>

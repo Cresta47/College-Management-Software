@@ -23,6 +23,16 @@ class TemplateAbstract{
         $this->id = $id;
         $this->comparisonOperator = $comparisonOp;
         $this->params = $params;
+
+        $this->validate();
+
+
+        // change equals for one element to in
+        if( !is_array($params) && $comparisonOp == '=' ){
+            $this->setParams(array(0 => $this->getParams()));
+            $this->setComparisonOperator('in');
+        }
+
         $this->validate();
     }
 
@@ -83,7 +93,7 @@ class TemplateAbstract{
             || $this->comparisonOperator == '!='
         ){
 
-            if($this->validateParams($this->params,'value')){
+            if($this->validateParamsAndComparisonOp($this->params,'value')){
                 return true;
             }
 
@@ -92,7 +102,7 @@ class TemplateAbstract{
                 || $this->comparisonOperator == 'notIn'
         ){
 
-            if($this->validateParams($this->params,'array')){
+            if($this->validateParamsAndComparisonOp($this->params,'array')){
                 return true;
             }
 
@@ -106,14 +116,14 @@ class TemplateAbstract{
         return true;
     }
 
-    public function validateParams($params, $typeExpected){
+    public function validateParamsAndComparisonOp($params, $typeExpected){
 
         if($typeExpected == 'value'){
             if(is_array($params) || is_object($params)){
                 throw new FilterException("Parameter for the filter should be a value.");
             }
         }else if($typeExpected == 'array'){
-            if(!is_array($typeExpected)){
+            if(!is_array($params)){
                 throw new FilterException("Parameter for the filter should be an array.");
             }
         }

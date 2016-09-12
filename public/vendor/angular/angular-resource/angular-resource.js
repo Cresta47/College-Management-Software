@@ -449,14 +449,14 @@ angular.module('ngResource', ['ng']).
      * - **cancellable** – `{boolean}` – If true, the request made by a "non-instance" call will be
      *   cancelled (if not already completed) by calling `$cancelRequest()` on the call's return
      *   value. For more details, see {@link ngResource.$resource}. This can be overwritten per
-     *   resource class or action.<br />
+     *   resource room or action.<br />
      *   (Defaults to false.)
      * - **actions** - `{Object.<Object>}` - A hash with default actions declarations. Actions are
      *   high-level methods corresponding to RESTful actions/methods on resources. An action may
      *   specify what HTTP method to use, what URL to hit, if the return value will be a single
      *   object or a collection (array) of objects etc. For more details, see
      *   {@link ngResource.$resource}. The actions can also be enhanced or overwritten per resource
-     *   class.<br />
+     *   room.<br />
      *   The default actions are:
      *   ```js
      *   {

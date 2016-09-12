@@ -8,7 +8,7 @@
 namespace App\Product\Service;
 use App\Product\Exception\DAOException;
 use App\Product\Exception\FilterException;
-use App\Product\Filter\Filters\FilterUserByCourseId;
+use App\Product\Filter\Filters\FilterUserByCourse;
 use App\Product\Filter\Filters\FilterUserByStatus;
 use App\Facades\ResponseGenerator;
 
@@ -33,9 +33,9 @@ class FilterService implements IFilterService{
                 );
                 $result =  $filterUserByStatus->filterFromDB();
 
-            }else if($filterRequest->id == 'filterUserByCourseId'){
+            }else if($filterRequest->id == 'filterUserByCourse'){
 
-                $filterUserByCourseId = new FilterUserByCourseId(
+                $filterUserByCourseId = new FilterUserByCourse(
                     $filterId, $comparisonOp, $params
                 );
                 $result =  $filterUserByCourseId->filterFromDB();

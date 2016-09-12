@@ -10,4 +10,6 @@ namespace App\Product\DAO;
 
 interface IUserDAO extends IGenericDAO{
 
+    public function attachOneToOneRelatedEntities($entity);
+
 }

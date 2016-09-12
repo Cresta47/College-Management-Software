@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\GradeModel;
-
+use Illuminate\Support\Facades\Config;
 
 class GradesTableSeeder extends Seeder
 {
@@ -13,14 +13,47 @@ class GradesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+//        $faker = Faker\Factory::create();
 
-        $limit = 10;
+        $gradeList = Config::get('client.defaults')['gradeList'];
 
-        for ($i = 0; $i < $limit; $i++) {
-            GradeModel::create([
-                'name' => $i+1
-            ]);
+        $sectionList = Config::get('client.defaults')['sectionList'];
+
+        foreach( $gradeList as $gradeName =>  $value ) {
+            if(!is_array($value)){
+                GradeModel::create([
+                    'name' => $value
+                ]);
+            }else{
+                foreach($value as $individualGrade){
+                    GradeModel::create([
+                        'name' => $gradeName.' '.$individualGrade,
+                    ]);
+                }
+            }
+
+
         }
     }
+
+
+
+    private function parseAndGet($nameString){
+        $result = array();
+        list($name, $shortName, $session) = pregSplit('|',$nameString);
+
+        
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
