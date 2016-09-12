@@ -16,4 +16,7 @@ class GradeModel extends Model
     public function getTableName(){
         return $this->table;
     }
+    public function user(){
+			return $this->belongsToMany('App\UserModel','grade_user','grade_id','user_id');
+	}
 }
