@@ -18,6 +18,10 @@ class CourseModel extends Model
     }
 
     public function user(){
-//        return $this->belongsTo('CourseUser');
+          return $this->belongsToMany('App\UserModel','course_user','course_id','user_id');
     }
+	
+	public function room(){
+		return $this->belongsTo('App\RoomModel','room_id');
+	}
 }
