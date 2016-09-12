@@ -32,5 +32,12 @@ class UserModel extends Model
     public function attendanceRecords(){
         return $this->hasMany('App\AttendanceModel','user_id');
     }
-
+    
+    public function courses(){
+		return $this->belongsToMany('App\CourseModel','course_user','user_id','course_id');
+	}
+	
+	public function grades(){
+		return $this->belongsToMany('App\GradeModel','grade_user','user_id','grade_id');
+	}
 }
