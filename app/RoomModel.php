@@ -16,4 +16,8 @@ class RoomModel extends Model
     public function getTableName(){
         return $this->table;
     }
+    
+    public function courses(){
+		return $this->hasOne('App\CourseModel','room_id');
+	}
 }
