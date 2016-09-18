@@ -16,7 +16,12 @@ class CreateGradesTable extends Migration
         Schema::create('grades', function (BluePrint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('section');
+            $table->string('short_name')->nullable();
+            $table->string('section')->nullable();
+            $table->string('year')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('trimester')->nullable();
+            $table->string('month')->nullable();
             $table->timestamps();
 //            $table->nepaliTimeStamps();
             $table->softDeletes();

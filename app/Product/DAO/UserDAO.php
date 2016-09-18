@@ -5,6 +5,7 @@ use App\UserModel;
 use App\Product\daoutil\UserDTOTransformer;
 use App\Product\daoutil\UserDetailDTOTransformer;
 use App\Product\daoutil\AttendanceDTOTransformer;
+//use App\Product\daoutil\Grade;
 use App\Product\response\ResponseGenerator;
 use App\Product\Exception\DAOException;
 
@@ -13,15 +14,17 @@ Class UserDAO implements IUserDAO{
     private $userDTOTransformer;
     private $userDetailDTOTransformer;
     private $attendanceDTOTransformer;
+    private $gradeDTOTransformer;
 
     public function __construct(){
         $this->userDTOTransformer = new UserDTOTransformer();
         $this->userDetailDTOTransformer = new UserDetailDTOTransformer();
         $this->attendanceDTOTransformer = new AttendanceDTOTransformer();
+//        $this->gradeDTOTransformer = new GradeDTOTransformer();
     }
 
     public function findAll($columns){
-        $users = UserModel::with('attendanceRecords')->with('userDetail')->where('id','<','51')->get();
+        $users = UserModel::with('grades')->with('attendanceRecords')->with('userDetail')->where('id','<','51')->get();
         if($users != null){
             $result = array();
             foreach($users as $key => $user){
@@ -42,6 +45,13 @@ Class UserDAO implements IUserDAO{
         if(null != $userDetail && !empty($userDetail)){
             foreach($userDetail as $usrDetail){
                 $result['userDetail'] = $this->userDetailDTOTransformer->formatDataFromDb($usrDetail);
+            }
+        }
+
+        $userGrades = $user->grades()->get();
+        if(null != $userGrades && !empty($userGrades)){
+            foreach($userGrades as $userGrade){
+                $result['userGrades'] = $this->userDetailDTOTransformer->formatDataFromDb($userGrade);
             }
         }
         return $result;

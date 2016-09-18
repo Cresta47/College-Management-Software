@@ -1,4 +1,4 @@
-app.controller('RoomFormController', function ($scope, RoomsService) {
+app.controller('RoomFormController', function ($scope, RoomService) {
     $scope.name;
     $scope.building;
     $scope.room;
@@ -10,7 +10,7 @@ app.controller('RoomFormController', function ($scope, RoomsService) {
             floor:$scope.floor,
             room:$scope.room
         }
-        RoomsService.post(room);
+        RoomService.post(room);
     }
 
 });

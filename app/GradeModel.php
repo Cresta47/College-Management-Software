@@ -9,7 +9,10 @@ class GradeModel extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = array('name');
+    protected $fillable = array('name','short_name',
+                                'year','semester',
+                                'trimester','month',
+                                'section');
 
     protected $table = 'grades';
 

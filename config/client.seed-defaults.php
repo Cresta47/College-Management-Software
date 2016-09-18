@@ -8,6 +8,6 @@
 
 static $value;
 
-$value = (require __DIR__ . '/../cts-client-configuration/organization.seed-defaults.v1.php');
+$value = (require __DIR__ . '/../cts-client-configuration/client.seed-defaults.v1.php');
 
 return $value;

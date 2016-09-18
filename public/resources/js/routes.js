@@ -35,7 +35,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
 
         .state('courseListCard', {
-            url: '/course/all',
+            url: '/my/subjects',
             views: {
                 '': {templateUrl: 'partial/course-list-card'}
             }

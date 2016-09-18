@@ -1,0 +1,20 @@
+Location of PHP files
+
+*create_*_table.php - database/migration
+I*DAO.php - App/Product/DAO
+I*Service.php - App/Product/Service
+*Controller.php - App/http/Controller
+*DAO.php - App/Product/DAO
+*DAOProvider.php - App/Providers
+*DTOTransformer.php - App/Product/DAOUtil
+*-form.blade.php - resources/views/partials
+*-list-card.blade.php - resources/views/partials
+*Model.php - App/
+*Service.php - App/Product/Service
+*ServiceProvider.php - App/Providers
+
+Location of Javascript Files
+
+*Controller.js - public/resources/js/*/*Controller.js
+*Service.js - public/resources/js/*/*Service.js
+*Factory.js - public/resources/js/*/*Factory.js

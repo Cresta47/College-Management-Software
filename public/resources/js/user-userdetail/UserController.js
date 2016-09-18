@@ -7,43 +7,17 @@ app.controller('UserController', function ($scope, UserService, SessionService) 
     $scope.loadUser();
 });
 
-app.controller('UserFormController', function ($scope, $stateParams, UserService, RoleService) {
+app.controller('UserFormController', function ($scope, $stateParams, UserService) {
+    $scope.user = {};
     $scope.stateParams = $stateParams;
 
-    $scope.loadUserforEdit = function () {
-        UserService.get({id:$scope.stateParams.id}).then(function(response){
-            $scope.user = response.data;
-        });
-    }
-
-    $scope.editState = false;
-    if($scope.stateParams.actionParams.action === 'edit'){
-        $scope.editState = true;
-        $scope.loadUserforEdit();
-    }
-
-    $scope.signUp = function () {
-        UserService.post($scope.getUserModel()).then(function(response){
-            alert('User successfully added in the system.'+'\n'+'Check console.log for response.');
-        });
-    }
-
-    $scope.loadRoles = function() {
-        $scope.roles = RoleService.all().then(function (response) {
-            $scope.roles = response.data;
-        });
-    }
-
-    $scope.loadRoles();
-
-
     $scope.getUserModel = function(){
-        var user = {email:$scope.user.email,
+        var user = {
+            email:$scope.user.email,
             password:$scope.user.password,
             confirm:$scope.user.confirm,
             firstName:$scope.user.firstName,
             lastName:$scope.user.lastName,
-            // roles:$scope.form.selectedRoles,
         }
 
         if($scope.user.id){
@@ -52,12 +26,32 @@ app.controller('UserFormController', function ($scope, $stateParams, UserService
         return user;
     }
 
+
+    $scope.signUp = function () {
+        UserService.post($scope.getUserModel()).then(function(response){
+            alert('User successfully added in the system.'+'\n'+'Check console.log for response.');
+        });
+    }
+
+
+    // EDIT Section //
+    $scope.loadUserForEdit = function () {
+        UserService.get({id:$scope.stateParams.id}).then(function(response){
+            $scope.user = response.data;
+        });
+    }
+
+    $scope.editState = false;
+    if($scope.stateParams.actionParams.action === 'edit'){
+        $scope.editState = true;
+        $scope.loadUserForEdit();
+    }
+
     $scope.edit = function(){
         UserService.update($scope.getUserModel()).then(function (response) {
             alert('User Updated.');
         });
     }
-
 });
 
 app.controller('UserListCardsController', function ($scope, UserService) {

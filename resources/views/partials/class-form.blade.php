@@ -1,5 +1,5 @@
 <div ui-view="classForm">
-    <div class="mdl-grid demo-content" ng-controller="ClassFormController">
+    <div class="mdl-grid demo-content" ng-controller="RoomFormController">
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <form>
                 <div class="form-group label-static is-empty">

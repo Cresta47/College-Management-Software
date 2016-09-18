@@ -1,31 +1,53 @@
 <div ui-view="userListCard">
     <h1>Users</h1>
-
-<div class="mdl-grid demo-content" ng-controller="UserListCardsController">
+<div class="" ng-controller="UserListCardsController">
 
     {{--This is where the Table is being created.--}}
-    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-        <div id="grid1" ui-grid="gridOptions" ui-grid-selection class="user-grid"></div>
-    </div>
+    <div id="grid1" ui-grid="gridOptions" ui-grid-selection class="user-grid"></div>
+
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card ng-repeat="user in users">
+        {{--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">--}}
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline"> @{{ user.email }}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p>
+               Registered Date  @{{ user.createAt }}
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+            <button class="md-raised md-primary md-button md-ink-ripple"
+                    type="button"
+                    ui-sref="userProfile({id: user.id})">
+                <span class="ng-scope">Profile</span>
+                <div class="md-ripple-container"></div>
+            </button>
 
 
-    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-        <div ng-repeat="user in users"
-             class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
-            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">@{{ user.name }}</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                @{{ user.email }}
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a ui-sref="userProfile({id: user.id})"  class="mdl-button mdl-js-button mdl-js-ripple-effect">Profile</a>
-                <a ui-sref="userEdit({id: user.id})" class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</a>
-                <a ng-click="deleteUser(user.id)" class="mdl-button mdl-js-button mdl-js-ripple-effect">Delete</a>
-            </div>
+            <button class="md-button md-ink-ripple"
+                    type="button"
+                    ui-sref="userEdit({id: user.id})">
+                <span class="ng-scope">Edit</span>
+                <div class="md-ripple-container"></div>
+            </button>
+
+            <button class="md-button md-ink-ripple"
+                    type="button"
+                    ng-click="deleteUser(user.id)">
+                <span class="ng-scope">Delete</span>
+                <div class="md-ripple-container"></div>
+            </button>
+
+        </md-card-actions>
+    </md-card>
         </div>
-    </div>
-</div>
-</div>
+    </md-content>
 
+</div>
+</div>
 </div>

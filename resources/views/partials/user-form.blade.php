@@ -1,49 +1,77 @@
-<div ui-view="userForm">
-<div class="mdl-grid demo-content" ng-controller="UserFormController">
-    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-        <form>
-            <div class="form-group label-static is-empty">
-                <h3>@{{stateParams.stateTitle}}</h3>
-                    <input type="hidden" name="id" class="signup form-control"
-                           id="i2" placeholder="" ng-model="user.id" >
+<div ui-view="userForm"
+     ng-controller="UserFormController" layout="column" layout-padding ng-cloak>
+    <br/>
+    <h3>@{{stateParams.stateTitle}}</h3>
 
-                <div class="form-group label-static is-empty">
-                    <input type="email" name="email" class="signup form-control"
-                           id="i2" placeholder="Email" ng-model="user.email">
-                </div>
+    <input type="hidden" name="id" class=""
+           placeholder="" ng-model="user.id" >
 
-                <div class="form-group label-static is-empty">
-                    <input type="password" name="password" class="signup form-control"
-                           id="i2" placeholder="Password" ng-model=" user.password">
-                </div>
+    <md-content class="md-no-momentum">
 
-                <div class="form-group label-static is-empty">
-                    <input type="password" name="confirmPassword" class="signup form-control"
-                           id="i2" placeholder="Confirm" ng-model="user.confirm">
-                </div>
+        <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>First Name *</label>
+            <input ng-model="user.firstName" type="text" ng-required="true">
+        </md-input-container>
 
-                <div class="form-group label-static is-empty">
-                    <input type="text" name="firstName" class="signup form-control"
-                           id="i2" placeholder="First Name" ng-model="user.firstName">
-                </div>
+        <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Last Name *</label>
+            <input ng-model="user.lastName" type="text" ng-required="true">
+        </md-input-container>
 
-                <div class="form-group label-static is-empty">
-                    <input type="text" name="lastName" class="signup form-control"
-                           id="i2" placeholder="Last Name" ng-model="user.lastName">
-                </div>
+        <md-input-container class="md-block">
+            <!-- Use floating placeholder instead of label -->
+            <input ng-model="user.email" type="email" placeholder="Email *" ng-required="true">
+        </md-input-container>
 
-                <div ng-show="!editState" class="signup form-group label-static is-empty ripple-container signup">
-                    <input type="button" value="Sign up" class="btn btn-raised btn-primary" ng-click="signUp()">
-                </div>
+        <md-input-container class="md-block">
+            <!-- Use floating placeholder instead of label -->
+            <input ng-model="user.password" type="password" placeholder="Password *" ng-required="true">
+        </md-input-container>
 
-                <div ng-show="editState" class="edit form-group label-static is-empty ripple-container signup">
-                    <input type="button" value="Edit" class="btn btn-raised btn-primary" ng-click="edit()">
-                </div>
+        <md-input-container class="md-block">
+            <!-- Use floating placeholder instead of label -->
+            <input ng-model="user.confirmPassword" type="password" placeholder="Confirm Password *" ng-required="true">
+        </md-input-container>
 
-            </div>
-        </form>
-    </div>
+
+        <md-input-container class="md-block">
+            <!-- Use floating placeholder instead of label -->
+            <input ng-model="user.dob" type="text" placeholder="Date of Birth (AD) *" ng-required="true">
+        </md-input-container>
+
+        <md-radio-group ng-model="user.gender">Gender
+            <md-radio-button value="M">Male</md-radio-button>
+            <md-radio-button value="F"> Female </md-radio-button>
+        </md-radio-group>
+
+        <md-input-container class="md-block" ng-show="!editState">
+        <button class="md-raised md-primary md-button md-ink-ripple"
+                type="button"
+                ng-click="signUp()">
+            <span class="ng-scope">Register</span>
+            <div class="md-ripple-container"></div>
+        </button>
+        </md-input-container>
+
+        <md-input-container class="md-block" ng-show="editState">
+            <button class="md-raised md-primary md-button md-ink-ripple"
+                    type="button"
+                    ng-click="edit()">
+                <span class="ng-scope">Edit</span>
+                <div class="md-ripple-container"></div>
+            </button>
+        </md-input-container>
+    </md-content>
 </div>
 
 
-</div>
+
+
+
+
+
+
+
+

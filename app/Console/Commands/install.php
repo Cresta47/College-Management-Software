@@ -82,8 +82,8 @@ class install extends Command
         $this->info("Seeding 'grade_user' Table...");
         Artisan::call("db:seed" , ['--class'=>'GradeUserTableSeeder']);
 
-        $this->info("Seeding 'attendance' Table...");
-        Artisan::call("db:seed" , ['--class'=>'AttendanceTableSeeder']);
+//        $this->info("Seeding 'attendance' Table...");
+//        Artisan::call("db:seed" , ['--class'=>'AttendanceTableSeeder']);
 
         $this->info("Optimizing Class Loader...");
         Artisan::call("optimize");
